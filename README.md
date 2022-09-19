@@ -1,10 +1,10 @@
 # react-shopping-cart
 
-## Get started
-Install the dependencies:
+## Empecemos
+Instalamos las dependencias:
 npm install
 
-...then start webpack:
+...y luego iniciamos webpack:
 npm start 
 
-Navigate to localhost:3000. You should see your app running. Edit a component file in src, save it, and the page should reload with your changes.
+Navegamos a localhost:3000. Deberiamos ver la app corriendo. Editamos el componente index.js en src, guardamos, y la pagina recargará con los cambios realizados.
