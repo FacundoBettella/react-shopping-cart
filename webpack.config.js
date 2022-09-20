@@ -44,6 +44,11 @@ module.exports = {
         test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        /* Para usar svg como react components */
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
 

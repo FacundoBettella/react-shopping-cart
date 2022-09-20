@@ -6,7 +6,8 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  /* Punto de entrada de webpack para empaquetat y generar el bundle. */
+  devtool: "source-map",
+  /* Punto de entrada de webpack para empaquetar y generar el bundle. */
   entry: "./src/index.js",
 
   /* Punto a donde enviamos nuestro bundle una vez generado. */
@@ -32,6 +33,10 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            plugins: ["@babel/plugin-syntax-dynamic-import", "@babel/plugin-transform-runtime"],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
         },
       },
       {
@@ -43,6 +48,11 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        /* Para usar svg como react components */
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
       },
     ],
   },
@@ -67,15 +77,15 @@ module.exports = {
   },
 
   /* Configuramos el server para modo desarrollo */
+
   devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-      watch: true,
-    },
-    watchFiles: path.join(__dirname, "./**"),
-    compress: true, // para comprimir
-    historyApiFallback: true, // para tener una historia en el navegador
     port: 3000, // puerto
-    open: true, // abrir el navegador
+    historyApiFallback: {
+      disableDotRule: true 
+      /* 
+        Lo vemos en consola: [webpack-dev-server] 404s will fallback to '/index.html'
+        Además, debemos agregar  en output: publicPath: "/" 
+      */
+    }
   },
 };
