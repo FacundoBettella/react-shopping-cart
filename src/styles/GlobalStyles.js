@@ -28,9 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         width: 100%;
         height: 100vh;
-        background: #fefefe;
         margin: 0 auto; /* Técnica para centrar el body de la app */
-        width: 100%; /* Diseño para movile */
         overscroll-behavior: none; /* Evita "rebotes" de la app usando el scroll */
     }
 `;
