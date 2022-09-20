@@ -32,6 +32,10 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            plugins: ["@babel/plugin-syntax-dynamic-import", "@babel/plugin-transform-runtime"],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
         },
       },
       {
