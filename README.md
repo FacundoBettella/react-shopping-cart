@@ -1,11 +1,13 @@
 # react-shopping-cart
 
 Instalamos las dependencias:
+
 `
 npm install
 `
 
-...y luego iniciamos webpack:
+y luego iniciamos webpack:
+
 `
 npm run start 
 `
