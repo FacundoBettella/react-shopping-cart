@@ -9,4 +9,5 @@ user.PropTypes = {
   date: PropTypes.date.isRequired,
   items: PropTypes.arrayOf,
 };
+
 export default user;

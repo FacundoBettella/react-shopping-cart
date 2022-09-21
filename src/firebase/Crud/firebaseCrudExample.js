@@ -1,24 +1,22 @@
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import user from "../models/user";
+import { FIRESTONE } from "../firebase.config";
 
-user.email = "user@gmail.com";
-user.name = "username";
-user.phone = "+54388551496";
-user.date = Date.now();
-user.items = ["tv", "microwave"];
-
-const addData = async () => {
+export const addData = async (user) => {
   try {
-    const dbResponse = await addDoc(collection(db, "users"), user);
+    const dbResponse = await addDoc(collection(FIRESTONE, "user"), user);
     console.log("Document written with ID: ", dbResponse.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 };
 
-const getData = async () => {
-  const querySnapshot = await getDocs(collection(db, "users"));
-  querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-  });
+export const getData = async () => {
+  try {
+    const usersResponse = await getDocs(collection(FIRESTONE, "user"));
+    usersResponse.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data().name}`);
+    });
+  } catch (e) {
+    console.error("Error getting document: ", e);
+  }
 };
