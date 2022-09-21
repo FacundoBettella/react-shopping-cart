@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^16.0.2"
+    "dotenv": "^16.0.2",
+    "prop-types": "^15.8.1"
   }
 }
