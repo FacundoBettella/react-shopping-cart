@@ -1,0 +1,35 @@
+:root {
+    --mainColor: #7289da;
+    --white: #fff;
+    --grey: #99aab5;
+    --lightBlack: #23272a;
+    --lightherBlack: #2c2f33;
+  }
+
+.swiper {
+    width: 95%;
+    height: 40vh;
+    padding-left: 5%;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    color: var(--lightBlack);
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 50%;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    color: var(--mainColor);
+
+  }
+
+  .swiper-pagination-bullet {
+    background-color: var(--mainColor);
+  }

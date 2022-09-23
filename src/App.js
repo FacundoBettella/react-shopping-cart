@@ -1,11 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
-import { Title } from "./components";
+import { Carousel, Title } from "./components";
 import AppleIpad from "./assets/Apple iPad.jpg";
-// import { getData } from "./firebase/crud/firebaseCrudExample";
+
+import { collection, getDocs } from "firebase/firestore";
+import { FIRESTONE } from "./firebase/firebase.config";
 
 const App = () => {
-  // let data = getData("products");
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async (entity) => {
+      const dataResponse = await getDocs(collection(FIRESTONE, entity));
+      setProducts(dataResponse.docs.map((doc) => ({ ...doc.data() })));
+    };
+
+    getProducts("products");
+  }, []);
 
   return (
     <Fragment>
@@ -13,8 +24,12 @@ const App = () => {
       <Title text={"Shopping Chart"} />
       {/* routes */}
       <div>
-        <img src={AppleIpad} style={{ width: "230px" }} />
+        <img src={AppleIpad} alt="appleIpad" style={{ width: "230px" }} />
       </div>
+
+    <Carousel listOfProducts={products} />
+
+    
     </Fragment>
   );
 };
