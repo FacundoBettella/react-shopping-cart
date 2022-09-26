@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import { GlobalStyle } from "./styles/GlobalStyles";
-import { Carousel, Title } from "./components";
 
-import useProducts from "./hooks/useProducts";
+import { Carousel, Products, Title, Loading } from "./components";
+import { GlobalStyle } from "./styles/GlobalStyles";
 
 import Home from "./pages/home/Home";
-import Loading from "./components/loading";
+
+import useProducts from "./hooks/useProducts";
 
 const App = () => {
   const { products, loading } = useProducts();
@@ -16,11 +16,14 @@ const App = () => {
       <Title text={"Shopping Chart"} />
 
       {/* routes */}
-      <Home>
-        <Carousel 
+      <Home loading={loading}>
+        <Carousel
           listOfProducts={products}
-          loading={loading}
-          onLoading={ (loading) => <Loading  loading={loading}/>}
+          onLoading={(loading) => <Loading loading={loading} />}
+        />
+        <Products
+          listOfProducts={products}
+          onLoading={(loading) => <Loading loading={loading} />}
         />
       </Home>
     </Fragment>
