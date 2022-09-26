@@ -18,7 +18,7 @@ export const assetsUtils = [
         src: bicicleta
     },
     {
-        name: "Lavarropas automatico",
+        name: "Lavarropas automático",
         src: lavarropas
     },
     {

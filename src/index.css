@@ -18,16 +18,8 @@
     color: var(--lightBlack);
   }
   
-  .swiper-slide img {
-    display: block;
-    width: 50%;
-    border: 1px solid var(--grey);
-    border-radius: 4px;
-  }
-
   .swiper-button-prev, .swiper-button-next {
     color: var(--mainColor);
-
   }
 
   .swiper-pagination-bullet {
