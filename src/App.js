@@ -20,7 +20,7 @@ const App = () => {
         <Carousel 
           listOfProducts={products}
           loading={loading}
-          onLoading={(loading) => <Loading  loading={loading}/>}
+          onLoading={ (loading) => <Loading  loading={loading}/>}
         />
       </Home>
     </Fragment>
