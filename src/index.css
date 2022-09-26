@@ -7,9 +7,8 @@
   }
 
 .swiper {
-    width: 95%;
-    height: 40vh;
-    padding-left: 5%;
+    width: 98%;
+    height: 35vh;
   }
   
   .swiper-slide {
@@ -18,10 +17,19 @@
     color: var(--lightBlack);
   }
   
-  .swiper-button-prev, .swiper-button-next {
+  .swiper-button-prev {
+    left: 0;
+    color: var(--mainColor);
+  } 
+  .swiper-button-next {
+    right: 0;
     color: var(--mainColor);
   }
 
   .swiper-pagination-bullet {
     background-color: var(--mainColor);
+  }
+  
+  .swiper-pagination {
+    top: 30vh;
   }

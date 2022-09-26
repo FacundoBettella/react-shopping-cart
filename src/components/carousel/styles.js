@@ -4,18 +4,18 @@ export const ImgContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 180px;
-  object-fit: cover;
-  margin: 20px 0px;
+  width: 350px;
+  height: 30vh;
+  padding: 20px 16px;
 `;
 
 export const Img = styled.img`
   border-radius: 4px;
   box-shadow: 2px 2px 5px var(--grey);
-  min-width: 240px;
-  min-height: 180px;
+  min-width: 350px;
+  min-height: 225px;
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
   cursor: pointer;
 `;
