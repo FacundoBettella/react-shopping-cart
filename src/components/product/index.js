@@ -1,11 +1,14 @@
 import React from 'react'
-import { ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
+import { ImageContainer, ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
  
 export const Product = ({title,shortDescription,price,stock}) => {
-  return (
+ 
+    return (
          <ProductContainer>
             <ProductTitle >{title}</ProductTitle>
-            <ProductImage src={``} alt="" />          
+            <ImageContainer> 
+                <ProductImage src={require(`../../assets/${title}.jpg`)} alt={title} />          
+            </ImageContainer>            
             <ProductDescription >{shortDescription}</ProductDescription>
             <ProductSubtitle >{`$ ${price}`}</ProductSubtitle>
             <ProductSubtitle >{`${stock} Disponibles`}</ProductSubtitle>
