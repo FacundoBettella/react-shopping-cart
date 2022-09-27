@@ -1,10 +1,8 @@
 import React from "react";
-import {Navbar} from "./navbar/navbar"
+import { Navbar } from "./navbar/navbar";
 
-const Home = () => {
-    return(
-        <Navbar/>
-    )
-}
+const Home = ({ children }) => {
+  return <section>{children}</section>;
+};
 
-export {Home}
+export { Home };
