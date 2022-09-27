@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageContainer, ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
+import { ButtonAdd, ButtonDetails, ImageContainer, ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
  
 export const Product = ({title,shortDescription,price,stock}) => {
  
@@ -12,6 +12,10 @@ export const Product = ({title,shortDescription,price,stock}) => {
             <ProductDescription >{shortDescription}</ProductDescription>
             <ProductSubtitle >{`$ ${price}`}</ProductSubtitle>
             <ProductSubtitle >{`${stock} Disponibles`}</ProductSubtitle>
+            <div>
+                <ButtonAdd>Add</ButtonAdd>
+                <ButtonDetails>Details</ButtonDetails>
+            </div>
         </ProductContainer>    
   )
 }
