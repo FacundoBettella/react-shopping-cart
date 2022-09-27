@@ -35,7 +35,7 @@ export const ProductDescription = styled.div`
  
 `
 
-export const ButtonAdd = styled.button`
+export const Button = styled.button`
   border: none;
   color: red;
   padding: 15px 32px;
@@ -45,10 +45,9 @@ export const ButtonAdd = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-`
-
-export const ButtonDetails = styled.button`
-    background-color: green;
-    margin: 5px;
-    padding: 10px;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  &:hover{
+    color: orange;
+  }
 `
