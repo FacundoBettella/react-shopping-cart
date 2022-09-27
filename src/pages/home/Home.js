@@ -27,3 +27,4 @@ const Home = ({ children, loading }) => {
 };
 
 export default Home;
+
