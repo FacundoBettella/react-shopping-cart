@@ -22,13 +22,20 @@ export const ProductSubtitle = styled.h2`
 `
 
 export const ImageContainer = styled.div`
-    height: 300px;
-    width: 200px;
+    height: 25vh;
+    width: 225px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
 
 export const ProductImage = styled.img`
-    height: 250px;
-    width: 200px;
+    border-radius: 4px;
+    min-width: 150px;
+    min-height: 80px;
+    max-width: 100%;
+    max-height: 90%;
 `
  
 export const ProductDescription = styled.div`
