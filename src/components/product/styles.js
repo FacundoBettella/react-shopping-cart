@@ -10,19 +10,18 @@ export const ProductContainer = styled.div`
     font-family: 'Quicksand', sans-serif;
     box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    padding: 10px;
-    
+    padding: 10px;    
 `
 export const ProductTitle = styled.h1`
- 
+ height: 60px;
 `
  
 export const ProductSubtitle = styled.h2`
- 
+      
 `
 
 export const ImageContainer = styled.div`
-    height: 25vh;
+    height:200px;
     width: 225px;
     display: flex;
     flex-direction: column;
@@ -39,7 +38,9 @@ export const ProductImage = styled.img`
 `
  
 export const ProductDescription = styled.div`
- 
+    margin: 10px; 
+    width: 200px;
+    height: 55px;
 `
 
 export const Button = styled.button`
@@ -57,4 +58,8 @@ export const Button = styled.button`
   &:hover{
     color: orange;
   }
+`
+
+export const ButtonsContainer = styled.div`
+margin: 20px 0px;
 `
