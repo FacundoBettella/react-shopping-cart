@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import "./index.css"
 
 /* After React v18.0.0 */
 var container = document.getElementById("root");
