@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import Home from "./pages/home/Home";
 import { Detail } from "./pages/detail/Detail";
@@ -12,7 +12,6 @@ import useProducts from "./hooks/useProducts";
 
 const App = () => {
   const { products, loading } = useProducts();
-
   return (
     <Fragment>
       <BrowserRouter>
@@ -21,7 +20,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route
-            path="home"
+            path="/home"
             element={
               <Home loading={loading}>
                 <Carousel
@@ -30,12 +29,12 @@ const App = () => {
                 />
                 <Products
                   listOfProducts={products}
-                  onLoading={(loading) => <Loading loading={loading} />}
+                  onLoading={(loading) => <Loading loading={loading} />}                                  
                 />
               </Home>
             }
           />
-          <Route path="productdetail" element={<Detail />} />
+          <Route path="/productdetail" element={<Detail />} />
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
         </Routes>
