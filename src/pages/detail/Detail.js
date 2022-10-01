@@ -1,12 +1,10 @@
 import React, { Fragment, useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { DescriptionContainer, DetailsContainer, DetailsImage, LargeDescription, ProductAvailable, ProductPrice, ProductTitle } from "./styles";
+import { BotonAgregarCarrito, DescriptionContainer, DetailsContainer, DetailsImage, LargeDescription, ProductAvailable, ProductPrice, ProductTitle } from "./styles";
 
-const Detail = (props) => {
-    
+const Detail = () => {    
     const location = useLocation();
     const currentProduct = location.state.product;
-    console.log(location.state.product);
     
     return (
         <Fragment>
@@ -17,11 +15,10 @@ const Detail = (props) => {
                     <LargeDescription>{currentProduct.largDescription}</LargeDescription>
                     <ProductAvailable>{currentProduct.stock} disponibles</ProductAvailable>
                     <ProductPrice>$ {currentProduct.price}</ProductPrice>
+                    <BotonAgregarCarrito>AGREGAR AL CARRITO</BotonAgregarCarrito>
                 </DescriptionContainer>
-            </DetailsContainer>
-            <button>Agregar al Carrito</button>
+            </DetailsContainer>            
         </Fragment>
-
     )
 }
 
