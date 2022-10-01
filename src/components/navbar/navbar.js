@@ -24,7 +24,7 @@ const BaseNavbar = () => {
         <nav className="navBar">
             <Ul>
                 <Li><StyledLink to="/home">Home</StyledLink></Li>
-                <Li><StyledLink to="/productdetail">Product Detail</StyledLink></Li>
+                {/* <Li><StyledLink to="/productdetail">Product Detail</StyledLink></Li> */}
                 <Li><StyledLink to="/cart">Cart</StyledLink></Li>
                 <Li><StyledLink to="/login">Login</StyledLink></Li>
             </Ul>

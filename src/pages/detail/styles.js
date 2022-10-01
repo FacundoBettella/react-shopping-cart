@@ -12,7 +12,8 @@ export const DescriptionContainer = styled.div`
 
 export const DetailsContainer = styled.div`
     display: flex;
-    margin-left: 10px;
+    padding: 5px 5px;
+    border: 2px solid black;
 `
 export const ProductTitle = styled.h1`
     margin: 20px 10px;
