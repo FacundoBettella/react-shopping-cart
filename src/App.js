@@ -6,7 +6,7 @@ import { Detail } from "./pages/detail/Detail";
 import { Cart } from "./pages/cart/Cart";
 import { Login } from "./pages/login/Login";
 import { Navbar } from "./components/navbar/navbar";
-import { Loading, Products, Title, Carousel } from "./components";
+import { Loading, Products, Title, Carousel ,Searcher, Search} from "./components";
 import useProducts from "./hooks/useProducts";
 // import { useLocalStorage } from "./hooks/useLocalStorage";
 
@@ -28,6 +28,7 @@ const App = () => {
                   listOfProducts={products}
                   onLoading={(loading) => <Loading loading={loading} />}
                 />
+                <Searcher/>
                 <Products
                   listOfProducts={products}
                   onLoading={(loading) => <Loading loading={loading} />}
@@ -38,6 +39,9 @@ const App = () => {
           <Route path="productdetail" element={<Detail />} />
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
+          <Route path="search/:filter" 
+            element={<Search onLoading={(loading) => <Loading loading={loading} />}/>}
+          />
         </Routes>
       </BrowserRouter>
     </Fragment>
