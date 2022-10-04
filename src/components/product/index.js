@@ -1,8 +1,14 @@
 import React from 'react'
-import { Button, ButtonsContainer, ImageContainer, ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
+import { Link } from 'react-router-dom';
+import { Button, ButtonsContainer, ImageContainer, Linkstyled, ProductContainer, ProductDescription, ProductImage, ProductSubtitle, ProductTitle } from './styles'
  
-export const Product = ({title,shortDescription,price,stock}) => {
- 
+export const Product = ({title,shortDescription,largDescription,price,stock}) => {
+    
+    const currentProduct = {title:`${title}`,
+                            shortDescription:`${shortDescription}`,
+                            largDescription:`${largDescription}`,
+                            price:`${price}`,
+                            stock:`${stock}`};
     return (
          <ProductContainer>
             <ProductTitle >{title}</ProductTitle>
@@ -14,7 +20,7 @@ export const Product = ({title,shortDescription,price,stock}) => {
             <ProductSubtitle >{`${stock} Disponibles`}</ProductSubtitle>
             <ButtonsContainer>
                 <Button>Add</Button>                
-                <Button>Details</Button>                
+                <Linkstyled to="/productdetail" state={{product:{...currentProduct}}}> Details </Linkstyled>                
             </ButtonsContainer>
         </ProductContainer>    
   )
