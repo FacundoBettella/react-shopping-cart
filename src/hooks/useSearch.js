@@ -3,8 +3,8 @@ import { collection, getDocs } from "firebase/firestore";
 import { FIRESTONE } from "../firebase/firebase.config";
 
 const useSearch = (filter) => {
-  const [products, setProducts] = useState([]);
   const [loading, setLoading ] = useState(true);
+  const [products, setProducts] = useState(null);
 
   const normalize = (param)=>{
     return (param || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
@@ -20,7 +20,7 @@ const useSearch = (filter) => {
         || normalize(product.shortDescription).includes(normalizedFilter);
     }); 
 
-    setProducts([...products]);
+    setProducts(products);
     setLoading(false);
 
   };

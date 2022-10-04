@@ -3,9 +3,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import { SearchContainer, SearchInput, SearchButton, IconContainer } from './styles'
 import { useNavigate } from "react-router-dom";
 
-export const Searcher = () => {
-   const [inputValue, setInputValue] = useState(" ");
+export const Searcher = (props) => {
+   const [inputValue, setInputValue] = useState(props.param || "");
    const navigate = useNavigate();
+   const search = () =>{
+      if(inputValue.trim() !== ""){
+         navigate(`/search/${inputValue}`);
+      }
+   };
 
    const handleChange = event => {
      setInputValue(event.target.value.trim());
@@ -13,14 +18,14 @@ export const Searcher = () => {
 
    const handleKeyDown = event => {    
       if (event.key === 'Enter') {
-         navigate(`/search/${inputValue}`);
+         search();
       }
     }
 
     return (
          <SearchContainer>
             <SearchInput onChange={handleChange} value={inputValue} onKeyDown ={ handleKeyDown}/>
-            <SearchButton onClick={() => {navigate(`/search/${inputValue}`)}}>
+            <SearchButton onClick={() => {search()}}>
                <IconContainer><SearchIcon sx={{ fontSize: 27 }}/></IconContainer>
             </SearchButton>
          </SearchContainer>

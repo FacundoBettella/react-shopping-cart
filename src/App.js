@@ -28,7 +28,7 @@ const App = () => {
                   listOfProducts={products}
                   onLoading={(loading) => <Loading loading={loading} />}
                 />
-                <Searcher/>
+                <Searcher param=""/>
                 <Products
                   listOfProducts={products}
                   onLoading={(loading) => <Loading loading={loading} />}
