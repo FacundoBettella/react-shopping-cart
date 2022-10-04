@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { BotonAgregarCarrito, ContenedorEnvio, ContenedorEnvioSucursal, CuotasSinInteres, DescriptionContainer, DetailsContainer, DetailsImage, LargeDescription, ProductAvailable, ProductPrice, ProductTitle } from "./styles";
+import { BotonAgregarCarrito, ContenedorEnvio, ContenedorEnvioSucursal, CuotasSinInteres, DescriptionContainer, DetailsContainer, DetailsImage, LargeDescription, ParrafoResaltadoEnvio, ProductAvailable, ProductPrice, ProductTitle } from "./styles";
 import { RiStore2Line } from "react-icons/ri";
 import { MdLocalShipping } from "react-icons/md";
 
@@ -29,10 +29,10 @@ const Detail = () => {
                     <ProductPrice>$ {selectedProduct.price}</ProductPrice>
                     <CuotasSinInteres>6 Cuotas sin interés de ${redondearCuotas()}</CuotasSinInteres>
                     <ContenedorEnvioSucursal> 
-                        <p> <MdLocalShipping /> Envío gratis a Capital Federal </p>
-                        <p> Llega mañana comprando hoy antes de las 19hs</p>
+                        <p> <ParrafoResaltadoEnvio><MdLocalShipping />  ENVIO GRATIS</ParrafoResaltadoEnvio> a Capital Federal </p>
+                        <p> <ParrafoResaltadoEnvio>Llega mañana</ParrafoResaltadoEnvio> comprando hoy antes de las 19hs</p>
                      </ContenedorEnvioSucursal>
-                    <ContenedorEnvioSucursal><RiStore2Line/> Retiro Gratis en sucursal</ContenedorEnvioSucursal>
+                    <ContenedorEnvioSucursal><RiStore2Line/> RETIRO GRATIS en sucursal</ContenedorEnvioSucursal>
                     <BotonAgregarCarrito onClick={handleClick}>AGREGAR AL CARRITO</BotonAgregarCarrito>
                 </DescriptionContainer>
             </DetailsContainer>            

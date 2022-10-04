@@ -35,6 +35,12 @@ export const CuotasSinInteres = styled.p`
     font-size: 20px;
 `
 
+export const ParrafoResaltadoEnvio = styled.span`
+    font-weight: bold;
+    color: green;    
+    align-items:center;    
+`
+
 export const ProductAvailable = styled.h3`
     margin: 20px 10px;
     font-size: 20px;
