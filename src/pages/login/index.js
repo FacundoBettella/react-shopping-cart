@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   SubmitButton,
@@ -9,7 +9,7 @@ import {
 import { useAuth } from "../../context/authContext";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, user, messageError } = useAuth();
   const navigate = useNavigate();
 
   const [inputsValue, setInputsValue] = useState({
@@ -30,7 +30,6 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(inputsValue.user, inputsValue.password);
-      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -40,6 +39,11 @@ const Login = () => {
     e.preventDefault();
     navigate("/register");
   };
+
+  useEffect(() => {
+    if (user !== null) navigate("/home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div>
@@ -73,6 +77,18 @@ const Login = () => {
           </pre>
           <Button onClick={goToRegister}>Registrate aquí</Button>
         </div>
+        <br />
+        {messageError !== "" && (
+          <p
+            style={{
+              color: "var(--secondary)",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            {messageError}
+          </p>
+        )}
       </FormWrapper>
     </div>
   );

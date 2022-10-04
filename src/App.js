@@ -15,7 +15,7 @@ import { ProtectedRoute } from "./pages/protected-route";
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
-
+ 
   return (
     <Fragment>
       <BrowserRouter>

@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const jump = keyframes`
+  from{
+    transform: translateY(-4px)
+  }
+  to{
+    transform: translateY(0)
+  }
+`;
 
 const Ul = styled.ul`
   display: flex;
@@ -20,8 +29,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const StyledButton = styled.button`
-  height: 5vh;
+const StyledLoginLink = styled(Link)`
+  height: auto;
   color: FireBrick;
   background-color: FloralWhite;
   font-size: 1.5em;
@@ -33,10 +42,29 @@ const StyledButton = styled.button`
   right: 0;
   margin-right: 10px;
   cursor: pointer;
+  transition: all 0.5s;
+  animation: ${jump} 0.5s ease-out forwards;
+`;
+
+const StyledButton = styled.button`
+  height: auto;
+  color: FireBrick;
+  background-color: FloralWhite;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  animation: ${jump} 0.5s ease-out forwards;
 `;
 
 const BaseNavbar = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const handleLogout = async () => {
     await logout();
@@ -56,10 +84,11 @@ const BaseNavbar = () => {
           <StyledLink to="/cart">Cart</StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/login">Login</StyledLink>
-        </Li>
-        <Li>
-          <StyledButton onClick={handleLogout}>Cerrar sesión</StyledButton>
+          {user !== null ? (
+            <StyledButton onClick={handleLogout}>Cerrar sesión</StyledButton>
+          ) : (
+            <StyledLoginLink to="/login">Login</StyledLoginLink>
+          )}
         </Li>
       </Ul>
     </nav>

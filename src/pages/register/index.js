@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitButton, FormWrapper, FormInput } from "../../components/index";
 import { useAuth } from "../../context/authContext";
 
 const Register = () => {
-  const { signUp } = useAuth();
+  const { signUp, user, messageError } = useAuth();
   const navigate = useNavigate();
 
   const [inputsValue, setInputsValue] = useState({
@@ -25,11 +25,15 @@ const Register = () => {
     e.preventDefault();
     try {
       await signUp(inputsValue.user, inputsValue.password);
-      navigate("/home");
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (user !== null) navigate("/home");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div>
@@ -49,6 +53,18 @@ const Register = () => {
           onChange={handleInputs}
         />
         <SubmitButton onClick={handleRegister} text="Registrate" />
+        <br />
+        {messageError !== "" && (
+          <p
+            style={{
+              color: "var(--secondary)",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            {messageError}
+          </p>
+        )}
       </FormWrapper>
     </div>
   );
