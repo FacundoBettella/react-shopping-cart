@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Img, ImgContainer } from "./styles";
+import { Img, ImgContainer, Banner, Ptext } from "./styles";
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
   return (
@@ -26,14 +26,16 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
           modules={[Pagination, Navigation]}
         >
           {listOfProducts.length > 0 &&
-            listOfProducts.map((currentProduct, index) => (
+            listOfProducts.filter(product => product.stock > 0).map((currentProduct, index) => (
               <SwiperSlide key={index.toString()}>
                 <ImgContainer>
                   <Img
                     src={require(`../../assets/${currentProduct.title}.jpg`)}
                     alt={currentProduct.title}
                   />
+                  <Banner><Ptext>{currentProduct.stock <= 5 ? "Poco Stock" : "Stock Disponible"}</Ptext></Banner>
                 </ImgContainer>
+                
               </SwiperSlide>
             ))}
         </Swiper>
