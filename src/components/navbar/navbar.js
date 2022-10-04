@@ -75,7 +75,7 @@ const BaseNavbar = () => {
     <nav className="navBar">
       <Ul>
         <Li>
-          <StyledLink to="/home">Home</StyledLink>
+          <StyledLink to="/">Home</StyledLink>
         </Li>
         <Li>
           <StyledLink to="/cart">Cart</StyledLink>

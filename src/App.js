@@ -15,7 +15,7 @@ import { ProtectedRoute } from "./pages/protected-route";
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
- 
+
   return (
     <Fragment>
       <BrowserRouter>
@@ -26,7 +26,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/home"
+            path="/"
             element={
               <Home loading={loading}>
                 <Carousel

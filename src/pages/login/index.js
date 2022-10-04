@@ -41,7 +41,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (user !== null) navigate("/home");
+    if (user !== null) navigate("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
