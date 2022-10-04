@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SubmitButton, FormWrapper, FormInput } from "../../components/index";
 import { useAuth } from "../../context/authContext";
 
 const Register = () => {
@@ -24,7 +25,7 @@ const Register = () => {
     e.preventDefault();
     try {
       await signUp(inputsValue.user, inputsValue.password);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -32,23 +33,23 @@ const Register = () => {
 
   return (
     <div>
-      <form>
-        <input
+      <FormWrapper>
+        <FormInput
           name="user"
           placeholder="email"
           type="email"
           value={inputsValue.user}
           onChange={handleInputs}
         />
-        <input
+        <FormInput
           name="password"
           placeholder="password"
           type="password"
           value={inputsValue.password}
           onChange={handleInputs}
         />
-        <button onClick={handleRegister}>Registrate con tu email!</button>
-      </form>
+        <SubmitButton onClick={handleRegister} text="Registrate" />
+      </FormWrapper>
     </div>
   );
 };

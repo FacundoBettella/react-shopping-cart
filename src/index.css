@@ -1,9 +1,11 @@
 :root {
     --mainColor: #7289da;
-    --white: #fff;
+    --white: FloralWhite;
     --grey: #99aab5;
     --lightBlack: #23272a;
     --lightherBlack: #2c2f33;
+    --secondary: FireBrick;
+    --secondaryAccent: #c81e1e;
   }
 
 .swiper {

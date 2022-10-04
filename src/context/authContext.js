@@ -1,7 +1,9 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { AUTH } from "../firebase/firebase.config";
 
@@ -14,11 +16,16 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
   const signUp = (email, password) => {
     createUserWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential.user);
+        localStorage.setItem(
+          "auth_token",
+          userCredential._tokenResponse.refreshToken
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -30,7 +37,11 @@ export const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     signInWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        // Loged in
+        localStorage.setItem(
+          "auth_token",
+          userCredential._tokenResponse.refreshToken
+        );
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -39,8 +50,16 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const logout = () => signOut(AUTH);
+
+  useEffect(() => {
+    onAuthStateChanged(AUTH, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
+
   return (
-    <authContext.Provider value={{ signUp, login }}>
+    <authContext.Provider value={{ signUp, login, logout, user }}>
       {children}
     </authContext.Provider>
   );
