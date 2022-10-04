@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { Register } from "./pages/register";
 import { Login } from "./pages/login";

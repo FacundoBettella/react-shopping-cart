@@ -52,6 +52,7 @@ export const Button = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: 600;
   margin: 4px 2px;
   cursor: pointer;
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
@@ -68,17 +69,18 @@ margin: 20px 0px;
 
 export const Linkstyled = styled(Link)`
 border: none;
-color: blue;
+color: var(--mainColor);
 padding: 15px 32px;
 text-align: center;
 text-decoration: none;
 display: inline-block;
 font-size: 16px;
 margin: 4px 2px;
+font-weight: 600;
 cursor: pointer;
 box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
 border-radius: 10px;
 &:hover{
-  color: orange;
+  color: var(--mainColorAccent);
 }
 `
