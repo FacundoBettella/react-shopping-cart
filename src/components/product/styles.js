@@ -1,5 +1,6 @@
 import styled from 'styled-components'
- 
+import { Link } from "react-router-dom";
+
 export const ProductContainer = styled.div`
     height: 500px;
     width: 250px;
@@ -45,21 +46,41 @@ export const ProductDescription = styled.div`
 
 export const Button = styled.button`
   border: none;
-  color: red;
+  color: var(--secondary);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: 600;
   margin: 4px 2px;
   cursor: pointer;
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  cursor:point;
   &:hover{
-    color: orange;
+    color: var(--secondaryAccent);;
   }
 `
 
 export const ButtonsContainer = styled.div`
 margin: 20px 0px;
+`
+
+export const Linkstyled = styled(Link)`
+border: none;
+color: var(--mainColor);
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+font-weight: 600;
+cursor: pointer;
+box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+&:hover{
+  color: var(--mainColorAccent);
+}
 `

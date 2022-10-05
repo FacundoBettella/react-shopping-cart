@@ -3,7 +3,7 @@ import { Product } from "../product";
 import { ProductsList } from "./styles";
  
  
-const Products = ({ listOfProducts, loading, onLoading }) => {
+const Products = ({ listOfProducts, loading, onLoading}) => {
 
   return (
     <Fragment>
@@ -14,8 +14,9 @@ const Products = ({ listOfProducts, loading, onLoading }) => {
                 key={index}
                 title={`${product?.title}`}
                 shortDescription={product?.shortDescription}
+                largDescription={product?.largDescription}
                 price={product?.price}
-                stock={product?.stock}
+                stock={product?.stock}                
                 />
                 ))}
         </ProductsList>
