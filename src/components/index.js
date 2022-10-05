@@ -3,6 +3,8 @@ import Carousel from "./carousel";
 import Products from "./products";
 import Loading from "./loading";
 import ChangeAlertWithStorageListener from "./changeStorageAlert/index";
+import Searcher from "./search-input";
+import Search from "./search";
 import { Navbar } from "./navbar/navbar";
 import { FormWrapper } from "./form-wrapper";
 import SubmitButton from "./button-submit";
@@ -20,4 +22,7 @@ export {
   SubmitButton,
   FormInput,
   Button,
+  Searcher,
+  Search
 };
+

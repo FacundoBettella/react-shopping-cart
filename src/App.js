@@ -7,7 +7,7 @@ import Home from "./pages/home/Home";
 import { Detail } from "./pages/detail/Detail";
 import { Cart } from "./pages/cart/Cart";
 import { Navbar } from "./components/navbar/navbar";
-import { Loading, Products, Title, Carousel } from "./components";
+import { Loading, Products, Title, Carousel ,Searcher, Search} from "./components";
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { ProtectedRoute } from "./pages/protected-route";
@@ -33,12 +33,16 @@ const App = () => {
                   listOfProducts={products}
                   onLoading={() => <Loading loading={loading} />}
                 />
+                <Searcher param=""/>
                 <Products
                   listOfProducts={products}
                   onLoading={() => <Loading loading={loading} />}
                 />
               </Home>
             }
+          />
+          <Route path="search/:filter" 
+            element={<Search onLoading={(loading) => <Loading loading={loading} />}/>}
           />
           <Route element={<ProtectedRoute userAuth={user} />}>
             <Route path="/productdetail" element={<Detail />} />
