@@ -12,10 +12,10 @@ const jump = keyframes`
 export const Button = styled.button`
   max-width: 100%;
   padding: 11px 13px;
-  color: var(--white);
+  color: ${(props) => (props.secondary ? "var(--secondary)" : "var(--white)")};
+  background: ${(props) => (props.secondary ? "var(--white)" : "firebrick")};
   font-weight: 600;
   text-transform: uppercase;
-  background: firebrick;
   border: none;
   border-radius: 3px;
   outline: 0;
@@ -25,7 +25,8 @@ export const Button = styled.button`
   transition: all 0.3s ease-out;
 
   :hover {
-    background: var(--secondaryAccent);
+    background: ${(props) => (props.secondary ? "var(--white)" : "var(--secondaryAccent)")};
+    color:  ${(props) => (props.secondary && "var(--secondaryAccent)")};
     animation: ${jump} 0.2s ease-out forwards;
   }
 `;

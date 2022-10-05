@@ -14,3 +14,9 @@ export const Paragraph = styled.p`
   color: var(--mainColor);
   font-weight: 700;
 `;
+
+export const UserNameParagraph = styled.p`
+  color: var(--lightBlack);
+  font-size: 16px;
+  margin: 0 10px;
+`

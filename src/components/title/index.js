@@ -1,10 +1,26 @@
-import React from "react";
-import { TitleContainer, Paragraph } from "./styles";
+import React, { Fragment } from "react";
+import { TitleContainer, Paragraph, UserNameParagraph } from "./styles";
+import { BiUserCircle } from "react-icons/bi";
 
-const Title = ({ text }) => {
+const Title = ({ text, user }) => {
   return (
     <TitleContainer>
       <Paragraph>{text}</Paragraph>
+      <div
+        style={{
+          position: "absolute",
+          display: "flex",
+          alignItems: "center",
+          right: 0,
+        }}
+      >
+        {user !== undefined && (
+          <Fragment>
+            <BiUserCircle color="var(--lightBlack)" />
+            <UserNameParagraph>{user}</UserNameParagraph>
+          </Fragment>
+        )}
+      </div>
     </TitleContainer>
   );
 };

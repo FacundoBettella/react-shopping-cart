@@ -9,7 +9,7 @@ import {
 import { useAuth } from "../../context/authContext";
 
 const Login = () => {
-  const { login, user, messageError } = useAuth();
+  const { login, loginWithGoogle, user, messageError } = useAuth();
   const navigate = useNavigate();
 
   const [inputsValue, setInputsValue] = useState({
@@ -31,7 +31,16 @@ const Login = () => {
     try {
       await login(inputsValue.user, inputsValue.password);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    }
+  };
+
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await loginWithGoogle();
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -63,6 +72,12 @@ const Login = () => {
           onChange={handleInputs}
         />
         <SubmitButton onClick={handleLogin} text="Ingresar" />
+        <br />
+        <SubmitButton
+          onClick={handleGoogleLogin}
+          text="Ingresa con tu cuenta Google"
+          secondary={true}
+        />
         <div
           style={{
             display: "flex",
