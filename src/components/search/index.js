@@ -25,7 +25,7 @@ export const Search = ({ loading, onLoading}) => {
               stock={product?.stock} />
           ))}
         </ProductsList>
-        {products?.length==0 && !loading &&
+        {products?.length===0 && !loading &&
           <ImageContainer style ={{ margin:"0 auto",height:"50%", width:"50%"}}>
             <br></br>
             <h3> No encontramos lo que estabas buscando </h3>
