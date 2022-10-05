@@ -20,7 +20,7 @@ const App = () => {
     <Fragment>
       <BrowserRouter>
         <GlobalStyle />
-        <Title text={"Shopping Chart"} user={user?.email}/>
+        <Title text={"Shopping Chart"} user={user?.email} />
         <Navbar />
         <Routes>
           <Route path="/login" element={<Login />} />
