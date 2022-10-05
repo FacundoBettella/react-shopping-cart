@@ -17,7 +17,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [ messageError, setMessageError ] = useState("");
+  const [messageError, setMessageError] = useState("");
 
   const signUp = (email, password) => {
     createUserWithEmailAndPassword(AUTH, email, password)
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorCode, errorMessage);
-        setMessageError(errorMessage)
+        setMessageError(errorMessage);
       });
   };
 
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorCode, errorMessage);
-        setMessageError(errorMessage)
+        setMessageError(errorMessage);
       });
   };
 

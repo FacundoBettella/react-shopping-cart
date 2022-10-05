@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { Link } from "react-router-dom";
 
 export const ProductContainer = styled.div`
-    height: 500px;
-    width: 250px;
+    height: 450px;
+    width: 280px;
     margin: 30px;
     display: flex;
     flex-direction: column;

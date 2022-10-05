@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TitleContainer = styled.div`
-  height: 6vh;
+  height: auto;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -11,6 +11,6 @@ export const TitleContainer = styled.div`
 `;
 
 export const Paragraph = styled.p`
-  color: #7289da;
+  color: var(--mainColor);
   font-weight: 700;
 `;

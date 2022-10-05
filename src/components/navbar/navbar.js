@@ -44,6 +44,11 @@ const StyledLoginLink = styled(Link)`
   cursor: pointer;
   transition: all 0.5s;
   animation: ${jump} 0.5s ease-out forwards;
+  
+  :hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1.15), 0 1px 5px rgba(0, 0, 0, 0.12);
+    color: var(--secondaryAccent);
+  }
 `;
 
 const StyledButton = styled.button`
@@ -61,6 +66,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   transition: all 0.5s;
   animation: ${jump} 0.5s ease-out forwards;
+
+  :hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1.15), 0 1px 5px rgba(0, 0, 0, 0.12);
+    color: var(--secondaryAccent);
+  }
 `;
 
 const BaseNavbar = () => {
