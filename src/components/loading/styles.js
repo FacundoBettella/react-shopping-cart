@@ -5,5 +5,5 @@ export const LoaderContainer = styled.div`
     display: flex;
     justify-content: center;
     align-content: center;
-    margin: 20px 0px;
+    margin: 100px 0px;
 `;
