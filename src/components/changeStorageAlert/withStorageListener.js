@@ -9,7 +9,7 @@ const withStorageListener = (WrappedComponent) => {
 
     useEffect(() => {
       const onChange = (change) => {
-        if (change.key === "chart") {
+        if (change.key === "auth_token") {
           console.log("Hubo cambios en ", change.key);
           setStorageChange(true);
         }
@@ -23,6 +23,7 @@ const withStorageListener = (WrappedComponent) => {
     const toggleShow = () => {
       props.sincronize();
       setStorageChange(false);
+      window.location.reload();
     };
 
     return (

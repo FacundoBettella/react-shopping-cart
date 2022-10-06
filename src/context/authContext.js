@@ -8,6 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { AUTH } from "../firebase/firebase.config";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const authContext = createContext();
 
@@ -21,14 +22,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [messageError, setMessageError] = useState("");
 
+  const { saveNewItem } = useLocalStorage();
+
   const signUp = (email, password) => {
     createUserWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
         // Signed in
-        localStorage.setItem(
-          "auth_token",
-          userCredential._tokenResponse.refreshToken
-        );
+        saveNewItem("auth_token",userCredential._tokenResponse.refreshToken);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,10 +42,7 @@ export const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
         // Loged in
-        localStorage.setItem(
-          "auth_token",
-          userCredential._tokenResponse.refreshToken
-        );
+        saveNewItem("auth_token",userCredential._tokenResponse.refreshToken)
       })
       .catch((error) => {
         const errorCode = error.code;

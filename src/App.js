@@ -1,27 +1,26 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Fragment } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle } from "./styles/GlobalStyles";
-import { Register } from "./pages/register";
-import { Login } from "./pages/login";
-import Home from "./pages/home/Home";
-import { Detail } from "./pages/detail/Detail";
-import { Cart } from "./pages/cart/Cart";
-import { Navbar } from "./components/navbar/navbar";
+import { Login, Register, Home, Detail, Cart, ProtectedRoute  } from "./pages/index";
 import {
   Loading,
-  Products,
   Title,
+  Navbar,
+  Products,
   Carousel,
   Searcher,
   Search,
+  ChangeAlertWithStorageListener,
 } from "./components";
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
-import { ProtectedRoute } from "./pages/protected-route";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
+  const { sincronizeItemFunc } = useLocalStorage();
+
 
   return (
     <Fragment>
@@ -29,6 +28,7 @@ const App = () => {
         <GlobalStyle />
         <Title text={"Shopping Chart"} user={user?.email} />
         <Navbar />
+        <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc}/>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
