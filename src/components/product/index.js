@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   ButtonsContainer,
@@ -10,6 +10,7 @@ import {
   ProductSubtitle,
   ProductTitle,
 } from "./styles";
+import { carritoContext } from "../../context/carritoContext";
 
 export const Product = ({
   title,
@@ -25,6 +26,20 @@ export const Product = ({
     price: `${price}`,
     stock: `${stock}`,
   };
+
+  const {
+    vaciarCarrito,
+    eliminarProductoDelCarrito,
+    agregarAlCarrito,
+    tamañoCarrito,
+    carrito
+ } = useContext(carritoContext);
+
+  const handleAddClick = () =>{
+      agregarAlCarrito(currentProduct)
+      console.log(carrito);    
+  }
+
   return (
     <ProductContainer>
       <ProductTitle>{title}</ProductTitle>
@@ -35,7 +50,7 @@ export const Product = ({
       <ProductSubtitle>{`$ ${price}`}</ProductSubtitle>
       <ProductSubtitle>{`${stock} Disponibles`}</ProductSubtitle>
       <ButtonsContainer>
-        <Button>Add</Button>
+        <Button onClick={handleAddClick}>Add</Button>
         <Linkstyled
           to="/productdetail"
           state={{ product: { ...currentProduct } }}
