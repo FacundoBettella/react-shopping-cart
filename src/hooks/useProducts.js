@@ -11,7 +11,7 @@ const useProducts = () => {
   const getProducts = async (entity) => {
     const dataResponse = await getDocs(collection(FIRESTONE, entity));
     // setAuxProducts(dataResponse.docs.map((doc) => ({ ...doc.data() })));
-    setProducts(dataResponse.docs.map((doc) => ({ ...doc.data() })));
+    setProducts(dataResponse.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     setLoading(false);
   };
   

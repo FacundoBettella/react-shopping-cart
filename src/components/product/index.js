@@ -35,7 +35,11 @@ export const Product = ({
       <ProductSubtitle>{`$ ${price}`}</ProductSubtitle>
       <ProductSubtitle>{`${stock} Disponibles`}</ProductSubtitle>
       <ButtonsContainer>
-        <Button>Add</Button>
+        {
+          stock === 0 
+          ? <Button disabled={true}>Sin stock</Button> 
+          : <Button>Add</Button>
+        }
         <Linkstyled
           to="/productdetail"
           state={{ product: { ...currentProduct } }}
