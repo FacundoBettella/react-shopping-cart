@@ -1,4 +1,5 @@
 import React from "react";
+import { useCustomLazyLoading } from "../../hooks/useCustomLazyLoading";
 import {
   Button,
   ButtonsContainer,
@@ -18,6 +19,8 @@ export const Product = ({
   price,
   stock,
 }) => {
+  const [show, element] = useCustomLazyLoading();
+
   const currentProduct = {
     title: `${title}`,
     shortDescription: `${shortDescription}`,
@@ -26,28 +29,35 @@ export const Product = ({
     stock: `${stock}`,
   };
   return (
-    <ProductContainer>
-      <ProductTitle>{title}</ProductTitle>
-      <ImageContainer>
-        <ProductImage src={require(`../../assets/${title}.jpg`)} alt={title} />
-      </ImageContainer>
-      <ProductDescription>{shortDescription}</ProductDescription>
-      <ProductSubtitle>{`$ ${price}`}</ProductSubtitle>
-      <ProductSubtitle>{`${stock} Disponibles`}</ProductSubtitle>
-      <ButtonsContainer>
-        {
-          stock === 0 
-          ? <Button disabled={true}>Sin stock</Button> 
-          : <Button>Add</Button>
-        }
-        <Linkstyled
-          to="/productdetail"
-          state={{ product: { ...currentProduct } }}
-        >
-          {" "}
-          Details{" "}
-        </Linkstyled>
-      </ButtonsContainer>
-    </ProductContainer>
+    <article ref={element}>
+      {show && (
+        <ProductContainer>
+          <ProductTitle>{title}</ProductTitle>
+          <ImageContainer>
+            <ProductImage
+              src={require(`../../assets/${title}.jpg`)}
+              alt={title}
+            />
+          </ImageContainer>
+          <ProductDescription>{shortDescription}</ProductDescription>
+          <ProductSubtitle>{`$ ${price}`}</ProductSubtitle>
+          <ProductSubtitle>{`${stock} Disponibles`}</ProductSubtitle>
+          <ButtonsContainer>
+            {stock === 0 ? (
+              <Button disabled={true}>Sin stock</Button>
+            ) : (
+              <Button>Add</Button>
+            )}
+            <Linkstyled
+              to="/productdetail"
+              state={{ product: { ...currentProduct } }}
+            >
+              {" "}
+              Details{" "}
+            </Linkstyled>
+          </ButtonsContainer>
+        </ProductContainer>
+      )}
+    </article>
   );
 };

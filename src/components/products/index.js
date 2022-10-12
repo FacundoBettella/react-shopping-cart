@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { Product } from "../product";
 import { ProductsList } from "./styles";
  
- 
 const Products = ({ listOfProducts, loading, onLoading}) => {
 
   return (
