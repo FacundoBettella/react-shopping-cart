@@ -4,6 +4,8 @@ import { doc, updateDoc } from "firebase/firestore";
 import { Button } from "../../components";
 import swal from "sweetalert";
 import { carritoContext } from "../../context/carritoContext";
+import { CartItemsContainer, CartTotal, TotalText, TotalPrice, VacioText } from "./styles";
+import {CartItem } from './cartItem/CartItem'
 
 const Cart = () => {
   // const { currentChartArticles } = useChart();
@@ -39,9 +41,22 @@ const Cart = () => {
 
   return (
     <>
-      {carrito.map((article) => (
-        <p>{article.title}</p>
-      ))}
+      <CartItemsContainer>
+        {carrito.map((article,i) => (
+          <CartItem key={article.title + i} article={article}/>
+        ))}
+        
+        <CartTotal>
+        {
+          tamañoCarrito() == 0 ? <VacioText>El carrito está vacío!</VacioText> :
+          <>
+            <TotalText>Total</TotalText>
+            <TotalPrice>{parseFloat(carrito.reduce((partialSum, a) => parseFloat(partialSum) + parseFloat(a.price), parseFloat(0))).toFixed(2)}</TotalPrice>
+          </>
+        }
+        </CartTotal>
+      </CartItemsContainer>
+      
       <Button onClick={handleBuyArticle}>Confirmar compra</Button>
     </>
   );
