@@ -4,7 +4,7 @@ import { useAuth } from "../../context/authContext";
 import styled, { keyframes } from "styled-components";
 import { carritoContext } from "../../context/carritoContext"
 import { MdOutlineShoppingCart } from "react-icons/md";
-
+import { ShoppingCart } from '@styled-icons/zondicons/ShoppingCart'
 
 
 const jump = keyframes`
@@ -15,6 +15,11 @@ const jump = keyframes`
     transform: translateY(0)
   }
 `;
+
+const Cart = styled(ShoppingCart)`
+  color: white;
+  width:2em;
+`
 
 const Ul = styled.ul`
   display: flex;
@@ -32,6 +37,17 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   text-decoration: none;
 `;
+
+const StyledCartLink = styled (Link)`
+  width:100px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content:center;
+  align-items:center;  
+  color: FloralWhite;
+  font-size: 1.5em;
+`
 
 const StyledLoginLink = styled(Link)`
   height: auto;
@@ -97,7 +113,7 @@ const BaseNavbar = () => {
           <StyledLink to="/">Home</StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/cart"> <MdOutlineShoppingCart /> {`( ${tamañoCarrito()} )`}</StyledLink>
+          <StyledCartLink to="/cart"> <Cart /> {`(${tamañoCarrito()})`}</StyledCartLink>
         </Li>
         <Li>
           {user !== null ? (

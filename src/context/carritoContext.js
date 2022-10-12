@@ -10,9 +10,14 @@ export const CarritoProvider = ({children}) => {
   }
 
   const agregarAlCarrito = (producto)=>{
-    const newCarrito = [...carrito]; //Hago una copia del carrito actual 
-    newCarrito.push(producto); //Agrego el producto a la nueva copia del carrito
-    setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
+    if(parseInt(producto.stock)>=0){
+        const newCarrito = [...carrito]; //Hago una copia del carrito actual 
+        newCarrito.push(producto); //Agrego el producto a la nueva copia del carrito
+        setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
+    }
+    else {
+        console.log("No se puede agregar al carrito por falta de stock!!! ");
+    }    
   }
 
   const eliminarProductoDelCarrito = (producto)=>{
