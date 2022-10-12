@@ -21,10 +21,8 @@ export const CarritoProvider = ({children}) => {
   }
 
   const eliminarProductoDelCarrito = (producto)=>{
-    // const newCarrito = [...carrito];
-    // newCarrito.
-
-    // setCarrito(newCarrito);
+    const newCarrito = carrito.filter(item => item !== producto)
+    setCarrito(newCarrito);
   }
 
   const vaciarCarrito = ()=>{
