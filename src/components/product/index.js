@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useCustomLazyLoading } from "../../hooks/useCustomLazyLoading";
 import {
+  Article,
   Button,
   ButtonsContainer,
   ImageContainer,
@@ -31,20 +32,19 @@ export const Product = ({
   };
 
   const {
-    vaciarCarrito,
-    eliminarProductoDelCarrito,
+    // vaciarCarrito,
+    // eliminarProductoDelCarrito,
     agregarAlCarrito,
-    tamañoCarrito,
-    carrito
- } = useContext(carritoContext);
+    carrito,
+  } = useContext(carritoContext);
 
-  const handleAddClick = () =>{
-      agregarAlCarrito(currentProduct)
-      console.log(carrito);    
-  }
+  const handleAddClick = () => {
+    agregarAlCarrito(currentProduct);
+    console.log(carrito);
+  };
 
   return (
-    <article ref={element}>
+    <Article ref={element}>
       {show && (
         <ProductContainer>
           <ProductTitle>{title}</ProductTitle>
@@ -73,6 +73,6 @@ export const Product = ({
           </ButtonsContainer>
         </ProductContainer>
       )}
-    </article>
+    </Article>
   );
 };

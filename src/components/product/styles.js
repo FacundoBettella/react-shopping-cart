@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { fadeIn } from "../../styles/animations";
 
-export const ProductContainer = styled.div`
+export const Article = styled.article`
   height: 450px;
   width: 280px;
+`;
+
+export const ProductContainer = styled.div`
+  height: 430px;
+  width: 265px;
   margin: 30px;
   display: flex;
   flex-direction: column;
@@ -28,6 +34,7 @@ export const ImageContainer = styled.div`
 `;
 
 export const ProductImage = styled.img`
+  ${fadeIn({ time: "1s" })}
   border-radius: 4px;
   min-width: 150px;
   min-height: 80px;
@@ -57,6 +64,11 @@ export const Button = styled.button`
 
   &:hover {
     color: ${(props) => !props.disabled && "var(--secondaryAccent)"};
+  }
+
+  &:active {
+    background-color: var(--secondaryAccent);
+    color: var(--white);
   }
 `;
 

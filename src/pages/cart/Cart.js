@@ -9,10 +9,10 @@ const Cart = () => {
   // const { currentChartArticles } = useChart();
 
   const {
-    vaciarCarrito,
-    eliminarProductoDelCarrito,
-    agregarAlCarrito,
-    tamañoCarrito,
+    // vaciarCarrito,
+    // eliminarProductoDelCarrito,
+    // agregarAlCarrito,
+    // tamañoCarrito,
     carrito,
   } = useContext(carritoContext);
 
