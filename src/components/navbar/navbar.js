@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import styled, { keyframes } from "styled-components";
 import { carritoContext } from "../../context/carritoContext"
+import { MdOutlineShoppingCart } from "react-icons/md";
+
+
+
 const jump = keyframes`
   from{
     transform: translateY(-4px)
@@ -75,11 +79,11 @@ const StyledButton = styled.button`
 
 const BaseNavbar = () => {
   const { logout, user } = useAuth();
-  const {         vaciarCarrito,
-    eliminarProductoDelCarrito,
-    agregarAlCarrito,
-    tamañoCarrito
- } = useContext(carritoContext);
+  
+  const { vaciarCarrito,
+          eliminarProductoDelCarrito,
+          agregarAlCarrito,
+          tamañoCarrito} = useContext(carritoContext);
 
   const handleLogout = async () => {
     await logout();
@@ -93,7 +97,7 @@ const BaseNavbar = () => {
           <StyledLink to="/">Home</StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/cart">Cart {`( ${tamañoCarrito()} )`}</StyledLink>
+          <StyledLink to="/cart"> <MdOutlineShoppingCart /> {`( ${tamañoCarrito()} )`}</StyledLink>
         </Li>
         <Li>
           {user !== null ? (
