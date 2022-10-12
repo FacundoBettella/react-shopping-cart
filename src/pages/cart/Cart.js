@@ -12,6 +12,7 @@ import {
   VacioText,
 } from "./styles";
 import { CartItem } from "./cartItem/CartItem";
+import { ButtonWrapper } from "../../components/product/styles";
 
 const Cart = () => {
   // const { currentChartArticles } = useChart();
@@ -70,9 +71,12 @@ const Cart = () => {
             </>
           )}
         </CartTotal>
+        {tamañoCarrito() > 0 && (
+          <ButtonWrapper>
+            <Button onClick={handleBuyArticle}>Confirmar compra</Button>
+          </ButtonWrapper>
+        )}
       </CartItemsContainer>
-
-      <Button onClick={handleBuyArticle}>Confirmar compra</Button>
     </>
   );
 };

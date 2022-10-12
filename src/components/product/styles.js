@@ -48,6 +48,12 @@ export const ProductDescription = styled.div`
   height: 55px;
 `;
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 25px auto;
+`
 export const Button = styled.button`
   border: none;
   color: ${(props) => (props.disabled ? "var(--grey)" : "var(--secondary)")};
