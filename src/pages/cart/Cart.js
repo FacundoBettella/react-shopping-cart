@@ -14,7 +14,7 @@ const Cart = () => {
     // vaciarCarrito,
     // eliminarProductoDelCarrito,
     // agregarAlCarrito,
-    // tamañoCarrito,
+    tamañoCarrito,
     carrito,
   } = useContext(carritoContext);
 
@@ -48,7 +48,7 @@ const Cart = () => {
         
         <CartTotal>
         {
-          tamañoCarrito() == 0 ? <VacioText>El carrito está vacío!</VacioText> :
+          tamañoCarrito() === 0 ? <VacioText>El carrito está vacío!</VacioText> :
           <>
             <TotalText>Total</TotalText>
             <TotalPrice>{parseFloat(carrito.reduce((partialSum, a) => parseFloat(partialSum) + parseFloat(a.price), parseFloat(0))).toFixed(2)}</TotalPrice>
