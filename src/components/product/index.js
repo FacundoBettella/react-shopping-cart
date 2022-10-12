@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useCustomLazyLoading } from "../../hooks/useCustomLazyLoading";
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   ProductSubtitle,
   ProductTitle,
 } from "./styles";
+import { carritoContext } from "../../context/carritoContext";
 
 export const Product = ({
   title,
@@ -28,6 +29,20 @@ export const Product = ({
     price: `${price}`,
     stock: `${stock}`,
   };
+
+  const {
+    vaciarCarrito,
+    eliminarProductoDelCarrito,
+    agregarAlCarrito,
+    tamañoCarrito,
+    carrito
+ } = useContext(carritoContext);
+
+  const handleAddClick = () =>{
+      agregarAlCarrito(currentProduct)
+      console.log(carrito);    
+  }
+
   return (
     <article ref={element}>
       {show && (
@@ -46,7 +61,7 @@ export const Product = ({
             {stock === 0 ? (
               <Button disabled={true}>Sin stock</Button>
             ) : (
-              <Button>Add</Button>
+              <Button onClick={handleAddClick}>Add</Button>
             )}
             <Linkstyled
               to="/productdetail"

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { Login, Register, Home, Detail, Cart, ProtectedRoute  } from "./pages/index";
@@ -15,12 +15,12 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+// import { carritoContext } from "./context/carritoContext";
 
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
-
 
   return (
     <Fragment>
