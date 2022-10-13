@@ -11,6 +11,7 @@ export const Search = ({ loading, onLoading}) => {
 
   const { filter } = useParams();
   const { products } = useSearch(filter);
+  const notFoundUrl = "https://res.cloudinary.com/dflz1hojg/image/upload/v1665630008/not_found_2_ago6ci.jpg";
   return (
     <Fragment>
       <Searcher param = {filter}/>
@@ -29,7 +30,7 @@ export const Search = ({ loading, onLoading}) => {
           <ImageContainer style ={{ margin:"0 auto",height:"50%", width:"50%"}}>
             <br></br>
             <h3> No encontramos lo que estabas buscando </h3>
-            <ProductImage src={require(`../../assets/not_found_2.jpg`)} style ={{ height:"30%", width:"50%"}} /> 
+            <ProductImage src={notFoundUrl} style ={{ height:"30%", width:"50%"}} /> 
           </ImageContainer>
         }</>
       )}

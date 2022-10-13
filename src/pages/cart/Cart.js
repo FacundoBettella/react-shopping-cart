@@ -23,7 +23,23 @@ const Cart = () => {
     // agregarAlCarrito,
     tamañoCarrito,
     carrito,
+    vaciarCarrito,
   } = useContext(carritoContext);
+
+  const confirmOrder = () =>{
+    swal({
+      title: "¿Desea confirmar su compra?",
+      text: "",
+      icon: "info",
+      buttons: {cancel:"Cancelar",ok:"Ok"},
+    })
+    .then((value) => {
+      if (value === "ok") {
+        handleBuyArticle();
+      } else {
+      }
+    });
+  };
 
   const handleBuyArticle = () => {
     let articleData;
@@ -31,7 +47,7 @@ const Cart = () => {
 
     carrito.forEach(async (article) => {
       articleData = doc(FIRESTONE, "products", article.id);
-      newArticleStock = { stock: article.stock - 1 };
+      newArticleStock = { stock: article.stock - article.quantity };
       try {
         await updateDoc(articleData, newArticleStock);
       } catch (err) {
@@ -42,6 +58,7 @@ const Cart = () => {
           "error"
         );
       }
+      vaciarCarrito();
       swal("¡Tu compra ha sido un éxito!", "", "success");
     });
   };
@@ -63,17 +80,17 @@ const Cart = () => {
                 {parseFloat(
                   carrito.reduce(
                     (partialSum, a) =>
-                      parseFloat(partialSum) + parseFloat(a.price),
+                      parseFloat(partialSum) + (parseFloat(a.price.replace('.',''))* parseInt(a.quantity)),
                     parseFloat(0)
                   )
-                ).toFixed(2)}
+                ).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </TotalPrice>
             </>
           )}
         </CartTotal>
         {tamañoCarrito() > 0 && (
           <ButtonWrapper>
-            <Button onClick={handleBuyArticle}>Confirmar compra</Button>
+            <Button onClick={confirmOrder}>Confirmar compra</Button>
           </ButtonWrapper>
         )}
       </CartItemsContainer>

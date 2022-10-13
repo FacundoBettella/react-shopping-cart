@@ -15,7 +15,9 @@ const Products = ({ listOfProducts, loading, onLoading}) => {
                 shortDescription={product?.shortDescription}
                 largDescription={product?.largDescription}
                 price={product?.price}
-                stock={product?.stock}                
+                stock={product?.stock}
+                image={product?.image}
+                id={product?.id}                  
                 />
                 ))}
         </ProductsList>
