@@ -63,10 +63,10 @@ const Cart = () => {
                 {parseFloat(
                   carrito.reduce(
                     (partialSum, a) =>
-                      parseFloat(partialSum) + parseFloat(a.price),
+                      parseFloat(partialSum) + (parseFloat(a.price.replace('.',''))* parseInt(a.quantity)),
                     parseFloat(0)
                   )
-                ).toFixed(2)}
+                ).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </TotalPrice>
             </>
           )}

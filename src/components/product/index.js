@@ -20,6 +20,8 @@ export const Product = ({
   largDescription,
   price,
   stock,
+  image,
+  id
 }) => {
   const [show, element] = useCustomLazyLoading();
 
@@ -29,6 +31,8 @@ export const Product = ({
     largDescription: `${largDescription}`,
     price: `${price}`,
     stock: `${stock}`,
+    image: `${image}`,
+    id: `${id}`,
   };
 
   const {
@@ -41,6 +45,7 @@ export const Product = ({
   const handleAddClick = () => {
     agregarAlCarrito(currentProduct);
     console.log(carrito);
+    console.log(currentProduct);
   };
 
   return (
@@ -50,7 +55,7 @@ export const Product = ({
           <ProductTitle>{title}</ProductTitle>
           <ImageContainer>
             <ProductImage
-              src={require(`../../assets/${title}.jpg`)}
+              src={image}
               alt={title}
             />
           </ImageContainer>

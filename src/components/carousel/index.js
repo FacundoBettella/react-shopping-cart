@@ -30,7 +30,7 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
               <SwiperSlide key={index.toString()}>
                 <ImgContainer>
                   <Img
-                    src={require(`../../assets/${currentProduct.title}.jpg`)}
+                    src={currentProduct.image}
                     alt={currentProduct.title}
                   />
                   <Banner><Ptext>{currentProduct.stock <= 5 ? "Poco Stock" : "Stock Disponible"}</Ptext></Banner>

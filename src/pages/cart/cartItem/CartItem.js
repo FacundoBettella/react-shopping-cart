@@ -1,12 +1,19 @@
 import React, { useContext } from 'react';
 import styled from "styled-components";
 import { Delete } from '@styled-icons/fluentui-system-filled/Delete'
+import { Add } from '@styled-icons/fluentui-system-filled/Add';
+import { Minus } from '@styled-icons/boxicons-regular/Minus';
 import { carritoContext } from "../../../context/carritoContext";
 
 const CartText = styled.div`
     font-size: 2em;
     color: rgb(15, 30, 62);
-    width:50%;
+    width:40%;
+`
+
+const Quantity = styled.div`
+    font-size: 2em;
+    color: rgb(15, 30, 62);
 `
 
 const CartPrice = styled.div`
@@ -15,6 +22,7 @@ const CartPrice = styled.div`
     color: rgb(15, 30, 62);
     display:flex;
     align-items:flex-start;
+    margin-left:auto;
 `
 
 const StyledDiv = styled.div`
@@ -34,27 +42,48 @@ const StyledDelete = styled(Delete)`
   color: white;
   width:2em;
 `
+const StyledAdd = styled(Add)`
+  color: white;
+  width:2em;
+`
+const StyledMinus = styled(Minus)`
+  color: white;
+  width:2em;
+`
 
 const StyledButton = styled.button`
     height: 2.5em;
     width: 2.5em;
     background-color: FireBrick;
     border-radius: 5px;
-    margin-left: auto;
     &:hover {
         cursor: pointer;
       }
 `
+
 export const CartItem = ({article}) => {
 
     const {
         eliminarProductoDelCarrito,
       } = useContext(carritoContext);
-    
-   return <StyledDiv>
+
+    const {
+      decrementarProductoDelCarrito,
+    } = useContext(carritoContext);
+
+    const {
+      agregarAlCarrito,
+    } = useContext(carritoContext);
+
+    return <StyledDiv>
     <CartText>{article.title}</CartText>
-    <CartPrice>{article.price}</CartPrice>
-    <StyledButton onClick={() => eliminarProductoDelCarrito(article)}><StyledDelete/></StyledButton>
+    <StyledButton onClick={() => agregarAlCarrito(article)}><StyledAdd/></StyledButton>
+    <Quantity>{article.quantity}</Quantity>
+    <StyledButton onClick={() => decrementarProductoDelCarrito(article)} ><StyledMinus/></StyledButton>
+    <CartPrice>Precio Unitario:${article.price}</CartPrice>
+    <StyledButton onClick={() => eliminarProductoDelCarrito(article)} style ={{ marginLeft:"auto"}}>
+      <StyledDelete/>
+    </StyledButton>
    </StyledDiv>
 }
 

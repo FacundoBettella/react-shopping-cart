@@ -6,13 +6,20 @@ export const CarritoProvider = ({children}) => {
   const [carrito,setCarrito] = useState([]);
 
   const tamañoCarrito = () => {
-    return carrito.length; //Devuelvo el tamaño del carrito para mostrar por pantalla si es necesario
+    return carrito.reduce((acc,product)=>acc + product.quantity,0); //Devuelvo el tamaño del carrito para mostrar por pantalla si es necesario
   }
 
   const agregarAlCarrito = (producto)=>{
     if(parseInt(producto.stock)>=0){
-        const newCarrito = [...carrito]; //Hago una copia del carrito actual 
-        newCarrito.push(producto); //Agrego el producto a la nueva copia del carrito
+        const newCarrito = [...carrito]; //Hago una copia del carrito actual
+        let existingProductIndex = newCarrito.findIndex(p => p.id === producto.id);
+        if(existingProductIndex<0){
+          let newProduct = {...producto};
+          newProduct.quantity = 1;
+          newCarrito.push(newProduct); //Agrego el producto a la nueva copia del carrito
+        }else if(producto.stock>newCarrito[existingProductIndex].quantity){
+          newCarrito[existingProductIndex].quantity +=1 ;
+        }
         setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
     }
     else {
@@ -21,8 +28,17 @@ export const CarritoProvider = ({children}) => {
   }
 
   const eliminarProductoDelCarrito = (producto)=>{
-    const newCarrito = carrito.filter(item => item !== producto)
+    const newCarrito = carrito.filter(item => item.id !== producto.id)
     setCarrito(newCarrito);
+  }
+
+  const decrementarProductoDelCarrito = (producto)=>{
+    const newCarrito = [...carrito];
+    let existingProductIndex = newCarrito.findIndex(p => p.id === producto.id);
+    if(existingProductIndex>-1 && newCarrito[existingProductIndex].quantity>1){
+      newCarrito[existingProductIndex].quantity -=1 ;
+    }
+    setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
   }
 
   const vaciarCarrito = ()=>{
@@ -34,6 +50,7 @@ export const CarritoProvider = ({children}) => {
         vaciarCarrito,
         eliminarProductoDelCarrito,
         agregarAlCarrito,
+        decrementarProductoDelCarrito,
         tamañoCarrito, 
         carrito
     }}>
