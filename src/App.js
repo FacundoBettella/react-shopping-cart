@@ -11,6 +11,7 @@ import {
   Searcher,
   Search,
   ChangeAlertWithStorageListener,
+  Footer,
 } from "./components";
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
           </Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </Fragment>
   );
