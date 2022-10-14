@@ -2,7 +2,10 @@ import styled from 'styled-components'
 
 
 export const ContenedorFooter = styled.div`
-    margin-top: 50px;
+    background: var(--secondary);
+    padding-top: 20px;
+    margin-top:50px;
+    color:white;
 `
 
 export const LinksContainer = styled.div`
@@ -15,7 +18,6 @@ export const SocialContainer = styled.div`
 
 export const InfoContainer = styled.div`
     display: flex;
-    font-weight: bold;
     justify-content: space-around;
     margin: 10px;
 `
@@ -33,4 +35,9 @@ export const Linea = styled.div`
     background-color: black;
     height: 1px;
     width: 100%;
+`
+
+export const LegalesContainer = styled.div`
+     display: flex;
+     flex-direction: column;
 `

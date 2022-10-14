@@ -10,7 +10,7 @@ import { FormWrapper } from "./form-wrapper";
 import SubmitButton from "./button-submit";
 import { FormInput } from "./form-input";
 import { Button } from "./product/styles";
-import { Footer } from "./footer"
+import { Footer } from "./footer";
 
 export {
   Title,
