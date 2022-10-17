@@ -127,7 +127,7 @@ export const StyledToggleMode = styled.div`
   padding: 5px;
   position: absolute;
   right: 0;
-  margin-right: 100px;
+  margin-right: 180px;
   cursor: pointer;
   padding: 0.5em;
 `;
