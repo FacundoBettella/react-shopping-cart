@@ -18,7 +18,7 @@ export const Nav = styled.nav`
   &.customFixed {
     ${fadeIn({ time: "0.2s", type: "ease-in" })}
     width: 13%;
-    background: var(--secondary);
+    background: var(--accent);
     border-radius: 50px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     left: 1;
@@ -34,7 +34,7 @@ export const Nav = styled.nav`
 `;
 
 export const Cart = styled(ShoppingCart)`
-  color: white;
+  color: var(--text-secondary);
   width: 2em;
 `;
 
@@ -42,37 +42,38 @@ export const Ul = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: FireBrick;
+  background-color: var(--accent);
   &.customFixed {
     border-radius: 50px;
   }
 `;
 export const Li = styled.li`
   padding: 1em;
+  color: var(--text-secondary);
 `;
 
 export const StyledLink = styled(Link)`
-  color: FloralWhite;
+  color: var(--text-secondary);
   font-size: 2em;
   font-weight: bold;
   text-decoration: none;
 `;
 
 export const StyledCartLink = styled(Link)`
+  color: var(--text-secondary);
   width: 100px;
   font-weight: bold;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: FloralWhite;
   font-size: 1.5em;
 `;
 
 export const StyledLoginLink = styled(Link)`
   height: auto;
-  color: FireBrick;
-  background-color: FloralWhite;
+  color: var(--accent);
+  background-color: var(--background);
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
@@ -83,6 +84,7 @@ export const StyledLoginLink = styled(Link)`
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.5s;
+  padding:0.3em;
   animation: ${jump} 0.5s ease-out forwards;
 
   :hover {
@@ -93,8 +95,8 @@ export const StyledLoginLink = styled(Link)`
 
 export const StyledButton = styled.button`
   height: auto;
-  color: FireBrick;
-  background-color: FloralWhite;
+  color: var(--accent);
+  background-color: var(--background);
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
@@ -106,6 +108,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: all 0.5s;
   animation: ${jump} 0.5s ease-out forwards;
+  padding: 0.5em;
 
   :hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 1.15), 0 1px 5px rgba(0, 0, 0, 0.12);

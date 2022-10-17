@@ -16,7 +16,7 @@ const Title = ({ text, user }) => {
       >
         {user !== undefined && (
           <Fragment>
-            <BiUserCircle color="var(--lightBlack)" />
+            <BiUserCircle color="var(--text-primary)" />
             <UserNameParagraph>{user}</UserNameParagraph>
           </Fragment>
         )}

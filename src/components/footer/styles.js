@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 
 export const ContenedorFooter = styled.div`
-    background: var(--secondary);
+    background: var(--accent);
     padding-top: 20px;
     margin-top:50px;
-    color:white;
+    color: var(--text-secondary);
 `
 
 export const LinksContainer = styled.div`

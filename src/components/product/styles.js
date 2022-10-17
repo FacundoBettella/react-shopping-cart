@@ -56,7 +56,7 @@ export const ButtonWrapper = styled.div`
 `
 export const Button = styled.button`
   border: none;
-  color: ${(props) => (props.disabled ? "var(--grey)" : "var(--secondary)")};
+  color: ${(props) => (props.disabled ? "var(--grey)" : "var(--accent)")};
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;

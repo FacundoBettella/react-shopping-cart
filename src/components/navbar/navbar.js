@@ -56,7 +56,7 @@ const BaseNavbar = () => {
             <Li>
               <StyledCartLink to="/cart">
                 {" "}
-                <Cart /> {`(${tamañoCarrito()})`}
+                <Cart /> <div>{`(${tamañoCarrito()})`}</div>
               </StyledCartLink>
             </Li>
             <Li>

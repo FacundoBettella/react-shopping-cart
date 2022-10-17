@@ -1,6 +1,6 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { GlobalStyle } from "./styles/GlobalStyles";
+import { GlobalStyle, Theme } from "./styles/GlobalStyles";
 import { Login, Register, Home, Detail, Cart, ProtectedRoute  } from "./pages/index";
 import {
   Loading,
@@ -22,10 +22,12 @@ const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
+  const [theme, setTheme] = useState('dark');
 
   return (
-    <Fragment>
+    <Fragment >
       <BrowserRouter>
+        <Theme data-theme={theme}>
         <GlobalStyle />
         <Title text={"Shopping Chart"} user={user?.email} />
         <Navbar />
@@ -61,6 +63,7 @@ const App = () => {
           </Route>
         </Routes>
         <Footer />
+        </Theme>
       </BrowserRouter>
     </Fragment>
   );

@@ -87,7 +87,7 @@ const Login = () => {
             marginTop: "20px",
           }}
         >
-          <pre style={{ color: "var(--lightBlack)" }}>
+          <pre style={{ color: "var(--text-primary)" }}>
             ¿Aún no tienes cuenta?
           </pre>
           <Button onClick={goToRegister}>Registrate aquí</Button>
@@ -96,7 +96,7 @@ const Login = () => {
         {messageError !== "" && (
           <p
             style={{
-              color: "var(--secondary)",
+              color: "var(--accent)",
               fontWeight: "600",
               fontSize: "16px",
             }}

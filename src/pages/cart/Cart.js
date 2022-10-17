@@ -65,7 +65,7 @@ const Cart = () => {
 
   return (
     <>
-      <CartItemsContainer>
+      <CartItemsContainer data-theme='dark'>
         {carrito.map((article, i) => (
           <CartItem key={article.title + i} article={article} />
         ))}
