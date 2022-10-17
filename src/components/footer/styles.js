@@ -1,19 +1,15 @@
 import styled from 'styled-components'
 
-
 export const ContenedorFooter = styled.div`
     background: var(--secondary);
     padding-top: 20px;
     margin-top:50px;
     color:white;
 `
-
-export const LinksContainer = styled.div`
-
-`
-
-export const SocialContainer = styled.div`
-
+export const Columna = styled.div`
+    display: flex;
+    flex-direction: column;    
+    margin: 0.5em;   
 `
 
 export const InfoContainer = styled.div`
@@ -30,14 +26,7 @@ export const DerechosContainer = styled.div`
     margin: 3em;   
 `
 
-export const Linea = styled.div`
-    display: flex;
-    background-color: black;
-    height: 1px;
-    width: 100%;
-`
-
-export const LegalesContainer = styled.div`
-     display: flex;
-     flex-direction: column;
+export const Logo = styled.img`
+    width: 125px;
+    height: 110px;
 `
