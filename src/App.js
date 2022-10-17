@@ -16,7 +16,6 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useTheme } from './hooks/useTheme';
 import { ThemeContext } from "./context/ThemeContext";
 
 const App = () => {
@@ -28,7 +27,7 @@ const App = () => {
     theme,
     toggleTheme,
   } = useContext(ThemeContext);
-  
+
   return (
     <Fragment >
       <BrowserRouter>

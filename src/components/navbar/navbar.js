@@ -99,8 +99,6 @@ const BaseNavbar = () => {
     );
   };
 
-  console.log(theme);
-
   return (
     <Fragment>
       {renderNav()}
