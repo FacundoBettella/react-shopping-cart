@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { carritoContext } from "../../context/carritoContext";
+import { useTheme } from '../.././hooks/useTheme';
 import {
   Cart,
   Li,
@@ -11,12 +12,19 @@ import {
   StyledLink,
   StyledLoginLink,
   Ul,
+  StyledToggleMode,
+  StyledInput,
+  StyledLabel,
+  StyledBall,
+  StyledSun,
+  StyledMoon,
 } from "./styles";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useContext(carritoContext);
+  const {theme, toggleTheme } = useTheme();
 
   const handleLogout = async () => {
     await logout();
@@ -60,6 +68,17 @@ const BaseNavbar = () => {
               </StyledCartLink>
             </Li>
             <Li>
+                <StyledToggleMode >
+                <StyledInput type="checkbox" class="checkbox" id="checkbox" onChange={toggleTheme}/>
+              <StyledLabel for="checkbox" class="label">
+                <StyledSun/>
+                <StyledMoon/>
+                <StyledBall/>
+              </StyledLabel>
+                </StyledToggleMode>
+
+            </Li>
+            <Li>
               {user !== null ? (
                 <StyledButton onClick={handleLogout}>
                   Cerrar sesión
@@ -73,6 +92,8 @@ const BaseNavbar = () => {
       </Nav>
     );
   };
+
+  console.log(theme);
 
   return (
     <Fragment>

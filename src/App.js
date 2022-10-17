@@ -16,13 +16,15 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useTheme } from './hooks/useTheme';
+
 // import { carritoContext } from "./context/carritoContext";
 
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
-  const [theme, setTheme] = useState('dark');
+  const {theme, toggleTheme } = useTheme();
 
   return (
     <Fragment >

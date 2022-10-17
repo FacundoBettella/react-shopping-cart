@@ -2,6 +2,8 @@ import styled, { keyframes } from "styled-components";
 import { fadeIn } from "../../styles/animations";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "@styled-icons/zondicons/ShoppingCart";
+import { Moon } from "@styled-icons/entypo/Moon";
+import { Sun } from "@styled-icons/boxicons-solid/Sun";
 
 const jump = keyframes`
   from{
@@ -115,3 +117,60 @@ export const StyledButton = styled.button`
     color: var(--secondaryAccent);
   }
 `;
+
+export const StyledToggleMode = styled.div`
+  height: auto;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  margin-right: 100px;
+  cursor: pointer;
+  padding: 0.5em;
+`;
+
+export const StyledBall = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+  `
+export const StyledLabel = styled.label`
+  width: 50px;
+  height: 26px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+`
+
+export const StyledInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  &:checked + label ${StyledBall} {
+    transform: translateX(24px);
+  }
+`
+
+export const StyledSun = styled(Sun)`
+  color: FloralWhite;
+  transform: scale(0.8);
+`
+
+export const StyledMoon = styled(Moon)`
+  color: FloralWhite;
+  transform: scale(0.8);
+`
+
+
