@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 import { AUTH } from "../firebase/firebase.config";
@@ -28,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     createUserWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
         // Signed in
-        saveNewItem("auth_token",userCredential._tokenResponse.refreshToken);
+        saveNewItem("auth_token", userCredential._tokenResponse.refreshToken);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(AUTH, email, password)
       .then((userCredential) => {
         // Loged in
-        saveNewItem("auth_token",userCredential._tokenResponse.refreshToken)
+        saveNewItem("auth_token", userCredential._tokenResponse.refreshToken);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -55,7 +56,9 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = () => {
     const googleProvider = new GoogleAuthProvider();
     return signInWithPopup(AUTH, googleProvider);
-  }
+  };
+
+  const resetPassword = (email) => sendPasswordResetEmail(AUTH, email);
 
   const logout = () => signOut(AUTH);
 
@@ -66,7 +69,18 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <authContext.Provider value={{ signUp, login, loginWithGoogle, logout, user, messageError }}>
+    <authContext.Provider
+      value={{
+        signUp,
+        login,
+        loginWithGoogle,
+        logout,
+        user,
+        messageError,
+        setMessageError,
+        resetPassword,
+      }}
+    >
       {children}
     </authContext.Provider>
   );

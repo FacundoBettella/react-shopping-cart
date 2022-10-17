@@ -12,6 +12,6 @@ root.render(
   <AuthProvider>
     <CarritoProvider>
       <App />
-    </CarritoProvider>    
+    </CarritoProvider>
   </AuthProvider>
 );

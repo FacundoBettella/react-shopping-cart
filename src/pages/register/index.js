@@ -4,7 +4,7 @@ import { SubmitButton, FormWrapper, FormInput } from "../../components/index";
 import { useAuth } from "../../context/authContext";
 
 const Register = () => {
-  const { signUp, user, messageError } = useAuth();
+  const { signUp, user, messageError, setMessageError } = useAuth();
   const navigate = useNavigate();
 
   const [inputsValue, setInputsValue] = useState({
@@ -24,6 +24,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      setMessageError("");
       await signUp(inputsValue.user, inputsValue.password);
     } catch (error) {
       console.log(error);
