@@ -2,7 +2,8 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { carritoContext } from "../../context/carritoContext";
-import { useTheme } from '../.././hooks/useTheme';
+import { ThemeContext } from "../../context/ThemeContext";
+
 import {
   Cart,
   Li,
@@ -24,7 +25,12 @@ const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useContext(carritoContext);
-  const {theme, toggleTheme } = useTheme();
+
+  const {
+    theme,
+    toggleTheme,
+  } = useContext(ThemeContext);
+  
 
   const handleLogout = async () => {
     await logout();

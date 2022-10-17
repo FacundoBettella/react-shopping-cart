@@ -1,4 +1,4 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, Theme } from "./styles/GlobalStyles";
 import { Login, Register, Home, Detail, Cart, ProtectedRoute  } from "./pages/index";
@@ -17,15 +17,18 @@ import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { useTheme } from './hooks/useTheme';
-
-// import { carritoContext } from "./context/carritoContext";
+import { ThemeContext } from "./context/ThemeContext";
 
 const App = () => {
   const { products, loading } = useProducts();
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
-  const {theme, toggleTheme } = useTheme();
 
+  const {
+    theme,
+    toggleTheme,
+  } = useContext(ThemeContext);
+  
   return (
     <Fragment >
       <BrowserRouter>
