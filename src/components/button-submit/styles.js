@@ -12,8 +12,8 @@ const jump = keyframes`
 export const Button = styled.button`
   max-width: 100%;
   padding: 11px 13px;
-  color: ${(props) => (props.secondary ? "var(--secondary)" : "var(--white)")};
-  background: ${(props) => (props.secondary ? "var(--white)" : "firebrick")};
+  color: ${(props) => (props.secondary ? "var(--accent)" : "var(--text-secondary)")};
+  background: ${(props) => (props.secondary ? "var(--text-secondary)" : "var(--accent)")};
   font-weight: 600;
   text-transform: uppercase;
   border: none;

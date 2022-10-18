@@ -20,15 +20,9 @@ export const Banner = styled.div`
   justify-content: center;
   width: 330px;
   height: 2em;
-  background-image: linear-gradient(
-    to right,
-    rgba(178, 34, 34, 0.1) 0%,
-    rgba(178, 34, 34, 1) 25%,
-    rgba(178, 34, 34, 1) 75%,
-    rgba(178, 34, 34, 0.1) 100%
-  );
+  background-color: var(--accent);
   border-radius: 5px;
-  color: FloralWhite;
+  color: var(--text-secondary);
 `;
 
 export const Img = styled.img`

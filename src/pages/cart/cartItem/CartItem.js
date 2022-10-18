@@ -7,19 +7,16 @@ import { carritoContext } from "../../../context/carritoContext";
 
 const CartText = styled.div`
     font-size: 2em;
-    color: rgb(15, 30, 62);
     width:40%;
 `
 
 const Quantity = styled.div`
     font-size: 2em;
-    color: rgb(15, 30, 62);
 `
 
 const CartPrice = styled.div`
     font-weight: bold;
     font-size: 2em;
-    color: rgb(15, 30, 62);
     display:flex;
     align-items:flex-start;
     margin-left:auto;
@@ -39,22 +36,22 @@ margin:0px;
 `
 
 const StyledDelete = styled(Delete)`
-  color: white;
+  color: var(--text-secondary);
   width:2em;
 `
 const StyledAdd = styled(Add)`
-  color: white;
+  color: var(--text-secondary);
   width:2em;
 `
 const StyledMinus = styled(Minus)`
-  color: white;
+  color: var(--text-secondary);
   width:2em;
 `
 
 const StyledButton = styled.button`
     height: 2.5em;
     width: 2.5em;
-    background-color: FireBrick;
+    background-color: var(--accent);
     border-radius: 5px;
     &:hover {
         cursor: pointer;

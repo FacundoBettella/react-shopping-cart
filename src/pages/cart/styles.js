@@ -27,6 +27,8 @@ export const CartItemsContainer = styled.div`
     margin-top:5vh;
     margin-bottom:5vh;
     gap: 1vh;
+    background-color: var(--background);
+    color: var(--text-primary);
     @media ${device.desktop} { 
         max-width: calc(100% - 80px);
       }
@@ -67,21 +69,20 @@ export const TotalText = styled.div`
     font-weight: bold;
     font-size: 2em;
     width:50%;
-    color: FireBrick;
+    color: var(--text-special);
 `
 
 export const  VacioText = styled.div`
     font-weight: bold;
     font-size: 2em;
-    color: FireBrick;
+    color: var(--text-special);
     margin: auto;
 `
 
 export const TotalPrice = styled.div`
     font-weight: bold;
     font-size: 2em;
-    color: rgb(15, 30, 62);
     display:flex;
     align-items:flex-start;
-    color: FireBrick;
+    color: var(--text-special);
 `

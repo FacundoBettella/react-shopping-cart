@@ -2,6 +2,8 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { carritoContext } from "../../context/carritoContext";
+import { ThemeContext } from "../../context/ThemeContext";
+
 import {
   Cart,
   Li,
@@ -13,6 +15,12 @@ import {
   Ul,
   Logo,
   LogoContainer,
+  StyledToggleMode,
+  StyledInput,
+  StyledLabel,
+  StyledBall,
+  StyledSun,
+  StyledMoon,
 } from "./styles";
 import logo from "../../assets/logo/shopping.png";
 
@@ -20,6 +28,11 @@ const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useContext(carritoContext);
+
+  const {
+    toggleTheme,
+  } = useContext(ThemeContext);
+  
 
   const handleLogout = async () => {
     await logout();
@@ -64,8 +77,19 @@ const BaseNavbar = () => {
             <Li>
               <StyledCartLink to="/cart">
                 {" "}
-                <Cart /> {`(${tamañoCarrito()})`}
+                <Cart /> <div>{`(${tamañoCarrito()})`}</div>
               </StyledCartLink>
+            </Li>
+            <Li>
+                <StyledToggleMode >
+                <StyledInput type="checkbox" class="checkbox" id="checkbox" onChange={toggleTheme}/>
+              <StyledLabel for="checkbox" class="label">
+                <StyledSun/>
+                <StyledMoon/>
+                <StyledBall/>
+              </StyledLabel>
+                </StyledToggleMode>
+
             </Li>
             <Li>
               {user !== null ? (

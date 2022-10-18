@@ -8,15 +8,17 @@ export const TitleContainer = styled.div`
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 2px;
+  padding:0.5em;
+  color: var(--accent)
 `;
 
 export const Paragraph = styled.p`
-  color: var(--mainColor);
+  color: var(--accent);
   font-weight: 700;
 `;
 
 export const UserNameParagraph = styled.p`
-  color: var(--lightBlack);
+  color: var(--text-primary);
   font-size: 16px;
   margin: 0 10px;
 `
