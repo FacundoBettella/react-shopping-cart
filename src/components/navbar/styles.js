@@ -46,6 +46,7 @@ export const Ul = styled.ul`
   flex-direction: row;
   justify-content: center;
   background-color: var(--accent);
+  height:13vh;
   &.customFixed {
     border-radius: 50px;
   }
