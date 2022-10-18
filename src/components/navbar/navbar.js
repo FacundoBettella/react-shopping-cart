@@ -11,7 +11,10 @@ import {
   StyledLink,
   StyledLoginLink,
   Ul,
+  Logo,
+  LogoContainer,
 } from "./styles";
+import logo from "../../assets/logo/shopping.png";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
@@ -50,6 +53,11 @@ const BaseNavbar = () => {
           </Ul>
         ) : (
           <Ul>
+            <Li style={{ position: "absolute", left: 0 }}>
+              <LogoContainer>
+                <Logo src={logo} alt="logo"></Logo>
+              </LogoContainer>
+            </Li>
             <Li>
               <StyledLink to="/">Home</StyledLink>
             </Li>

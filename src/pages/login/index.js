@@ -73,6 +73,12 @@ const Login = () => {
     setRecoveryPassFlag(true);
   };
 
+  const goToLoginForm = (e) => {
+    e.preventDefault();
+    setRecoveryPassFlag(false);
+    setMessageError("");
+  };
+
   const goToRegister = (e) => {
     e.preventDefault();
     navigate("/register");
@@ -105,9 +111,16 @@ const Login = () => {
             value={inputsValue.user}
             onChange={handleInputs}
           />
-          <Button onClick={handleRecoveryPass}>
-            Enviar
-          </Button>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button onClick={goToLoginForm}>Cancelar</Button>
+            <Button onClick={handleRecoveryPass}>Enviar</Button>
+          </div>
         </FormWrapper>
       ) : (
         <FormWrapper>

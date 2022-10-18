@@ -20,14 +20,3 @@ export const UserNameParagraph = styled.p`
   font-size: 16px;
   margin: 0 10px;
 `
-
-export const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`
-
-export const Logo = styled.img`
-width: 120px;
-height: 120px;
-`

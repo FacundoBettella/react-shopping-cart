@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const ContenedorFooter = styled.div`
+    width: 100%;
+    position: relative;
+    bottom: 0;
     background: var(--secondary);
     padding-top: 20px;
     margin-top:50px;

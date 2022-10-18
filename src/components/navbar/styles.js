@@ -14,6 +14,7 @@ const jump = keyframes`
 
 export const Nav = styled.nav`
   width: 100%;
+  height: 13vh;
 
   &.customFixed {
     ${fadeIn({ time: "0.2s", type: "ease-in" })}
@@ -43,6 +44,8 @@ export const Ul = styled.ul`
   flex-direction: row;
   justify-content: center;
   background-color: FireBrick;
+  height: 15vh;
+  
   &.customFixed {
     border-radius: 50px;
   }
@@ -112,3 +115,16 @@ export const StyledButton = styled.button`
     color: var(--secondaryAccent);
   }
 `;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  /* margin-top: 0.1vh; */
+  `
+
+export const Logo = styled.img`
+height: 10vh;
+border-radius: 4px;
+`

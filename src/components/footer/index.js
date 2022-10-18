@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { ContenedorFooter, DerechosContainer, InfoContainer, Columna, Logo } from "./styles";
 import { SiInstagram, SiFacebook, SiLinkedin, SiGmail } from "react-icons/si";
-import { Link } from "react-router-dom";
 import logoAlt from "../../assets/logo/shopping_alt.png"
 export const Footer = () => {
   return (

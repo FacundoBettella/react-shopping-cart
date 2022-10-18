@@ -1,16 +1,13 @@
 import React, { Fragment } from "react";
-import { TitleContainer, Paragraph, UserNameParagraph, Logo, LogoContainer } from "./styles";
+import {
+  TitleContainer,
+  UserNameParagraph,
+} from "./styles";
 import { BiUserCircle } from "react-icons/bi";
-import logo  from "../../assets/logo/shopping.png"
 
-const Title = ({ text, user }) => {
+const Title = ({ user }) => {
   return (
     <TitleContainer>
-      {/* <Paragraph>{text}</Paragraph> */}
-      <LogoContainer>
-        <Logo src={logo} alt="logo"></Logo>
-      </LogoContainer>
-      
       <div
         style={{
           position: "absolute",
