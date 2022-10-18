@@ -1,35 +1,39 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const ContenedorFooter = styled.div`
-    width: 100%;
-    position: relative;
-    bottom: 0;
-    background: var(--accent);
-    padding-top: 20px;
-    margin-top:50px;
-    color: var(--text-secondary);
-`
+export const ContenedorFooter = styled.footer`
+  width: 100%;
+  height: 45vh;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  color: var(--text-secondary);
+  background: var(--accent);
+`;
+
 export const Columna = styled.div`
-    display: flex;
-    flex-direction: column;    
-    margin: 0.5em;   
-`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const InfoContainer = styled.div`
-    display: flex;
-    justify-content: space-around;
-    margin: 10px;
-`
+  display: flex;
+  justify-content: space-around;
+  margin: 5px;
+`;
 
 export const DerechosContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 3em;   
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: baseline;
+  height: 3vh;
+`;
 
 export const Logo = styled.img`
-    width: 125px;
-    height: 110px;
-`
+  width: 125px;
+  height: 110px;
+  border-radius: 4px;
+`;

@@ -11,10 +11,10 @@ var container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(
   <ThemeProvider>
-  <AuthProvider>
-    <CarritoProvider>
-      <App />
-    </CarritoProvider>
-  </AuthProvider>
+    <AuthProvider>
+      <CarritoProvider>
+        <App />
+      </CarritoProvider>
+    </AuthProvider>
   </ThemeProvider>
 );

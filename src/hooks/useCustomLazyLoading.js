@@ -14,7 +14,6 @@ export const useCustomLazyLoading = () => {
     ).then(() => {
       const observer = new window.IntersectionObserver((entries) => {
         const { isIntersecting } = entries[0]; // isIntesecting es un boolen que confirma cuando el elemento es observable
-        console.log(isIntersecting);
         if (isIntersecting) {
           setShow(true);
           observer.disconnect(); // Dejamos de observar la ref del Article una vez renderizado.

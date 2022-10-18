@@ -1,7 +1,14 @@
 import { Fragment, useContext } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, Theme } from "./styles/GlobalStyles";
-import { Login, Register, Home, Detail, Cart, ProtectedRoute  } from "./pages/index";
+import {
+  Login,
+  Register,
+  Home,
+  Detail,
+  Cart,
+  ProtectedRoute,
+} from "./pages/index";
 import {
   Loading,
   Title,
@@ -23,49 +30,53 @@ const App = () => {
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
 
-  const {
-    theme,
-  } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <Fragment >
+    <Fragment>
       <BrowserRouter>
         <Theme data-theme={theme}>
-        <GlobalStyle />
-        <Title text={"Shopping Chart"} user={user?.email} />
-        <Navbar />
-        <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc}/>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/"
-            element={
-              <Home loading={loading}>
-                <Carousel
-                  listOfProducts={products}
-                  onLoading={() => <Loading loading={loading} />}
+          <GlobalStyle />
+          <div
+            style={{
+              paddingBottom: "45vh",
+            }}
+          >
+            <Navbar />
+            <Title text={"Shopping Chart"} user={user?.email} />
+            <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc} />
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/"
+                element={
+                  <Home loading={loading}>
+                    <Carousel
+                      listOfProducts={products}
+                      onLoading={() => <Loading loading={loading} />}
+                    />
+                    <Searcher param="" />
+                    <Products
+                      listOfProducts={products}
+                      onLoading={() => <Loading loading={loading} />}
+                    />
+                  </Home>
+                }
+              />
+              <Route element={<ProtectedRoute userAuth={user} />}>
+                <Route
+                  path="search/:filter"
+                  element={
+                    <Search onLoading={() => <Loading loading={loading} />} />
+                  }
                 />
-                <Searcher param="" />
-                <Products
-                  listOfProducts={products}
-                  onLoading={() => <Loading loading={loading} />}
-                />
-              </Home>
-            }
-          />
-          <Route element={<ProtectedRoute userAuth={user} />}>
-            <Route 
-              path="search/:filter" 
-              element={
-                <Search onLoading={() => <Loading loading={loading} />} />
-                  } 
-            />
-            <Route path="/productdetail" element={<Detail />} />
-            <Route path="/cart" element={<Cart />} />
-          </Route>
-        </Routes>
-        <Footer />
+                <Route path="/productdetail" element={<Detail />} />
+                <Route path="/cart" element={<Cart />} />
+              </Route>
+            </Routes>
+          </div>
+          <Footer />
         </Theme>
       </BrowserRouter>
     </Fragment>

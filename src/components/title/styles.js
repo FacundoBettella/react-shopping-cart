@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 export const TitleContainer = styled.div`
-  height: auto;
   width: 100%;
+  height: 3vh;
   display: flex;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  padding:0.5em;
-  color: var(--accent)
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 7vh;
+  margin-bottom: 2vh;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--accent);
 `;
 
 export const Paragraph = styled.p`

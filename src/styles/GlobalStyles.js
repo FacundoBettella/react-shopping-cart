@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle} from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
    html {
@@ -15,38 +15,44 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
     ul {
         list-style: none;
     }
+
     button {
         background: transparent;
         border: 0;
         outline: 0;
     }
+
     body {
         width: 100%;
-        height: 100vh;
         margin: 0 auto; 
         overscroll-behavior: none; 
+
+        min-height: 100vh;
+        position: relative;
     }
+
     :root {
         --background: white;
         --accent: FireBrick;
         --text-primary: black;
         --text-secondary: white;
         --text-special: FireBrick;     
-      }
+    }
+
     [data-theme='dark'] {
         --background: rgb(0, 17, 26);
         --accent: LightCoral;
         --text-primary: FloralWhite;
         --text-secondary: rgb(0, 17, 26);
         --text-special: LightCoral; 
-        
       }
 `;
 
 export const Theme = styled.div`
-    color: var(--text-primary);
-    background-color: var(--background);
-`
+  color: var(--text-primary);
+  background-color: var(--background);
+`;

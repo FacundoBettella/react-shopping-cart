@@ -58,9 +58,8 @@ const BaseNavbar = () => {
         {fixed ? (
           <Ul className={fixed ? "customFixed" : ""}>
             <Li>
-              <StyledCartLink to="/cart">
-                {" "}
-                <Cart /> {`(${tamañoCarrito()})`}
+              <StyledCartLink className={fixed ? "customFixed" : ""} to="/cart" >
+                <Cart className={fixed ? "customFixed" : ""}/> {`(${tamañoCarrito()})`}
               </StyledCartLink>
             </Li>
           </Ul>

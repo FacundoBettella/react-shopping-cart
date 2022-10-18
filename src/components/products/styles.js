@@ -5,4 +5,5 @@ export const ProductsList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 50px;
 `
