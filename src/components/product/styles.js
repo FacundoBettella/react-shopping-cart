@@ -18,6 +18,7 @@ export const ProductContainer = styled.div`
   box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 10px;
+  border: 1px solid white;
 `;
 export const ProductTitle = styled.h1`
   height: 60px;
@@ -69,11 +70,11 @@ export const Button = styled.button`
   cursor: ${(props) => !props.disabled && "pointer"};
 
   &:hover {
-    color: ${(props) => !props.disabled && "var(--secondaryAccent)"};
+    color: ${(props) => !props.disabled && "var(--accent-hover)"};
   }
 
   &:active {
-    background-color: var(--secondaryAccent);
+    background-color: var(--accent-hover);
     color: var(--white);
   }
 `;

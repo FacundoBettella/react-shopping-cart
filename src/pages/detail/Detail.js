@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 import { useLocation } from "react-router-dom";
 import {
   BotonAgregarCarrito,
-//   ContenedorEnvio,
+  //   ContenedorEnvio,
   ContenedorEnvioSucursal,
   CuotasSinInteres,
   DescriptionContainer,
@@ -22,21 +22,15 @@ const Detail = () => {
   const location = useLocation();
   const selectedProduct = location.state.product;
 
-  const handleClick = () => {
-    console.log("Se agrega al carrito");
-  };
-
   function redondearCuotas() {
     return (selectedProduct.price / 6).toPrecision(4);
   }
 
-  const {
-    agregarAlCarrito,
-  } = useContext(carritoContext);
+  const { agregarAlCarrito } = useContext(carritoContext);
 
   return (
     <Fragment>
-      <ProductTitle> {selectedProduct.title} </ProductTitle>
+      <ProductTitle> {selectedProduct.title}</ProductTitle>
       <DetailsContainer>
         <DetailsImage
           src={selectedProduct.image}
@@ -68,7 +62,9 @@ const Detail = () => {
           <ContenedorEnvioSucursal>
             <RiStore2Line /> RETIRO GRATIS en sucursal
           </ContenedorEnvioSucursal>
-          <BotonAgregarCarrito onClick={() => agregarAlCarrito(selectedProduct)}>
+          <BotonAgregarCarrito
+            onClick={() => agregarAlCarrito(selectedProduct)}
+          >
             Agregar al carrito
           </BotonAgregarCarrito>
         </DescriptionContainer>

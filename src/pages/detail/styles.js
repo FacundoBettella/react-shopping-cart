@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DetailsImage = styled.img`
     width:500px;
     height: 500px;
+    border-radius: 8px;
 `
 
 export const DetailsContainer = styled.div`
@@ -51,8 +52,10 @@ export const ContenedorEnvioSucursal = styled.div`
 `
 
 export const BotonAgregarCarrito = styled.button`
-  font-size: 20px;
-  background-color: grey;
+  font-size: 18px;
+  background-color: var(--background);
+  color: var(--accent);
+  border: 1px solid white;
   font-weight:bold;
   height: 70px;  
   box-shadow: 0 10px 14px rgba(0, 0, 0, 0.2);
@@ -60,4 +63,8 @@ export const BotonAgregarCarrito = styled.button`
   margin: 5% 40%;
   padding: 10px;
   cursor: pointer;
+
+  :hover {
+    color: var(--accent-hover);
+  }
 `

@@ -36,4 +36,6 @@ export const Logo = styled.img`
   width: 125px;
   height: 110px;
   border-radius: 4px;
+  filter: contrast(80%);
+  filter: brightness(2.0);
 `;

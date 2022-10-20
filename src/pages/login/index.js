@@ -146,7 +146,7 @@ const Login = () => {
           />
           <pre
             onClick={() => goToRecoveryPassForm()}
-            style={{ cursor: "pointer", color: "var(--lightBlack)" }}
+            style={{ cursor: "pointer", color: "var(--text-primary)" }}
           >
             ¿Olvidó su contraseña?
           </pre>
@@ -159,7 +159,7 @@ const Login = () => {
               marginTop: "20px",
             }}
           >
-            <pre style={{ color: "var(--lightBlack)" }}>
+            <pre style={{ color: "var(--text-primary)" }}>
               ¿Aún no tienes cuenta?
             </pre>
             <Button onClick={goToRegister}>Registrate aquí</Button>

@@ -26,8 +26,8 @@ export const Button = styled.button`
   transition: all 0.3s ease-out;
 
   :hover {
-    background: ${(props) => (props.secondary ? "var(--white)" : "var(--secondaryAccent)")};
-    color:  ${(props) => (props.secondary && "var(--secondaryAccent)")};
+    background: ${(props) => (props.secondary ? "var(--white)" : "var(--accent-hover)")};
+    color:  ${(props) => (props.secondary && "var(--accent-hover)")};
     animation: ${jump} 0.2s ease-out forwards;
   }
 `;

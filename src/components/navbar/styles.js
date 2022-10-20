@@ -96,6 +96,7 @@ export const StyledLoginLink = styled(Link)`
   font-size: 1.5em;
   font-weight: bold;
   text-decoration: none;
+  border: 1px solid var(--white);
   border-radius: 4px;
   padding: 5px;
   position: absolute;
@@ -107,8 +108,8 @@ export const StyledLoginLink = styled(Link)`
   animation: ${jump} 0.5s ease-out forwards;
 
   :hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 1.15), 0 1px 5px rgba(0, 0, 0, 0.12);
-    color: var(--secondaryAccent);
+    border: 1px solid black;
+    color: var(--accent-hover);
   }
 `;
 
@@ -119,6 +120,7 @@ export const StyledButton = styled.button`
   font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
+  border: 1px solid var(--white);
   border-radius: 4px;
   padding: 5px;
   position: absolute;
@@ -130,8 +132,8 @@ export const StyledButton = styled.button`
   padding: 0.5em;
 
   :hover {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 1.15), 0 1px 5px rgba(0, 0, 0, 0.12);
-    color: var(--secondaryAccent);
+    border: 1px solid black;
+    color: var(--accent-hover);
   }
 `;
 

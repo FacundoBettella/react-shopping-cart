@@ -22,11 +22,13 @@ export const device = {
   };
 
 export const CartItemsContainer = styled.div`
-    display: flex;
+    display: grid;
+    justify-content: center;
     flex-direction: column;
     margin-top:5vh;
     margin-bottom:5vh;
-    gap: 1vh;
+    gap: 1.5vh;
+    border-radius: 4px;
     background-color: var(--background);
     color: var(--text-primary);
     @media ${device.desktop} { 
@@ -63,6 +65,8 @@ export const CartTotal = styled.div`
     padding-left:1em;
     padding-right:1em;
     margin:0px;
+    border-radius: 4px;
+    border: 3px solid white;
 `
 
 export const TotalText = styled.div`

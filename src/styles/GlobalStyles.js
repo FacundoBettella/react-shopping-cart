@@ -38,14 +38,16 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --background: white;
         --accent: FireBrick;
+        --accent-hover: #c81e1e;
         --text-primary: black;
         --text-secondary: white;
-        --text-special: FireBrick;     
+        --text-special: FireBrick;    
     }
 
     [data-theme='dark'] {
         --background: rgb(0, 17, 26);
         --accent: LightCoral;
+        --accent-hover: #fa6464;
         --text-primary: FloralWhite;
         --text-secondary: rgb(0, 17, 26);
         --text-special: LightCoral; 
