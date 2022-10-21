@@ -6,8 +6,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Img, ImgContainer, Banner, Ptext } from "./styles";
+import { useMediaQuery } from "@mui/material";
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
+
+  const matches = useMediaQuery('(min-width:600px)');
+
   return (
     <Fragment>
       {loading ? (

@@ -15,12 +15,8 @@ import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
 
 const Cart = () => {
-  // const { currentChartArticles } = useChart();
 
   const {
-    // vaciarCarrito,
-    // eliminarProductoDelCarrito,
-    // agregarAlCarrito,
     tamañoCarrito,
     carrito,
     vaciarCarrito,
