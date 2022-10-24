@@ -9,6 +9,8 @@ export const ImgContainer = styled.div`
   width: 350px;
   height: 30vh;
   padding: 20px 16px;
+  margin: 0px auto;
+
 `;
 
 export const Banner = styled.div`

@@ -17,14 +17,13 @@ const jump = keyframes`
 export const Nav = styled.nav`
   width: 100%;
   height: 8vh;
+  background: var(--accent);
 
   &.customFixed {
     ${fadeIn({ time: "0.2s", type: "ease-in" })}
     width: 13%;
     height: 12vh;
     border-radius: 60px;
-
-    background: var(--accent);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     left: 1;
     margin: 0 auto;
@@ -42,7 +41,7 @@ export const Ul = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: var(--accent);
+  background: var(--accent);
 
   &.customFixed {
     display: flex;
@@ -140,6 +139,9 @@ export const StyledButton = styled.button`
 export const LogoContainer = styled.div`
   position: relative;
   top: -9px;
+  &.responsiveLogoContainer {
+    top: -10px;
+  }
 `;
 
 export const Logo = styled.img`

@@ -7,10 +7,10 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Img, ImgContainer, Banner, Ptext } from "./styles";
 import { useMediaQuery } from "@mui/material";
+import { deviceSize } from "../../utils/viewportSizes";
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
-
-  const matches = useMediaQuery('(min-width:600px)');
+  const MAX_WIDTH_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
 
   return (
     <Fragment>
@@ -18,9 +18,9 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
         onLoading()
       ) : (
         <Swiper
-          slidesPerView={4}
-          spaceBetween={2}
-          slidesPerGroup={5}
+          slidesPerView={MAX_WIDTH_TABLE_QUERY_BOOLEAN ? 1 : 4}
+          spaceBetween={MAX_WIDTH_TABLE_QUERY_BOOLEAN ? 0 : 2}
+          slidesPerGroup={MAX_WIDTH_TABLE_QUERY_BOOLEAN ? 1 : 2}
           loop={true}
           loopFillGroupWithBlank={true}
           pagination={{
@@ -30,18 +30,25 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
           modules={[Pagination, Navigation]}
         >
           {listOfProducts.length > 0 &&
-            listOfProducts.filter(product => product.stock > 0).map((currentProduct, index) => (
-              <SwiperSlide key={index.toString()}>
-                <ImgContainer>
-                  <Img
-                    src={currentProduct.image}
-                    alt={currentProduct.title}
-                  />
-                  <Banner><Ptext>{currentProduct.stock <= 5 ? "Poco Stock" : "Stock Disponible"}</Ptext></Banner>
-                </ImgContainer>
-                
-              </SwiperSlide>
-            ))}
+            listOfProducts
+              .filter((product) => product.stock > 0)
+              .map((currentProduct, index) => (
+                <SwiperSlide key={index.toString()}>
+                  <ImgContainer>
+                    <Img
+                      src={currentProduct.image}
+                      alt={currentProduct.title}
+                    />
+                    <Banner>
+                      <Ptext>
+                        {currentProduct.stock <= 5
+                          ? "Poco Stock"
+                          : "Stock Disponible"}
+                      </Ptext>
+                    </Banner>
+                  </ImgContainer>
+                </SwiperSlide>
+              ))}
         </Swiper>
       )}
     </Fragment>
