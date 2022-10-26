@@ -44,8 +44,8 @@ export const Product = ({
 
   const handleAddClick = () => {
     agregarAlCarrito(currentProduct);
-    console.log(carrito);
-    console.log(currentProduct);
+    //console.log(carrito);
+    //console.log(currentProduct);
   };
 
   return (

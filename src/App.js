@@ -32,7 +32,7 @@ const App = () => {
   const { sincronizeItemFunc } = useLocalStorage();
 
   const { theme } = useContext(ThemeContext);
-  const { orders } = useGetUserPurchaseOrders("mail@something.com");
+  const { orders } = useGetUserPurchaseOrders("juan.marderwald@ar.ey.com");
   console.log(orders);
   return (
     <Fragment>

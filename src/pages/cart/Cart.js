@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 import { Button } from "../../components";
 import swal from "sweetalert";
 import { carritoContext } from "../../context/carritoContext";
@@ -13,6 +13,7 @@ import {
 } from "./styles";
 import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
+import { useAuth } from "../../context/authContext";
 
 const Cart = () => {
   // const { currentChartArticles } = useChart();
@@ -26,20 +27,35 @@ const Cart = () => {
     vaciarCarrito,
   } = useContext(carritoContext);
 
-  const confirmOrder = () =>{
+  const { user } = useAuth();
+
+  const createNewOrder = async() => {
+    
+    const date = new Date().toLocaleString() + "";
+    const userEmail = user.email;
+    const newOrder = doc(collection(FIRESTONE, "orders"));
+    try {
+        await setDoc(newOrder, {userEmail,date,carrito});        
+    } catch(e) {
+        console.error(e)       
+    }
+  }
+
+  const confirmOrder = () => {
     swal({
       title: "¿Desea confirmar su compra?",
       text: "",
       icon: "info",
-      buttons: {cancel:"Cancelar",ok:"Ok"},
+      buttons: { cancel: "Cancelar", ok: "Ok" },
     })
-    .then((value) => {
-      if (value === "ok") {
-        handleBuyArticle();
-      } else {
-      }
-    });
+      .then((value) => {
+        if (value === "ok") {          
+          handleBuyArticle();
+        } else {
+        }
+      });
   };
+
 
   const handleBuyArticle = () => {
     let articleData;
@@ -58,9 +74,10 @@ const Cart = () => {
           "error"
         );
       }
-      vaciarCarrito();
-      swal("¡Tu compra ha sido un éxito!", "", "success");
     });
+    createNewOrder();
+    vaciarCarrito();
+    swal("¡Tu compra ha sido un éxito!", "", "success");
   };
 
   return (
@@ -80,10 +97,10 @@ const Cart = () => {
                 {parseFloat(
                   carrito.reduce(
                     (partialSum, a) =>
-                      parseFloat(partialSum) + (parseFloat(a.price.replace('.',''))* parseInt(a.quantity)),
+                      parseFloat(partialSum) + (parseFloat(a.price.replace('.', '')) * parseInt(a.quantity)),
                     parseFloat(0)
                   )
-                ).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                ).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </TotalPrice>
             </>
           )}
