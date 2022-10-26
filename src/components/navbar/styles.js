@@ -2,8 +2,6 @@ import styled, { keyframes } from "styled-components";
 import { fadeIn } from "../../styles/animations";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "@styled-icons/zondicons/ShoppingCart";
-import { Moon } from "@styled-icons/entypo/Moon";
-import { Sun } from "@styled-icons/boxicons-solid/Sun";
 
 const jump = keyframes`
   from{
@@ -16,7 +14,7 @@ const jump = keyframes`
 
 export const Nav = styled.nav`
   width: 100%;
-  height: 8vh;
+  height: 10vh;
   background: var(--accent);
 
   &.customFixed {
@@ -42,6 +40,7 @@ export const Ul = styled.ul`
   flex-direction: row;
   justify-content: center;
   background: var(--accent);
+  height: 10vh;
 
   &.customFixed {
     display: flex;
@@ -69,7 +68,7 @@ export const StyledCartLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 3vh;
 
   &.customFixed {
     font-size: 2.9vh;
@@ -83,7 +82,7 @@ export const Li = styled.li`
 
 export const StyledLink = styled(Link)`
   color: var(--text-secondary);
-  font-size: 2em;
+  font-size: 3vh;
   font-weight: bold;
   text-decoration: none;
 `;
@@ -92,18 +91,17 @@ export const StyledLoginLink = styled(Link)`
   height: auto;
   color: var(--accent);
   background-color: var(--background);
-  font-size: 1.5em;
+  font-size: 2.7vh;
   font-weight: bold;
   text-decoration: none;
   border: 1px solid var(--white);
   border-radius: 4px;
-  padding: 5px;
   position: absolute;
   right: 0;
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.5s;
-  padding: 0.3em;
+  padding: 0.2em;
   animation: ${jump} 0.5s ease-out forwards;
 
   :hover {
@@ -116,7 +114,7 @@ export const StyledButton = styled.button`
   height: auto;
   color: var(--accent);
   background-color: var(--background);
-  font-size: 1.2em;
+  font-size: 2.5vh;
   font-weight: bold;
   text-decoration: none;
   border: 1px solid var(--white);
@@ -137,71 +135,26 @@ export const StyledButton = styled.button`
 `;
 
 export const LogoContainer = styled.div`
-  position: relative;
-  top: -9px;
+  position: absolute;
+  top: 0;
+  height: 10vh;
+
   &.responsiveLogoContainer {
-    top: -10px;
+    position: sticky;
+    z-index: 4;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--accent);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   }
 `;
 
 export const Logo = styled.img`
-  height: auto;
-  width: auto;
-  max-height: 58px;
-  max-width: 200px;
-  border-radius: 4px;
-`;
-export const StyledToggleMode = styled.div`
-  height: auto;
-  font-size: 0.5em;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 4px;
-  padding: 5px;
-  position: absolute;
-  right: 0;
-  margin-right: 180px;
-  cursor: pointer;
-  padding: 0.5em;
-`;
-
-export const StyledBall = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  border-radius: 50%;
-  transition: transform 0.2s linear;
-`;
-export const StyledLabel = styled.label`
-  width: 50px;
-  height: 26px;
-  background-color: #111;
-  display: flex;
-  border-radius: 50px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px;
-  position: relative;
-  transform: scale(1.5);
-`;
-
-export const StyledInput = styled.input`
-  opacity: 0;
-  position: absolute;
-  &:checked + label ${StyledBall} {
-    transform: translateX(24px);
-  }
-`;
-
-export const StyledSun = styled(Sun)`
-  color: FloralWhite;
-  transform: scale(0.8);
-`;
-
-export const StyledMoon = styled(Moon)`
-  color: FloralWhite;
-  transform: scale(0.8);
+  /* Para ajustar la img a su contenedor */
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 `;

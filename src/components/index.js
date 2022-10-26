@@ -5,12 +5,22 @@ import Loading from "./loading";
 import ChangeAlertWithStorageListener from "./changeStorageAlert/index";
 import Searcher from "./search-input";
 import Search from "./search";
-import { Navbar } from "./navbar/navbar";
-import { FormWrapper } from "./form-wrapper";
 import SubmitButton from "./button-submit";
+import { Navbar } from "./navbar/navbar";
+import { StyledButton, StyledLink, StyledLoginLink } from "./navbar/styles";
+import { FormWrapper } from "./form-wrapper";
 import { FormInput } from "./form-input";
 import { Button } from "./product/styles";
 import { Footer } from "./footer";
+import {
+  StyledToggleMode,
+  ModalToggleModeContainer,
+  StyledBall,
+  StyledLabel,
+  StyledInput,
+  StyledSun,
+  StyledMoon,
+} from "./theme-toggle/styles";
 
 export {
   Title,
@@ -25,6 +35,15 @@ export {
   Button,
   Searcher,
   Search,
-  Footer
+  Footer,
+  StyledLink,
+  StyledLoginLink,
+  StyledButton,
+  StyledToggleMode,
+  ModalToggleModeContainer,
+  StyledBall,
+  StyledLabel,
+  StyledInput,
+  StyledSun,
+  StyledMoon,
 };
-

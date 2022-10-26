@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
 import { Add } from "@styled-icons/fluentui-system-filled/Add";
 import { Minus } from "@styled-icons/boxicons-regular/Minus";
-import { carritoContext } from "../../../context/carritoContext";
+import { CarritoContext } from "../../../context/carritoContext";
 
 const CartText = styled.div`
   font-size: 2em;
@@ -61,11 +61,7 @@ const StyledButton = styled.button`
 `;
 
 export const CartItem = ({ article }) => {
-  const { eliminarProductoDelCarrito } = useContext(carritoContext);
-
-  const { decrementarProductoDelCarrito } = useContext(carritoContext);
-
-  const { agregarAlCarrito } = useContext(carritoContext);
+  const { agregarAlCarrito, eliminarProductoDelCarrito, decrementarProductoDelCarrito } = useContext(CarritoContext);
 
   return (
     <StyledDiv>

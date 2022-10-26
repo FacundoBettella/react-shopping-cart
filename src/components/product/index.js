@@ -12,7 +12,7 @@ import {
   ProductSubtitle,
   ProductTitle,
 } from "./styles";
-import { carritoContext } from "../../context/carritoContext";
+import { CarritoContext } from "../../context/carritoContext";
 
 export const Product = ({
   title,
@@ -40,7 +40,7 @@ export const Product = ({
     // eliminarProductoDelCarrito,
     agregarAlCarrito,
     carrito,
-  } = useContext(carritoContext);
+  } = useContext(CarritoContext);
 
   const handleAddClick = () => {
     agregarAlCarrito(currentProduct);

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-export const carritoContext = createContext();
+export const CarritoContext = createContext();
 
 export const CarritoProvider = ({children}) => {
   const [carrito,setCarrito] = useState([]);
@@ -46,7 +46,7 @@ export const CarritoProvider = ({children}) => {
   }
 
   return (
-    <carritoContext.Provider value={{
+    <CarritoContext.Provider value={{
         vaciarCarrito,
         eliminarProductoDelCarrito,
         agregarAlCarrito,
@@ -55,7 +55,7 @@ export const CarritoProvider = ({children}) => {
         carrito
     }}>
       {children}
-    </carritoContext.Provider>
+    </CarritoContext.Provider>
   )
 }
 

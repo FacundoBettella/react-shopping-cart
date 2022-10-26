@@ -24,13 +24,15 @@ import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { ThemeContext } from "./context/ThemeContext";
+import { useMediaQuery } from "@mui/material";
+import { deviceSize } from "./utils/viewportSizes";
 
 const App = () => {
   const { products, loading } = useProducts();
+  const { theme } = useContext(ThemeContext);
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
-
-  const { theme } = useContext(ThemeContext);
+  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
 
   return (
     <Fragment>
@@ -39,6 +41,7 @@ const App = () => {
           <GlobalStyle />
           <div
             style={{
+              /* Para el footer */
               paddingBottom: "45vh",
             }}
           >
@@ -76,7 +79,7 @@ const App = () => {
               </Route>
             </Routes>
           </div>
-          <Footer />
+          {!DEVICE_TABLE_QUERY_BOOLEAN && <Footer />}
         </Theme>
       </BrowserRouter>
     </Fragment>

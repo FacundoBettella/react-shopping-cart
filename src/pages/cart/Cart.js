@@ -3,7 +3,7 @@ import { FIRESTONE } from "../../firebase/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
 import { Button } from "../../components";
 import swal from "sweetalert";
-import { carritoContext } from "../../context/carritoContext";
+import { CarritoContext } from "../../context/carritoContext";
 import {
   CartItemsContainer,
   CartTotal,
@@ -15,21 +15,15 @@ import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
 
 const Cart = () => {
+  const { tamañoCarrito, carrito, vaciarCarrito } = useContext(CarritoContext);
 
-  const {
-    tamañoCarrito,
-    carrito,
-    vaciarCarrito,
-  } = useContext(carritoContext);
-
-  const confirmOrder = () =>{
+  const confirmOrder = () => {
     swal({
       title: "¿Desea confirmar su compra?",
       text: "",
       icon: "info",
-      buttons: {cancel:"Cancelar",ok:"Ok"},
-    })
-    .then((value) => {
+      buttons: { cancel: "Cancelar", ok: "Ok" },
+    }).then((value) => {
       if (value === "ok") {
         handleBuyArticle();
       } else {
@@ -76,10 +70,15 @@ const Cart = () => {
                 {parseFloat(
                   carrito.reduce(
                     (partialSum, a) =>
-                      parseFloat(partialSum) + (parseFloat(a.price.replace('.',''))* parseInt(a.quantity)),
+                      parseFloat(partialSum) +
+                      parseFloat(a.price.replace(".", "")) *
+                        parseInt(a.quantity),
                     parseFloat(0)
                   )
-                ).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                )
+                  .toFixed(2)
+                  .replace(".", ",")
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </TotalPrice>
             </>
           )}

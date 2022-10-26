@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   ContenedorFooter,
   DerechosContainer,
@@ -7,12 +7,17 @@ import {
   Logo,
 } from "./styles";
 import { SiInstagram, SiFacebook, SiLinkedin, SiGmail } from "react-icons/si";
+import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
+import { ThemeContext } from "../../context/ThemeContext";
+
 export const Footer = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <ContenedorFooter>
       <InfoContainer>
-        <Logo src={logoAlt} alt="logo"></Logo>
+        <Logo src={theme === "light" ? logoAlt : logo} alt="logo" />
         <Columna>
           <p>
             {" "}

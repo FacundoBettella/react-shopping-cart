@@ -16,17 +16,16 @@ import {
 } from "./styles";
 import { RiStore2Line } from "react-icons/ri";
 import { MdLocalShipping } from "react-icons/md";
-import { carritoContext } from "./../../context/carritoContext.js";
+import { CarritoContext } from "./../../context/carritoContext.js";
 
 const Detail = () => {
+  const { agregarAlCarrito } = useContext(CarritoContext);
   const location = useLocation();
   const selectedProduct = location.state.product;
 
   function redondearCuotas() {
     return (selectedProduct.price / 6).toPrecision(4);
   }
-
-  const { agregarAlCarrito } = useContext(carritoContext);
 
   return (
     <Fragment>

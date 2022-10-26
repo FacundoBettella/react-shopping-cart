@@ -1,8 +1,9 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
-import { carritoContext } from "../../context/carritoContext";
+import { CarritoContext } from "../../context/carritoContext";
 import { ThemeContext } from "../../context/ThemeContext";
+import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,
   Li,
@@ -14,26 +15,26 @@ import {
   Ul,
   Logo,
   LogoContainer,
-  StyledToggleMode,
+} from "./styles";
+import {
+  StyledBall,
   StyledInput,
   StyledLabel,
-  StyledBall,
-  StyledSun,
   StyledMoon,
-} from "./styles";
+  StyledSun,
+  StyledToggleMode,
+} from "../theme-toggle/styles";
 import logo from "../../assets/logo/shopping.png";
+import logoAlt from "../../assets/logo/shopping_alt.png";
 import { useMediaQuery } from "@mui/material";
 import { deviceSize } from "../../utils/viewportSizes";
-import MenuIcon from "@mui/icons-material/Menu";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
   const { logout, user } = useAuth();
-  const { tamañoCarrito } = useContext(carritoContext);
-
-  const MAX_WIDTH_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
-
-  const { toggleTheme } = useContext(ThemeContext);
+  const { tamañoCarrito } = useContext(CarritoContext);
+  const { toggleTheme, theme } = useContext(ThemeContext);
+  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
 
   const handleLogout = async () => {
     await logout();
@@ -55,21 +56,12 @@ const BaseNavbar = () => {
 
   const renderNav = (fixed) => {
     return (
+      /* Mobile/Tablet NAV */
       <Fragment>
-        {MAX_WIDTH_TABLE_QUERY_BOOLEAN ? (
-          <Nav>
-            <Ul>
-              <Li style={{ position: "absolute", left: 0 }}>
-                <LogoContainer className={MAX_WIDTH_TABLE_QUERY_BOOLEAN ? "responsiveLogoContainer" : ""}>
-                  <Logo src={logo} alt="logo" />
-                </LogoContainer>
-              </Li>
-              <Li style={{ position: "absolute", right: 0 }}>
-                <MenuIcon sx={{fontSize: "65px"}} />
-              </Li>
-            </Ul>
-          </Nav>
+        {DEVICE_TABLE_QUERY_BOOLEAN ? (
+          <NavbarResponsive responsiveBoolean={DEVICE_TABLE_QUERY_BOOLEAN} />
         ) : (
+          /* FIXED Cart NAV  */
           <Nav className={fixed ? "customFixed" : ""}>
             {fixed ? (
               <Ul className={fixed ? "customFixed" : ""}>
@@ -78,16 +70,20 @@ const BaseNavbar = () => {
                     className={fixed ? "customFixed" : ""}
                     to="/cart"
                   >
-                    <Cart className={fixed ? "customFixed" : ""} />{" "}
+                    <Cart className={fixed ? "customFixed" : ""} />
                     {`(${tamañoCarrito()})`}
                   </StyledCartLink>
                 </Li>
               </Ul>
             ) : (
+              /* Normal NAV  */
               <Ul>
                 <Li style={{ position: "absolute", left: 0 }}>
                   <LogoContainer>
-                    <Logo src={logo} alt="logo"></Logo>
+                    <Logo
+                      src={theme === "light" ? logoAlt : logo}
+                      alt="logo"
+                    ></Logo>
                   </LogoContainer>
                 </Li>
                 <Li>
