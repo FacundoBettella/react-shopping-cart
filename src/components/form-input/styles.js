@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Input = styled.input`
   max-width: 100%;
   padding: 11px 13px;
-  background: #f9f9fa;
-  color: var(--lightBlack);
+  color: var(--text-primary);
+  background-color: var(--background);
   margin-bottom: 0.9rem;
   border-radius: 4px;
   outline: 0;

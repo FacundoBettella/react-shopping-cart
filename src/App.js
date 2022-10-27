@@ -1,6 +1,6 @@
 import { Fragment, useContext } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { GlobalStyle, Theme } from "./styles/GlobalStyles";
+import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
 import {
   Login,
   Register,
@@ -39,14 +39,9 @@ const App = () => {
       <BrowserRouter>
         <Theme data-theme={theme}>
           <GlobalStyle />
-          <div
-            style={{
-              /* Para el footer */
-              paddingBottom: "45vh",
-            }}
-          >
+          <PageContainer sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}>
             <Navbar />
-            <Title text={"Shopping Chart"} user={user?.email} />
+            <Title text={"Shopping Chart"} user={user?.email} sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>
             <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc} />
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -61,6 +56,7 @@ const App = () => {
                     />
                     <Searcher param="" />
                     <Products
+                      sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}
                       listOfProducts={products}
                       onLoading={() => <Loading loading={loading} />}
                     />
@@ -78,7 +74,7 @@ const App = () => {
                 <Route path="/cart" element={<Cart />} />
               </Route>
             </Routes>
-          </div>
+          </PageContainer>
           {!DEVICE_TABLE_QUERY_BOOLEAN && <Footer />}
         </Theme>
       </BrowserRouter>

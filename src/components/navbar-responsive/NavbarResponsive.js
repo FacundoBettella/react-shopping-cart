@@ -1,22 +1,19 @@
-import React from "react";
-
+import React, { Fragment, useContext } from "react";
 import { Logo, LogoContainer } from "../navbar/styles";
-// import logo from "../../assets/logo/shopping.png";
+import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
-import { Fragment } from "react";
 import MenuModal from "../modal/MenuModal";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 
-export const NavbarResponsive = ({ responsiveBoolean }) => {
-  const [showMenuModal, setShowMenuModal] = useState(false);
+export const NavbarResponsive = ({ responsiveBoolean, handleModal, showModal }) => {
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
-  const handleMenuModal = (e) => {
-    e.preventDefault();
-    setShowMenuModal(!showMenuModal);
+  const handleMenuModal = () => {
+    handleModal(!showModal);
   };
 
   const handleGoHome = (e) => {
@@ -29,13 +26,12 @@ export const NavbarResponsive = ({ responsiveBoolean }) => {
         className={responsiveBoolean ? "responsiveLogoContainer" : ""}
       >
         <Logo
-          src={logoAlt}
+          src={theme === "light" ? logoAlt : logo}
           alt="logo"
           onClick={handleGoHome}
           style={{ cursor: "pointer" }}
         />
-
-        {!showMenuModal ? (
+        {!showModal ? (
           <MenuIcon
             sx={{
               color: "var(--text-secondary)",
@@ -55,7 +51,7 @@ export const NavbarResponsive = ({ responsiveBoolean }) => {
           />
         )}
       </LogoContainer>
-      {showMenuModal && <MenuModal />}
+      {showModal && <MenuModal />}
     </Fragment>
   );
 };

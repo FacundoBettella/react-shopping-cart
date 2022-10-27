@@ -22,7 +22,7 @@ const MenuModal = () => {
       <ModalToggleModeContainer>
         <StyledInput
           type="checkbox"
-          class="checkbox"
+          className="checkbox"
           id="checkbox"
           onChange={toggleTheme}
         />

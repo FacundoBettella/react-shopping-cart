@@ -5,5 +5,6 @@ export const ProductsList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-top: ${(props) => props.sizeManagment ? "20px": "20px"};
+    margin-bottom: ${(props) => props.sizeManagment ? "0px": "80px"};
 `

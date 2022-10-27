@@ -10,7 +10,7 @@ export const Article = styled.article`
 export const ProductContainer = styled.div`
   height: 430px;
   width: 265px;
-  margin: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

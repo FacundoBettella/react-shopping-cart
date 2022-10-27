@@ -54,6 +54,11 @@ export const GlobalStyle = createGlobalStyle`
       }
 `;
 
+export const PageContainer = styled.div`
+  /* Necesario para el footer */
+  padding-bottom: ${(props) => !props.sizeManagment && "45vh"};
+`;
+
 export const Theme = styled.div`
   color: var(--text-primary);
   background-color: var(--background);

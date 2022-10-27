@@ -7,8 +7,12 @@ import {
   Button,
 } from "../../components/index";
 import { useAuth } from "../../context/authContext";
+import { useMediaQuery } from "@mui/material";
+import { deviceSize } from "../../utils/viewportSizes";
 
 const Login = () => {
+  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
+
   const {
     login,
     loginWithGoogle,
@@ -144,16 +148,25 @@ const Login = () => {
             text="Ingresa con tu cuenta Google"
             secondary={true}
           />
-          <pre
-            onClick={() => goToRecoveryPassForm()}
-            style={{ cursor: "pointer", color: "var(--text-primary)" }}
-          >
-            ¿Olvidó su contraseña?
-          </pre>
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: DEVICE_TABLE_QUERY_BOOLEAN ? "column" : "row",
+              alignItems: "center",
+              marginTop: "20px",
+            }}
+          >
+            <pre
+              onClick={() => goToRecoveryPassForm()}
+              style={{ cursor: "pointer", color: "var(--text-primary)" }}
+            >
+              ¿Olvidó su contraseña?
+            </pre>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: DEVICE_TABLE_QUERY_BOOLEAN ? "column" : "row",
               alignItems: "center",
               justifyContent: "space-between",
               marginTop: "20px",

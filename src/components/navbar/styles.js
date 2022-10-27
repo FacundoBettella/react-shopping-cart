@@ -140,7 +140,7 @@ export const LogoContainer = styled.div`
   height: 10vh;
 
   &.responsiveLogoContainer {
-    position: sticky;
+    position: fixed;
     z-index: 4;
     height: 10vh;
     width: 100%;

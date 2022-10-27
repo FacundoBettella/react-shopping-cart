@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const TitleContainer = styled.div`
   width: 100%;
-  height: ${(props) => (props.query ? "1vh" : "3vh")};
+  height: ${(props) => (props.query ? "8vh" : "3vh")};
+  
   display: flex;
   justify-content: ${(props) => (props.query ? "center" : "flex-end")};
   align-items: center;
-  margin-top: ${(props) => (props.query ? "4vh" : "7vh")};
-  margin-bottom: 0vh;
+  
+  margin-top: ${(props) => (props.query ? "10vh" : "2vh")};
+  margin-bottom: .5vh;
+
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 3px;

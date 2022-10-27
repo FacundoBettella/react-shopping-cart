@@ -31,10 +31,17 @@ import { deviceSize } from "../../utils/viewportSizes";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
+  const [showMenuModal, setShowMenuModal] = useState(false);
+
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useContext(CarritoContext);
   const { toggleTheme, theme } = useContext(ThemeContext);
+
   const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
+
+  const handleMenuModal = () => {
+    setShowMenuModal(!showMenuModal);
+  };
 
   const handleLogout = async () => {
     await logout();
@@ -59,7 +66,11 @@ const BaseNavbar = () => {
       /* Mobile/Tablet NAV */
       <Fragment>
         {DEVICE_TABLE_QUERY_BOOLEAN ? (
-          <NavbarResponsive responsiveBoolean={DEVICE_TABLE_QUERY_BOOLEAN} />
+          <NavbarResponsive
+            responsiveBoolean={DEVICE_TABLE_QUERY_BOOLEAN}
+            handleModal={handleMenuModal}
+            showModal={showMenuModal}
+          />
         ) : (
           /* FIXED Cart NAV  */
           <Nav className={fixed ? "customFixed" : ""}>
@@ -80,10 +91,7 @@ const BaseNavbar = () => {
               <Ul>
                 <Li style={{ position: "absolute", left: 0 }}>
                   <LogoContainer>
-                    <Logo
-                      src={theme === "light" ? logoAlt : logo}
-                      alt="logo"
-                    ></Logo>
+                    <Logo src={theme === "light" ? logoAlt : logo} alt="logo" />
                   </LogoContainer>
                 </Li>
                 <Li>
@@ -99,7 +107,7 @@ const BaseNavbar = () => {
                   <StyledToggleMode>
                     <StyledInput
                       type="checkbox"
-                      class="checkbox"
+                      className="checkbox"
                       id="checkbox"
                       onChange={toggleTheme}
                     />

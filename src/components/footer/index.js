@@ -51,13 +51,13 @@ export const Footer = () => {
         </Columna>
       </InfoContainer>
       <DerechosContainer>
-        <h4>
+        <h5>
           Copyright 2022 | Todos los derechos reservados shoppingcart.com{" "}
-        </h4>
-        <h4>
+        </h5>
+        <h5>
           Shopping Cart Inc. Calle Falsa 123, Springfield | Buenos Aires |
           Argentina
-        </h4>
+        </h5>
       </DerechosContainer>
     </ContenedorFooter>
   );

@@ -2,12 +2,12 @@ import React, { Fragment } from "react";
 import { Product } from "../product";
 import { ProductsList } from "./styles";
  
-const Products = ({ listOfProducts, loading, onLoading}) => {
+const Products = ({ listOfProducts, loading, onLoading, sizeManagment}) => {
 
   return (
     <Fragment>
       {loading ? onLoading() : (
-        <ProductsList>
+        <ProductsList sizeManagment={sizeManagment}>
           {listOfProducts.length>0 && listOfProducts.map((product, index) => (
             <Product
                 key={index}
