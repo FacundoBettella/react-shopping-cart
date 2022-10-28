@@ -40,6 +40,7 @@ const Cart = () => {
         console.error(e)       
     }
   }
+  
 
   const confirmOrder = () => {
     swal({
