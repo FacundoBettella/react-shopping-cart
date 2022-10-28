@@ -108,6 +108,16 @@ const Login = () => {
               {error}
             </pre>
           )}
+          <p
+            style={{
+              textAlign: "flex-start",
+              color: "var(--text-primary)",
+              fontWeight: "600",
+              margin: "15px 0px"
+            }}
+          >
+            Ingrese su email de recuperación
+          </p>
           <FormInput
             name="user"
             placeholder="Email"
