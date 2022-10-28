@@ -11,7 +11,7 @@ export const ModalCard = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 2vh;
-  width: 40%;
+  width: 30%;
   height: 30vh;
   justify-content: space-evenly;
   align-items: center;

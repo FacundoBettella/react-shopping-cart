@@ -70,8 +70,8 @@ const App = () => {
                     <Search onLoading={() => <Loading loading={loading} />} />
                   }
                 />
-                <Route path="/productdetail" element={<Detail />} />
-                <Route path="/cart" element={<Cart />} />
+                <Route path="/productdetail" element={<Detail sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>} />
+                <Route path="/cart" element={<Cart sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>} />
               </Route>
             </Routes>
           </PageContainer>

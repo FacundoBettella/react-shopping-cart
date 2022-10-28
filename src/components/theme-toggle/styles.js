@@ -6,8 +6,8 @@ export const StyledToggleMode = styled.div`
   height: auto;
   text-decoration: none;
   border-radius: 4px;
-  position: absolute;
-  right: 0;
+  /* position: absolute; */
+  /* right: 0; */
   margin-right: 12%;
   margin-top: 0.5vh;
 `;

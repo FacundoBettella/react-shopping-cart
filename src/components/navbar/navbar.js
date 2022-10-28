@@ -28,6 +28,7 @@ import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
 import { useMediaQuery } from "@mui/material";
 import { deviceSize } from "../../utils/viewportSizes";
+// import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
@@ -47,6 +48,12 @@ const BaseNavbar = () => {
     await logout();
     localStorage.removeItem("auth_token");
   };
+
+  const handletoggleTheme = async () => {
+    await toggleTheme();
+    // TODO: Setear theme en localStorage
+    // useLocalStorage("theme", theme); 
+  }
 
   const onScroll = () => {
     window.scrollY > 100 ? setShowFixed(true) : setShowFixed(false);
@@ -109,7 +116,7 @@ const BaseNavbar = () => {
                       type="checkbox"
                       className="checkbox"
                       id="checkbox"
-                      onChange={toggleTheme}
+                      onChange={handletoggleTheme}
                     />
                     <StyledLabel for="checkbox" class="label">
                       <StyledSun />

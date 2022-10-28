@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
 import { Button } from "../../components";
@@ -10,11 +10,13 @@ import {
   TotalText,
   TotalPrice,
   VacioText,
+  ResponsiveCartItemsContainer,
 } from "./styles";
 import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
+import ResponsiveCartItem from "./responsive-cartItem/ResponsiveCartItem";
 
-const Cart = () => {
+const Cart = ({ sizeManagment }) => {
   const { tamañoCarrito, carrito, vaciarCarrito } = useContext(CarritoContext);
 
   const confirmOrder = () => {
@@ -54,42 +56,79 @@ const Cart = () => {
   };
 
   return (
-    <>
-      <CartItemsContainer>
-        {carrito.map((article, i) => (
-          <CartItem key={article.title + i} article={article} />
-        ))}
+    <Fragment>
+      {sizeManagment ? (
+        <ResponsiveCartItemsContainer>
+          {carrito.map((article, i) => (
+            <ResponsiveCartItem key={article.title + i} article={article} />
+          ))}
 
-        <CartTotal>
-          {tamañoCarrito() === 0 ? (
-            <VacioText>El carrito está vacío!</VacioText>
-          ) : (
-            <>
-              <TotalText>Total</TotalText>
-              <TotalPrice>
-                {parseFloat(
-                  carrito.reduce(
-                    (partialSum, a) =>
-                      parseFloat(partialSum) +
-                      parseFloat(a.price.replace(".", "")) *
-                        parseInt(a.quantity),
-                    parseFloat(0)
+          <CartTotal>
+            {tamañoCarrito() === 0 ? (
+              <VacioText>El carrito está vacío!</VacioText>
+            ) : (
+              <>
+                <TotalText sizeManagment={sizeManagment}>Total</TotalText>
+                <TotalPrice sizeManagment={sizeManagment}>
+                  {parseFloat(
+                    carrito.reduce(
+                      (partialSum, a) =>
+                        parseFloat(partialSum) +
+                        parseFloat(a.price.replace(".", "")) *
+                          parseInt(a.quantity),
+                      parseFloat(0)
+                    )
                   )
-                )
-                  .toFixed(2)
-                  .replace(".", ",")
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-              </TotalPrice>
-            </>
+                    .toFixed(2)
+                    .replace(".", ",")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                </TotalPrice>
+              </>
+            )}
+          </CartTotal>
+          {tamañoCarrito() > 0 && (
+            <ButtonWrapper>
+              <Button onClick={confirmOrder}>Confirmar compra</Button>
+            </ButtonWrapper>
           )}
-        </CartTotal>
-        {tamañoCarrito() > 0 && (
-          <ButtonWrapper>
-            <Button onClick={confirmOrder}>Confirmar compra</Button>
-          </ButtonWrapper>
-        )}
-      </CartItemsContainer>
-    </>
+        </ResponsiveCartItemsContainer>
+      ) : (
+        <CartItemsContainer>
+          {carrito.map((article, i) => (
+            <CartItem key={article.title + i} article={article} />
+          ))}
+
+          <CartTotal>
+            {tamañoCarrito() === 0 ? (
+              <VacioText>El carrito está vacío!</VacioText>
+            ) : (
+              <>
+                <TotalText>Total</TotalText>
+                <TotalPrice>
+                  {parseFloat(
+                    carrito.reduce(
+                      (partialSum, a) =>
+                        parseFloat(partialSum) +
+                        parseFloat(a.price.replace(".", "")) *
+                          parseInt(a.quantity),
+                      parseFloat(0)
+                    )
+                  )
+                    .toFixed(2)
+                    .replace(".", ",")
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                </TotalPrice>
+              </>
+            )}
+          </CartTotal>
+          {tamañoCarrito() > 0 && (
+            <ButtonWrapper>
+              <Button onClick={confirmOrder}>Confirmar compra</Button>
+            </ButtonWrapper>
+          )}
+        </CartItemsContainer>
+      )}
+    </Fragment>
   );
 };
 

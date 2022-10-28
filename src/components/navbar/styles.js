@@ -36,11 +36,11 @@ export const Nav = styled.nav`
 `;
 
 export const Ul = styled.ul`
+  height: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   background: var(--accent);
-  height: 10vh;
 
   &.customFixed {
     display: flex;
@@ -49,6 +49,11 @@ export const Ul = styled.ul`
     height: 10vh;
     border-radius: 60px;
   }
+`;
+
+export const Li = styled.li`
+  padding: .7em;
+  color: var(--text-secondary);
 `;
 
 export const Cart = styled(ShoppingCart)`
@@ -73,11 +78,6 @@ export const StyledCartLink = styled(Link)`
   &.customFixed {
     font-size: 2.9vh;
   }
-`;
-
-export const Li = styled.li`
-  padding: 1em;
-  color: var(--text-secondary);
 `;
 
 export const StyledLink = styled(Link)`
