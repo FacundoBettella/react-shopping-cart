@@ -24,6 +24,7 @@ import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { ThemeContext } from "./context/ThemeContext";
+import { OrderHistory } from "./pages/orders";
 
 const App = () => {
   const { products, loading } = useProducts();
@@ -73,6 +74,7 @@ const App = () => {
                 />
                 <Route path="/productdetail" element={<Detail />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/orders" element={<OrderHistory />} />
               </Route>
             </Routes>
           </div>

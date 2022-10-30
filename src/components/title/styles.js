@@ -6,7 +6,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 7vh;
+  margin-top: 1vh;
   margin-bottom: 2vh;
   font-size: 20px;
   font-weight: 700;

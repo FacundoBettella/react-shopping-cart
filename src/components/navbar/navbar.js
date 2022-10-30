@@ -80,6 +80,9 @@ const BaseNavbar = () => {
               </StyledCartLink>
             </Li>
             <Li>
+              <StyledLink to="/orders">Orders</StyledLink>
+            </Li>
+            <Li>
                 <StyledToggleMode >
                 <StyledInput type="checkbox" class="checkbox" id="checkbox" onChange={toggleTheme}/>
               <StyledLabel for="checkbox" class="label">
