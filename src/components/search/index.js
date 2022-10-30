@@ -22,8 +22,11 @@ export const Search = ({ loading, onLoading}) => {
               key={index}
               title={`${product?.title}`}
               shortDescription={product?.shortDescription}
+              largDescription={product?.largDescription}
               price={product?.price}
-              stock={product?.stock} />
+              stock={product?.stock}
+              image={product?.image}
+               />
           ))}
         </ProductsList>
         {products?.length===0 && !loading &&

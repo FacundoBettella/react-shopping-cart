@@ -25,6 +25,7 @@ import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { ThemeContext } from "./context/ThemeContext";
 import { OrderHistory } from "./pages/orders";
+import { useGetUserPurchaseOrders } from "./hooks/useGetUserPurchaseOrders";
 
 const App = () => {
   const { products, loading } = useProducts();
@@ -32,7 +33,9 @@ const App = () => {
   const { sincronizeItemFunc } = useLocalStorage();
 
   const { theme } = useContext(ThemeContext);
-
+  /* const { orders } = useGetUserPurchaseOrders("juan.marderwald@ar.ey.com");
+  console.log(orders);
+ */
   return (
     <Fragment>
       <BrowserRouter>
