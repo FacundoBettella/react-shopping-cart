@@ -44,7 +44,10 @@ const MenuModal = ({ handleModal }) => {
       </StyledCartLink>
 
       {user !== null ? (
-        <StyledLink onClick={handleLogout}>LOGOUT</StyledLink>
+        <>
+          <StyledLink to="/orders">HISTORIAL</StyledLink>
+          <StyledLink onClick={handleLogout}>LOGOUT</StyledLink>
+        </>
       ) : (
         <StyledLink to="/login">LOGIN</StyledLink>
       )}

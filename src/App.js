@@ -7,8 +7,8 @@ import {
   Home,
   Detail,
   Cart,
+  OrderHistory,
   ProtectedRoute,
-  OrderHistory
 } from "./pages/index";
 
 import {
@@ -35,7 +35,9 @@ const App = () => {
   const { theme } = useContext(ThemeContext);
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
-  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);   /*TODO: Consumir useMediaQuery en un contexto global */
+  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(
+    deviceSize.tablet
+  ); /*TODO: Consumir useMediaQuery en un contexto global */
 
   return (
     <Fragment>
@@ -71,7 +73,8 @@ const App = () => {
                   </Home>
                 }
               />
-              <Route element={<ProtectedRoute userAuth={user} />}>
+              <Route element={<ProtectedRoute userAuth={user} />} >
+                <Route path="/orders" element={<OrderHistory />} />
                 <Route
                   path="search/:filter"
                   element={
@@ -88,7 +91,6 @@ const App = () => {
                   path="/cart"
                   element={<Cart sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN} />}
                 />
-                <Route path="/orders" element={<OrderHistory />} />
               </Route>
             </Routes>
           </PageContainer>

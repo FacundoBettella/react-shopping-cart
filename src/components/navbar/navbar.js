@@ -50,7 +50,7 @@ const BaseNavbar = () => {
 
   const handletoggleTheme = async () => {
     await toggleTheme();
-  }
+  };
 
   const onScroll = () => {
     window.scrollY > 100 ? setShowFixed(true) : setShowFixed(false);
@@ -108,6 +108,19 @@ const BaseNavbar = () => {
                     <Cart /> <div>{`(${tamañoCarrito()})`}</div>
                   </StyledCartLink>
                 </Li>
+
+                <Li>
+                  {user !== null ? (
+                    <>
+                      <StyledButton onClick={handleLogout}>
+                        Cerrar sesión
+                      </StyledButton>
+                      <StyledLink to="/orders">Historial</StyledLink>
+                    </>
+                  ) : (
+                    <StyledLoginLink to="/login">Login</StyledLoginLink>
+                  )}
+                </Li>
                 <Li>
                   <StyledToggleMode>
                     <StyledInput
@@ -122,15 +135,6 @@ const BaseNavbar = () => {
                       <StyledBall />
                     </StyledLabel>
                   </StyledToggleMode>
-                </Li>
-                <Li>
-                  {user !== null ? (
-                    <StyledButton onClick={handleLogout}>
-                      Cerrar sesión
-                    </StyledButton>
-                  ) : (
-                    <StyledLoginLink to="/login">Login</StyledLoginLink>
-                  )}
                 </Li>
               </Ul>
             )}

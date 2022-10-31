@@ -32,7 +32,7 @@ export const CarritoProvider = ({children}) => {
     if(!productos.every(prod => parseInt(prod.stock) >= 0)) {
       console.log("No se puede agregar al carrito por falta de stock!!! ");
     }
-    const newCarrito = [... productos];
+    const newCarrito = [...productos];
     setCarrito(newCarrito);
     }
 

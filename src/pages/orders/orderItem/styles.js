@@ -10,11 +10,11 @@ export const CarritoText = styled.div`
   font-size: 1em;
 `;
 
-const Quantity = styled.div`
+export const Quantity = styled.div`
   font-size: 2em;
 `;
 
-const CartPrice = styled.div`
+export const CartPrice = styled.div`
   font-weight: bold;
   font-size: 1.5em;
   display: flex;

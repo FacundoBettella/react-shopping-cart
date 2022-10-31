@@ -38,8 +38,8 @@ export const Product = ({
   const {
     // vaciarCarrito,
     // eliminarProductoDelCarrito,
+    // carrito,
     agregarAlCarrito,
-    carrito,
   } = useContext(CarritoContext);
 
   const handleAddClick = () => {

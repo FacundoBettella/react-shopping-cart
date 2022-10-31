@@ -3,9 +3,7 @@ export const useCheckAuth = () => {
 
   if (token) {
     return true;
-  }
-
-  if (!token) {
+  } else {
     return false;
   }
 };
