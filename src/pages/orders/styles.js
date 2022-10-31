@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 const size = {
-    mobileS: '320px',
-    mobileM: '375px',
-    mobileL: '425px',
-    tablet: '768px',
-    laptop: '1024px',
-    laptopL: '1440px',
-    desktop: '2560px'
-  }
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '2560px'
+}
 
 export const device = {
-    mobileS: `(min-width: ${size.mobileS})`,
-    mobileM: `(min-width: ${size.mobileM})`,
-    mobileL: `(min-width: ${size.mobileL})`,
-    tablet: `(min-width: ${size.tablet})`,
-    laptop: `(min-width: ${size.laptop})`,
-    laptopL: `(min-width: ${size.laptopL})`,
-    desktop: `(min-width: ${size.desktop})`,
-    desktopL: `(min-width: ${size.desktop})`
-  };
+  mobileS: `(min-width: ${size.mobileS})`,
+  mobileM: `(min-width: ${size.mobileM})`,
+  mobileL: `(min-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+  desktopL: `(min-width: ${size.desktop})`
+};
 
 export const OrdersItemsContainer = styled.div`
     display: grid;
@@ -76,7 +76,7 @@ export const TotalText = styled.div`
     color: var(--text-special);
 `
 
-export const  VacioText = styled.div`
+export const VacioText = styled.div`
     font-weight: bold;
     font-size: 2em;
     color: var(--text-special);
@@ -89,4 +89,11 @@ export const TotalPrice = styled.div`
     display:flex;
     align-items:flex-start;
     color: var(--text-special);
+`
+
+export const Title = styled.h1`
+  widht:100%;
+  text-align:center;
+  color: var(--text-primary);
+  transition: all 1s;
 `

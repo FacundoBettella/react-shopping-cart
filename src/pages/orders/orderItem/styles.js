@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { Eye } from "@styled-icons/entypo/Eye";
+import { BagCheckFill } from '@styled-icons/bootstrap/BagCheckFill'
 
 export const OrderText = styled.div`
   font-size: 2em;
+`;
+
+export const CarritoText = styled.div`
+  font-size: 1em;
 `;
 
 const Quantity = styled.div`
@@ -39,7 +44,6 @@ export const StyledDivCarrito = styled.div`
   margin: 1em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   align-items: center;
-  gap: 5em;
   padding-left: 1em;
   padding-right: 1em;
   margin: 0px;
@@ -55,11 +59,11 @@ export const StyledDivDetails = styled.div`
   border-radius: 4px;
   border: 1px solid white;
   flex-direction:column;
+  transition: all 1s;
 `;
 
 export const StyledDivContainer = styled.div`
   display: flex;
-  width: 100%;
   margin: 1em;
   align-items: center;
   gap: 0em;
@@ -67,6 +71,7 @@ export const StyledDivContainer = styled.div`
   padding-right: 1em;
   margin: 0px;
   flex-direction:column;
+  transition: all 1s;
 `;
 
 export const StyledButton = styled.button`
@@ -84,4 +89,18 @@ export const StyledButton = styled.button`
 export const StyledEye = styled(Eye)`
   color: var(--text-secondary);
   width: 2em;
+`;
+
+export const ProductImage = styled.img`
+  border-radius: 4px;
+  width: 60px;
+  height: 60px;
+  margin-right:2em;
+`;
+
+export const StyledBag = styled(BagCheckFill)`
+  color: var(--accent);
+  width: 1.6em;
+  padding: 0.1em;
+  margin-right: 0.5em;
 `;

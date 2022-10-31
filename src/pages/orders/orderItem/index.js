@@ -1,19 +1,32 @@
 import React, { useState, useContext } from "react";
 import { carritoContext } from "../../../context/carritoContext";
-import { OrderText, StyledButton, StyledDiv, StyledDivContainer, StyledEye, StyledDivDetails, StyledDivCarrito } from "./styles"
+import { OrderText, StyledButton, StyledDiv, StyledDivContainer, StyledEye, StyledDivDetails, StyledDivCarrito, CarritoText, ProductImage, StyledBag } from "./styles"
 
 export const OrderItem = ({ order }) => {
     const [expanded, setExpanded] = useState(false)
     const toggleExpanded = () => {
         expanded ? setExpanded(false) : setExpanded(true);
     }
-    const { vaciarCarrito, agregarAlCarrito, cargarCarritoHistorico } = useContext(carritoContext);
+    const { cargarCarritoHistorico } = useContext(carritoContext);
+
+    const currency = "ARS";
+
+    const parseItemPrice = (product) => {
+        return (parseFloat(product.price.replace('.', '')) * parseInt(product.quantity))
+    }
 
     return <StyledDivContainer>
         <StyledDiv>
-            <OrderText>{order.date}</OrderText>
+            <OrderText><StyledBag></StyledBag>{order.date}</OrderText>
             <OrderText>{`${order.carrito.length} Items`}</OrderText>
-            <StyledButton onClick={toggleExpanded}><StyledEye /></StyledButton>
+            <OrderText style={{width: "120px",fontSize: "1.3em" }}>{`${parseFloat(
+                order.carrito.reduce(
+                    (partialSum, a) =>
+                    parseItemPrice(a),
+                    parseFloat(0)
+                )
+            ).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${currency}`}</OrderText>
+            <StyledButton onClick={toggleExpanded}><StyledEye/></StyledButton>
             <StyledButton onClick={() => cargarCarritoHistorico(order.carrito)}
                 style={{ marginLeft: "auto" }}>Volver a Comprar</StyledButton>
         </StyledDiv>
@@ -21,7 +34,13 @@ export const OrderItem = ({ order }) => {
             <StyledDivDetails>
                 {order.carrito.map((carritoItem, i) =>
                     <StyledDivCarrito key={`${i}-${i}-${carritoItem.shortDescription}`}>
-                        <OrderText>{carritoItem.shortDescription}</OrderText>
+                        <ProductImage src={carritoItem.image}
+                            alt={carritoItem.title} />
+                        <CarritoText style={{ width: "50%" }}>{carritoItem.shortDescription}</CarritoText>
+                        <CarritoText style={{ width: "20%" }}>{
+                            `${parseItemPrice(carritoItem)
+                                .toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${currency}`
+                        }</CarritoText>
                         <OrderText style={{ marginLeft: "auto" }}>{carritoItem.quantity}</OrderText>
                     </StyledDivCarrito>
                 )
