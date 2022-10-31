@@ -32,8 +32,46 @@ export const StyledDiv = styled.div`
   border: 1px solid white;
 `;
 
+export const StyledDivCarrito = styled.div`
+  display: flex;
+  height: 100px;
+  width: 100%;
+  margin: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  align-items: center;
+  gap: 5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0px;
+  border-radius: 4px;
+  border: 1px solid white;
+`;
+
+export const StyledDivDetails = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  border: 1px solid white;
+  flex-direction:column;
+`;
+
+export const StyledDivContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 1em;
+  align-items: center;
+  gap: 0em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0px;
+  flex-direction:column;
+`;
+
 export const StyledButton = styled.button`
   font-weight: bold;
+  color: var(--text-secondary);
   height: 4em;
   padding: 1em;
   background-color: var(--accent);

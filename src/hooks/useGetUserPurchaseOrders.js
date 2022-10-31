@@ -4,19 +4,20 @@ import { FIRESTONE } from '../firebase/firebase.config';
 
 export const useGetUserPurchaseOrders = (userEmail) => {
     const [orders, setOrders] = useState(null);
-   
+    const [loading, setLoading] = useState(true);
     const getOrders = async (entity)  =>{
         const q = query(collection(FIRESTONE,entity), where("userEmail","==",userEmail));
         //const dataResponse = await getDocs(collection(FIRESTONE, entity));
         const dataResponse = await getDocs(q);
         let purchaseOrders = dataResponse.docs
             .map((doc) => ({ ...doc.data() }))
-        setOrders(purchaseOrders);        
+        setOrders(purchaseOrders);
+        setLoading(false);  
     }
     
     useEffect (()=>{
         getOrders("orders")
     },[]);
 
-    return {orders}
+    return {orders, loading}
 }
