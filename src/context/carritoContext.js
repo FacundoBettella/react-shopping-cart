@@ -27,6 +27,15 @@ export const CarritoProvider = ({children}) => {
     }    
   }
 
+  // Sobreescribe el carrito actual con los contenidos de un nuevo carrito
+  const cargarCarritoHistorico = (productos) => {
+    if(!productos.every(prod => parseInt(prod.stock) >= 0)) {
+      console.log("No se puede agregar al carrito por falta de stock!!! ");
+    }
+    const newCarrito = [... productos];
+    setCarrito(newCarrito);
+    }
+
   const eliminarProductoDelCarrito = (producto)=>{
     const newCarrito = carrito.filter(item => item.id !== producto.id)
     setCarrito(newCarrito);
@@ -51,6 +60,7 @@ export const CarritoProvider = ({children}) => {
         eliminarProductoDelCarrito,
         agregarAlCarrito,
         decrementarProductoDelCarrito,
+        cargarCarritoHistorico,
         tamañoCarrito, 
         carrito
     }}>
