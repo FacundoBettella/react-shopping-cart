@@ -42,13 +42,11 @@ export const StyledDivCarrito = styled.div`
   height: 100px;
   width: 100%;
   margin: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   align-items: center;
   padding-left: 1em;
   padding-right: 1em;
   margin: 0px;
   border-radius: 4px;
-  border: 1px solid white;
 `;
 
 export const StyledDivDetails = styled.div`
@@ -59,7 +57,7 @@ export const StyledDivDetails = styled.div`
   border-radius: 4px;
   border: 1px solid white;
   flex-direction:column;
-  transition: all 1s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export const StyledDivContainer = styled.div`
@@ -71,7 +69,6 @@ export const StyledDivContainer = styled.div`
   padding-right: 1em;
   margin: 0px;
   flex-direction:column;
-  transition: all 1s;
 `;
 
 export const StyledButton = styled.button`

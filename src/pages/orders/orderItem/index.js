@@ -18,7 +18,7 @@ export const OrderItem = ({ order }) => {
     return <StyledDivContainer>
         <StyledDiv>
             <OrderText><StyledBag></StyledBag>{order.date}</OrderText>
-            <OrderText>{`${order.carrito.length} Items`}</OrderText>
+            <OrderText>{`${order.carrito.reduce((partialSum, item) => partialSum + item.quantity, 0)} Items`}</OrderText>
             <OrderText style={{width: "120px",fontSize: "1.3em" }}>{`${parseFloat(
                 order.carrito.reduce(
                     (partialSum, a) =>
