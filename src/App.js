@@ -19,6 +19,7 @@ import {
   Search,
   ChangeAlertWithStorageListener,
   Footer,
+  Layout,
 } from "./components";
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
@@ -36,12 +37,17 @@ const App = () => {
 
   return (
     <Fragment>
+      <Layout title="Envios gratis en el día" />
       <BrowserRouter>
         <Theme data-theme={theme}>
           <GlobalStyle />
           <PageContainer sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}>
             <Navbar />
-            <Title text={"Shopping Chart"} user={user?.email} sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>
+            <Title
+              text={"Shopping Chart"}
+              user={user?.email}
+              sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}
+            />
             <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc} />
             <Routes>
               <Route path="/login" element={<Login />} />
@@ -70,8 +76,16 @@ const App = () => {
                     <Search onLoading={() => <Loading loading={loading} />} />
                   }
                 />
-                <Route path="/productdetail" element={<Detail sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>} />
-                <Route path="/cart" element={<Cart sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}/>} />
+                <Route
+                  path="/productdetail"
+                  element={
+                    <Detail sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN} />
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={<Cart sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN} />}
+                />
               </Route>
             </Routes>
           </PageContainer>

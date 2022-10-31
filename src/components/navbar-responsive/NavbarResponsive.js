@@ -8,7 +8,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 
-export const NavbarResponsive = ({ responsiveBoolean, handleModal, showModal }) => {
+export const NavbarResponsive = ({
+  responsiveBoolean,
+  handleModal,
+  showModal,
+}) => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
@@ -19,6 +23,7 @@ export const NavbarResponsive = ({ responsiveBoolean, handleModal, showModal }) 
   const handleGoHome = (e) => {
     e.preventDefault();
     navigate("/");
+    if (showModal) handleModal(false);
   };
   return (
     <Fragment>
@@ -51,7 +56,7 @@ export const NavbarResponsive = ({ responsiveBoolean, handleModal, showModal }) 
           />
         )}
       </LogoContainer>
-      {showModal && <MenuModal />}
+      {showModal && <MenuModal handleModal={handleModal} />}
     </Fragment>
   );
 };

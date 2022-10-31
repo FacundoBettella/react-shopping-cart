@@ -1,8 +1,7 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import {
   BotonAgregarCarrito,
-  //   ContenedorEnvio,
   ContenedorEnvioSucursal,
   CuotasSinInteres,
   DescriptionContainer,
@@ -17,8 +16,9 @@ import {
 import { RiStore2Line } from "react-icons/ri";
 import { MdLocalShipping } from "react-icons/md";
 import { CarritoContext } from "./../../context/carritoContext.js";
+import { Layout } from "../../components";
 
-const Detail = () => {
+const Detail = ({ sizeManagment }) => {
   const { agregarAlCarrito } = useContext(CarritoContext);
   const location = useLocation();
   const selectedProduct = location.state.product;
@@ -28,14 +28,19 @@ const Detail = () => {
   }
 
   return (
-    <Fragment>
-      <ProductTitle> {selectedProduct.title}</ProductTitle>
-      <DetailsContainer>
+    <div styles={{width: "100%"}}>
+      <Layout title={`${selectedProduct.title}`} />
+      <ProductTitle sizeManagment={sizeManagment}>
+        {" "}
+        {selectedProduct.title}
+      </ProductTitle>
+      <DetailsContainer sizeManagment={sizeManagment}>
         <DetailsImage
           src={selectedProduct.image}
           alt={`${selectedProduct.title}`}
+          sizeManagment={sizeManagment}
         />
-        <DescriptionContainer>
+        <DescriptionContainer sizeManagment={sizeManagment}>
           <LargeDescription>{selectedProduct.largDescription}</LargeDescription>
           <ProductAvailable>
             {selectedProduct.stock} disponibles
@@ -68,7 +73,7 @@ const Detail = () => {
           </BotonAgregarCarrito>
         </DescriptionContainer>
       </DetailsContainer>
-    </Fragment>
+    </div>
   );
 };
 

@@ -5,6 +5,7 @@ import {
   FormWrapper,
   FormInput,
   Button,
+  Layout,
 } from "../../components/index";
 import { useAuth } from "../../context/authContext";
 import { useMediaQuery } from "@mui/material";
@@ -95,6 +96,7 @@ const Login = () => {
 
   return (
     <div>
+      <Layout title="Iniciar sesion" />
       {recoveryPassFlag ? (
         <FormWrapper>
           {error !== "" && (
@@ -113,7 +115,7 @@ const Login = () => {
               textAlign: "flex-start",
               color: "var(--text-primary)",
               fontWeight: "600",
-              margin: "15px 0px"
+              margin: "15px 0px",
             }}
           >
             Ingrese su email de recuperación

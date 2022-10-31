@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SubmitButton, FormWrapper, FormInput } from "../../components/index";
+import { SubmitButton, FormWrapper, FormInput, Layout } from "../../components/index";
 import { useAuth } from "../../context/authContext";
 
 const Register = () => {
@@ -38,6 +38,7 @@ const Register = () => {
 
   return (
     <div>
+      <Layout title="Registrarse" />
       <FormWrapper>
         <FormInput
           name="user"

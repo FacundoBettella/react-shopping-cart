@@ -4,10 +4,17 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { CarritoContext } from "../../context/carritoContext";
 import { ModalCard } from "./styles";
 import { useAuth } from "../../context/authContext";
-import { ModalToggleModeContainer, StyledBall, StyledInput, StyledLabel, StyledMoon, StyledSun } from "../theme-toggle/styles";
+import {
+  ModalToggleModeContainer,
+  StyledBall,
+  StyledInput,
+  StyledLabel,
+  StyledMoon,
+  StyledSun,
+} from "../theme-toggle/styles";
 import { Cart, StyledCartLink, StyledLink } from "../navbar/styles";
 
-const MenuModal = () => {
+const MenuModal = ({ handleModal }) => {
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useContext(CarritoContext);
   const { toggleTheme } = useContext(ThemeContext);
@@ -32,7 +39,7 @@ const MenuModal = () => {
           <StyledBall />
         </StyledLabel>
       </ModalToggleModeContainer>
-      <StyledCartLink to="/cart">
+      <StyledCartLink to="/cart" onClick={() => handleModal(false)}>
         <Cart /> <div>{`(${tamañoCarrito()})`}</div>
       </StyledCartLink>
 

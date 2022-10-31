@@ -28,7 +28,6 @@ import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
 import { useMediaQuery } from "@mui/material";
 import { deviceSize } from "../../utils/viewportSizes";
-// import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const BaseNavbar = () => {
   const [showFixed, setShowFixed] = useState(false);
@@ -51,8 +50,6 @@ const BaseNavbar = () => {
 
   const handletoggleTheme = async () => {
     await toggleTheme();
-    // TODO: Setear theme en localStorage
-    // useLocalStorage("theme", theme); 
   }
 
   const onScroll = () => {

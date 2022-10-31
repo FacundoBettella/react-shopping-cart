@@ -23,16 +23,18 @@ const useLocalStorage = (itemName, initialValue = "") => {
       payload: bool,
     });
 
-  const saveNewItem = (itemName, initialValue) => {
+  const saveNewItem = (itemName, itemValue) => {
     try {
       const localStorageItem = localStorage.getItem(itemName);
-      let parsedItem;
+      let parsedItem = JSON.stringify(itemValue)
+
 
       if (!localStorageItem) {
-        localStorage.setItem(itemName, JSON.stringify(initialValue));
-        parsedItem = initialValue;
-      } else {
-        parsedItem = JSON.parse(localStorageItem);
+        localStorage.setItem(itemName, parsedItem);
+      } 
+      else {
+        localStorage.setItem(itemName, parsedItem)
+        parsedItem = itemValue; 
       }
 
       onSuccess(parsedItem);

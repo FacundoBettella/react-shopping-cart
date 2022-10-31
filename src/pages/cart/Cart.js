@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
 import { doc, updateDoc } from "firebase/firestore";
-import { Button } from "../../components";
+import { Button, Layout } from "../../components";
 import swal from "sweetalert";
 import { CarritoContext } from "../../context/carritoContext";
 import {
@@ -57,6 +57,7 @@ const Cart = ({ sizeManagment }) => {
 
   return (
     <Fragment>
+      <Layout title="Donde compras de todo" />
       {sizeManagment ? (
         <ResponsiveCartItemsContainer>
           {carrito.map((article, i) => (

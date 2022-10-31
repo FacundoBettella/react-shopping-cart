@@ -21,6 +21,7 @@ import {
   StyledSun,
   StyledMoon,
 } from "./theme-toggle/styles";
+import Layout from "./layout";
 
 export {
   Title,
@@ -46,4 +47,5 @@ export {
   StyledInput,
   StyledSun,
   StyledMoon,
+  Layout
 };
