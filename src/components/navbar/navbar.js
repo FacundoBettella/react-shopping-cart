@@ -77,6 +77,7 @@ const BaseNavbar = () => {
           />
         ) : (
           /* FIXED Cart NAV  */
+          /*TODO: Mejorar fixed prop */
           <Nav className={fixed ? "customFixed" : ""}>
             {fixed ? (
               <Ul className={fixed ? "customFixed" : ""}>

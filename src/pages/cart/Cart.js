@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
-import { doc, updateDoc } from "firebase/firestore";
 import { Button, Layout } from "../../components";
+import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 import swal from "sweetalert";
 import { CarritoContext } from "../../context/carritoContext";
 import {
@@ -15,9 +15,22 @@ import {
 import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
 import ResponsiveCartItem from "./responsive-cartItem/ResponsiveCartItem";
+import { useAuth } from "../../context/authContext";
 
 const Cart = ({ sizeManagment }) => {
+  const { user } = useAuth();
   const { tamañoCarrito, carrito, vaciarCarrito } = useContext(CarritoContext);
+
+  const createNewOrder = async () => {
+    const date = new Date().toLocaleString() + "";
+    const userEmail = user.email;
+    const newOrder = doc(collection(FIRESTONE, "orders"));
+    try {
+      await setDoc(newOrder, { userEmail, date, carrito });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const confirmOrder = () => {
     swal({
@@ -29,6 +42,7 @@ const Cart = ({ sizeManagment }) => {
       if (value === "ok") {
         handleBuyArticle();
       } else {
+        //TODO: ¿Cual es su función?
       }
     });
   };
@@ -50,14 +64,15 @@ const Cart = ({ sizeManagment }) => {
           "error"
         );
       }
-      vaciarCarrito();
-      swal("¡Tu compra ha sido un éxito!", "", "success");
     });
+    createNewOrder();
+    vaciarCarrito();
+    swal("¡Tu compra ha sido un éxito!", "", "success");
   };
 
   return (
     <Fragment>
-      <Layout title="Donde compras de todo" />
+      <Layout title="Donde compras lo que necesitas" />
       {sizeManagment ? (
         <ResponsiveCartItemsContainer>
           {carrito.map((article, i) => (

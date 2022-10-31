@@ -27,14 +27,20 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { ThemeContext } from "./context/ThemeContext";
 import { useMediaQuery } from "@mui/material";
 import { deviceSize } from "./utils/viewportSizes";
+// import { useGetUserPurchaseOrders } from "./hooks/useGetUserPurchaseOrders";
 
 const App = () => {
   const { products, loading } = useProducts();
   const { theme } = useContext(ThemeContext);
   const { user } = useAuth();
   const { sincronizeItemFunc } = useLocalStorage();
+  /*TODO: Consumir useMediaQuery en un contexto global */
   const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
 
+  /* 
+    const { orders } = useGetUserPurchaseOrders("juan.marderwald@ar.ey.com");
+    console.log(orders);
+ */
   return (
     <Fragment>
       <Layout title="Envios gratis en el día" />
