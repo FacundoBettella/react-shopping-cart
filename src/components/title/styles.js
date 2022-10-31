@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const TitleContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.query ? "8vh" : "3vh")};
-  
+
   display: flex;
   justify-content: ${(props) => (props.query ? "center" : "flex-end")};
   align-items: center;
-  
+
   margin-top: ${(props) => (props.query ? "10vh" : "2vh")};
-  margin-bottom: .5vh;
+  margin-bottom: 0.5vh;
 
   font-size: 20px;
   font-weight: 700;
