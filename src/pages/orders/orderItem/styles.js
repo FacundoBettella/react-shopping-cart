@@ -91,9 +91,9 @@ export const CarritoText = styled.div`
 export const StyledButton = styled.button`
   font-size: ${(props) => (props.sizeManagment ? "14px" : "16px")};
   font-weight: bold;
-  width: ${(props) => (props.sizeManagment ? "100%" : "15%")};
+  width: ${(props) => (props.sizeManagment ? "100%" : "10%")};
   height: ${(props) => (props.sizeManagment ? "auto" : "10vh")};
-  padding: 0.6em;
+  padding: 0.2em;
   color: var(--text-secondary);
   background-color: var(--accent);
   border-radius: 4px;
@@ -103,12 +103,12 @@ export const StyledButton = styled.button`
 
 export const StyledEye = styled(Eye)`
   color: var(--text-secondary);
-  width: 2em;
+  width: 2.2em;
 `;
 
 export const StyledBag = styled(BagCheckFill)`
   color: var(--accent);
-  width: 1.6em;
+  width: 2.2em;
   padding: 0.1em;
   margin-right: 0.5em;
 `;

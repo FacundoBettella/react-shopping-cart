@@ -8,9 +8,6 @@ import "./index.css";
 
 
 /* TODO Mejorar => 
-  height component search, 
-  boton confirmar compra (style y redirect con refresh useProducts), 
-  botones products card, 
   historial: logo bolsa y botones demasiado grandes en modo laptop. 
 */
 

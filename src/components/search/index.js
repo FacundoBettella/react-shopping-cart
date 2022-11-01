@@ -26,7 +26,7 @@ export const Search = ({ loading, onLoading }) => {
         onLoading()
       ) : (
         <>
-          <ProductsList>
+          <ProductsList sizeManagment={deviceSizeState}>
             {products?.length > 0 &&
               products.map((product, index) => (
                 <Product

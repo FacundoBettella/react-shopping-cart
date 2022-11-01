@@ -4,20 +4,22 @@ import { FIRESTONE } from "../firebase/firebase.config";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading ] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const getProducts = async (entity) => {
     const dataResponse = await getDocs(collection(FIRESTONE, entity));
 
-    setProducts(dataResponse.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    setProducts(
+      dataResponse.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
     setLoading(false);
   };
-  
+
   useEffect(() => {
     getProducts("products");
   }, []);
 
-  return { products, loading };
+  return { products, loading, getProducts };
 };
 
 export default useProducts;

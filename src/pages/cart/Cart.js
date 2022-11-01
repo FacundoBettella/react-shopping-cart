@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
-import { Button, Layout } from "../../components";
+import { Layout } from "../../components";
 import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 import swal from "sweetalert";
 import { useCarrito } from "../../context/carritoContext";
@@ -11,15 +11,18 @@ import {
   TotalPrice,
   VacioText,
   ResponsiveCartItemsContainer,
+  Button,
 } from "./styles";
 import { CartItem } from "./cartItem/CartItem";
 import { ButtonWrapper } from "../../components/product/styles";
 import ResponsiveCartItem from "./responsive-cartItem/ResponsiveCartItem";
 import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ sizeManagment }) => {
   const { user } = useAuth();
   const { tamañoCarrito, carrito, vaciarCarrito } = useCarrito();
+  const navigate = useNavigate();
 
   const createNewOrder = async () => {
     const date = new Date().toLocaleString() + "";
@@ -32,19 +35,20 @@ const Cart = ({ sizeManagment }) => {
     }
   };
 
-  const confirmOrder = () => {
+  const confirmOrder = async () => {
     swal({
       title: "¿Desea confirmar su compra?",
       text: "",
-      icon: "info",
       buttons: { cancel: "Cancelar", ok: "Ok" },
-    }).then((value) => {
-      if (value === "ok") {
-        handleBuyArticle();
-      } else {
-        //TODO: ¿Cual es su función?
-      }
-    });
+    })
+      .then((value) => {
+        if (value === "ok") {
+          handleBuyArticle();
+        }
+      })
+      .then(() => {
+        navigate("/");
+      });
   };
 
   const handleBuyArticle = () => {

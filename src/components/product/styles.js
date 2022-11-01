@@ -44,8 +44,8 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductDescription = styled.div`
-  margin: 10px;
-  width: 200px;
+  margin: 5px;
+  width: 240px;
   height: 55px;
 `;
 
@@ -53,8 +53,9 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 25px auto;
+  margin: 15px auto;
 `;
+
 export const Button = styled.button`
   width: 50%;
   border: 1px solid var(--white);
@@ -82,7 +83,7 @@ export const Button = styled.button`
 
 export const ButtonsContainer = styled.div`
   display: flex;
-  margin: 20px 0px;
+  margin: 0px 0px;
 `;
 
 export const Linkstyled = styled(Link)`

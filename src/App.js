@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
 import {
@@ -33,9 +33,18 @@ const App = () => {
   const { theme } = useThemeContext();
   const { user } = useAuth();
 
-  const { products, loading } = useProducts();
-  const [ deviceSizeState ] = useResponsiveSize();
+  const { products, loading, getProducts } = useProducts();
+  const [deviceSizeState] = useResponsiveSize();
   const { sincronizeItemFunc } = useLocalStorage();
+
+  useEffect(() => {
+    getProducts("products");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products]);
 
   return (
     <Fragment>
@@ -71,7 +80,7 @@ const App = () => {
                   </Home>
                 }
               />
-              <Route element={<ProtectedRoute userAuth={user} />} >
+              <Route element={<ProtectedRoute userAuth={user} />}>
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route
                   path="search/:filter"
@@ -81,9 +90,7 @@ const App = () => {
                 />
                 <Route
                   path="/productdetail"
-                  element={
-                    <Detail sizeManagment={deviceSizeState} />
-                  }
+                  element={<Detail sizeManagment={deviceSizeState} />}
                 />
                 <Route
                   path="/cart"
