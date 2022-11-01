@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import {
   BotonAgregarCarrito,
@@ -15,12 +15,13 @@ import {
 } from "./styles";
 import { RiStore2Line } from "react-icons/ri";
 import { MdLocalShipping } from "react-icons/md";
-import { CarritoContext } from "./../../context/carritoContext.js";
+import { useCarrito } from "./../../context/carritoContext.js";
 import { Layout } from "../../components";
 
 const Detail = ({ sizeManagment }) => {
-  const { agregarAlCarrito } = useContext(CarritoContext);
+  const { agregarAlCarrito } = useCarrito();
   const location = useLocation();
+
   const selectedProduct = location.state.product;
 
   function redondearCuotas() {
@@ -28,7 +29,7 @@ const Detail = ({ sizeManagment }) => {
   }
 
   return (
-    <div styles={{width: "100%"}}>
+    <div styles={{ width: "100%" }}>
       <Layout title={`${selectedProduct.title}`} />
       <ProductTitle sizeManagment={sizeManagment}>
         {" "}

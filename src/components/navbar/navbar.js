@@ -1,8 +1,8 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
-import { CarritoContext } from "../../context/carritoContext";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useCarrito } from "../../context/carritoContext";
+import { useThemeContext } from "../../context/themeContext";
 import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,
@@ -26,18 +26,17 @@ import {
 } from "../theme-toggle/styles";
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
-import { useMediaQuery } from "@mui/material";
-import { deviceSize } from "../../utils/viewportSizes";
+import useResponsiveSize from "../../hooks/useResponsiveSize";
 
 const BaseNavbar = () => {
+  const { logout, user } = useAuth();
+  const { tamañoCarrito } = useCarrito();
+  const { toggleTheme, theme } = useThemeContext();
+  
   const [showFixed, setShowFixed] = useState(false);
   const [showMenuModal, setShowMenuModal] = useState(false);
 
-  const { logout, user } = useAuth();
-  const { tamañoCarrito } = useContext(CarritoContext);
-  const { toggleTheme, theme } = useContext(ThemeContext);
-
-  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
+  const [deviceSizeState] = useResponsiveSize();
 
   const handleMenuModal = () => {
     setShowMenuModal(!showMenuModal);
@@ -67,26 +66,22 @@ const BaseNavbar = () => {
 
   const renderNav = (fixed) => {
     return (
-      /* Mobile/Tablet NAV */
+      /* Mobile-Tablet NAV */
       <Fragment>
-        {DEVICE_TABLE_QUERY_BOOLEAN ? (
+        {deviceSizeState ? (
           <NavbarResponsive
-            responsiveBoolean={DEVICE_TABLE_QUERY_BOOLEAN}
+            responsiveBoolean={deviceSizeState}
             handleModal={handleMenuModal}
             showModal={showMenuModal}
           />
         ) : (
           /* FIXED Cart NAV  */
-          /*TODO: Mejorar fixed prop */
           <Nav className={fixed ? "customFixed" : ""}>
             {fixed ? (
-              <Ul className={fixed ? "customFixed" : ""}>
+              <Ul className="customFixed">
                 <Li>
-                  <StyledCartLink
-                    className={fixed ? "customFixed" : ""}
-                    to="/cart"
-                  >
-                    <Cart className={fixed ? "customFixed" : ""} />
+                  <StyledCartLink className="customFixed" to="/cart">
+                    <Cart className="customFixed" />
                     {`(${tamañoCarrito()})`}
                   </StyledCartLink>
                 </Li>
@@ -129,7 +124,7 @@ const BaseNavbar = () => {
                       id="checkbox"
                       onChange={handletoggleTheme}
                     />
-                    <StyledLabel for="checkbox" class="label">
+                    <StyledLabel htmlFor="checkbox" className="label">
                       <StyledSun />
                       <StyledMoon />
                       <StyledBall />

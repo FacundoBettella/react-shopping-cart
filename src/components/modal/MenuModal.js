@@ -1,7 +1,6 @@
 import React from "react";
-import { useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
-import { CarritoContext } from "../../context/carritoContext";
+import { useThemeContext } from "../../context/themeContext";
+import { useCarrito } from "../../context/carritoContext";
 import { ModalCard } from "./styles";
 import { useAuth } from "../../context/authContext";
 import {
@@ -16,8 +15,8 @@ import { Cart, StyledCartLink, StyledLink } from "../navbar/styles";
 
 const MenuModal = ({ handleModal }) => {
   const { logout, user } = useAuth();
-  const { tamañoCarrito } = useContext(CarritoContext);
-  const { toggleTheme } = useContext(ThemeContext);
+  const { tamañoCarrito } = useCarrito();
+  const { toggleTheme } = useThemeContext();
 
   const handleLogout = async () => {
     await logout();
@@ -45,8 +44,10 @@ const MenuModal = ({ handleModal }) => {
 
       {user !== null ? (
         <>
-          <StyledLink to="/orders">HISTORIAL</StyledLink>
-          <StyledLink onClick={handleLogout}>LOGOUT</StyledLink>
+          <StyledLink to="/orders" onClick={handleModal}>
+            Historial
+          </StyledLink>
+          <StyledLink onClick={handleLogout}>Logout</StyledLink>
         </>
       ) : (
         <StyledLink to="/login">LOGIN</StyledLink>

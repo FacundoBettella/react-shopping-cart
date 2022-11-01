@@ -1,9 +1,9 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
 import { Button, Layout } from "../../components";
 import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
 import swal from "sweetalert";
-import { CarritoContext } from "../../context/carritoContext";
+import { useCarrito } from "../../context/carritoContext";
 import {
   CartItemsContainer,
   CartTotal,
@@ -19,7 +19,7 @@ import { useAuth } from "../../context/authContext";
 
 const Cart = ({ sizeManagment }) => {
   const { user } = useAuth();
-  const { tamañoCarrito, carrito, vaciarCarrito } = useContext(CarritoContext);
+  const { tamañoCarrito, carrito, vaciarCarrito } = useCarrito();
 
   const createNewOrder = async () => {
     const date = new Date().toLocaleString() + "";

@@ -1,13 +1,33 @@
 import styled from "styled-components";
 import { Eye } from "@styled-icons/entypo/Eye";
-import { BagCheckFill } from '@styled-icons/bootstrap/BagCheckFill'
+import { BagCheckFill } from "@styled-icons/bootstrap/BagCheckFill";
+import { fadeIn } from "../../../styles/animations";
 
-export const OrderText = styled.div`
-  font-size: 2em;
+export const StyledDivContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5vh;
+  transition: all 1s;
 `;
 
-export const CarritoText = styled.div`
-  font-size: 1em;
+export const StyledDiv = styled.div`
+  width: ${(props) => (props.sizeManagment ? "100%" : "90%")};
+  height: ${(props) => (props.sizeManagment ? "50vh" : "20vh")};
+  display: ${(props) => (props.sizeManagment ? "grid" : "flex")};
+  flex-direction: ${(props) => (props.sizeManagment ? "column" : "row")};
+  justify-content: ${(props) =>
+    props.sizeManagment ? "center" : "space-around"};
+
+  align-items: center;
+
+  gap: ${(props) => (props.sizeManagment ? "0vh" : "8vh")};
+  font-size: ${(props) => (props.sizeManagment ? "16px" : "18px")};
+  padding: 0.5em 2.5em;
+
+  border-radius: 4px;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export const Quantity = styled.div`
@@ -22,80 +42,68 @@ export const CartPrice = styled.div`
   margin-left: auto;
 `;
 
-export const StyledDiv = styled.div`
-  display: flex;
-  height: 100px;
-  width: 100%;
-  margin: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  align-items: center;
-  gap: 5em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin: 0px;
+export const StyledDivDetails = styled.div`
+  ${fadeIn({ time: "0.3s", type: "ease-in" })}
+
+  width:  ${(props) => (props.sizeManagment ? "100%" : "90%")};
+  height: ${(props) => (props.sizeManagment ? "auto" : "20vh")};
+  margin: 0.5em 0px;
   border-radius: 4px;
   border: 1px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 
 export const StyledDivCarrito = styled.div`
-  display: flex;
-  height: 100px;
   width: 100%;
-  margin: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: ${(props) => (props.sizeManagment ? "90px" : "20vh")};
+
+  display: flex;
+  ${(props) => props.sizeManagment && "flex-direction: row"};
   align-items: center;
-  padding-left: 1em;
-  padding-right: 1em;
+
+  margin: 1em;
+  padding: ${(props) => props.sizeManagment ? "2.5vh" : "8vh"};
   margin: 0px;
   border-radius: 4px;
-  border: 1px solid white;
 `;
 
-export const StyledDivDetails = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 1em;
+export const ProductImage = styled.img`
+  height: ${(props) => (props.sizeManagment ? "100%" : "15vh")};
+  object-fit: cover;
+  object-position: center center;
   border-radius: 4px;
-  border: 1px solid white;
-  flex-direction:column;
-  transition: all 1s;
+  margin-right: 2em;
 `;
 
-export const StyledDivContainer = styled.div`
-  display: flex;
-  margin: 1em;
-  align-items: center;
-  gap: 0em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin: 0px;
-  flex-direction:column;
-  transition: all 1s;
+export const OrderText = styled.div`
+  font-size: 16px;
+`;
+
+export const CarritoText = styled.div`
+  text-align: center;
+  font-size: ${(props) => (props.sizeManagment ? "12px" : "16px")};
+  padding-right:  ${(props) => (props.sizeManagment && "15px")};
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const StyledButton = styled.button`
+  font-size: ${(props) => (props.sizeManagment ? "14px" : "16px")};
   font-weight: bold;
+  width: ${(props) => (props.sizeManagment ? "100%" : "15%")};
+  height: ${(props) => (props.sizeManagment ? "auto" : "10vh")};
+  padding: 0.6em;
   color: var(--text-secondary);
-  height: 4em;
-  padding: 1em;
   background-color: var(--accent);
-  border-radius: 5px;
-  &:hover {
-    cursor: pointer;
-  }
+  border-radius: 4px;
+
+  cursor: pointer;
 `;
 
 export const StyledEye = styled(Eye)`
   color: var(--text-secondary);
   width: 2em;
-`;
-
-export const ProductImage = styled.img`
-  border-radius: 4px;
-  width: 60px;
-  height: 60px;
-  margin-right:2em;
 `;
 
 export const StyledBag = styled(BagCheckFill)`

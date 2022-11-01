@@ -8,11 +8,10 @@ import {
   Layout,
 } from "../../components/index";
 import { useAuth } from "../../context/authContext";
-import { useMediaQuery } from "@mui/material";
-import { deviceSize } from "../../utils/viewportSizes";
+import useResponsiveSize from "../../hooks/useResponsiveSize";
 
 const Login = () => {
-  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
+  const [ deviceSizeState ] = useResponsiveSize();
 
   const {
     login,
@@ -163,7 +162,7 @@ const Login = () => {
           <div
             style={{
               display: "flex",
-              flexDirection: DEVICE_TABLE_QUERY_BOOLEAN ? "column" : "row",
+              flexDirection: deviceSizeState ? "column" : "row",
               alignItems: "center",
               marginTop: "20px",
             }}
@@ -178,7 +177,7 @@ const Login = () => {
           <div
             style={{
               display: "flex",
-              flexDirection: DEVICE_TABLE_QUERY_BOOLEAN ? "column" : "row",
+              flexDirection: deviceSizeState ? "column" : "row",
               alignItems: "center",
               justifyContent: "space-between",
               marginTop: "20px",

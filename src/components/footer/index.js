@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   ContenedorFooter,
   DerechosContainer,
@@ -9,10 +9,10 @@ import {
 import { SiInstagram, SiFacebook, SiLinkedin, SiGmail } from "react-icons/si";
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 
 export const Footer = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useThemeContext();
 
   return (
     <ContenedorFooter>
