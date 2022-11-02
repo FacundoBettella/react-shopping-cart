@@ -21,7 +21,7 @@ export const Banner = styled.div`
   align-items: center;
   justify-content: center;
   width: 330px;
-  height: 2em;
+  height: 3em;
   background-color: var(--accent);
   border-radius: 5px;
   color: var(--text-secondary);

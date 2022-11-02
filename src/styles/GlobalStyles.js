@@ -42,15 +42,17 @@ export const GlobalStyle = createGlobalStyle`
         --text-primary: black;
         --text-secondary: white;
         --text-special: FireBrick;    
+        --navbar-background: FireBrick;
     }
 
     [data-theme='dark'] {
         --background: rgb(0, 17, 26);
-        --accent: LightCoral;
-        --accent-hover: #fa6464;
+        --accent: #f26161;
+        --accent-hover: #f67575;
         --text-primary: FloralWhite;
-        --text-secondary: rgb(0, 17, 26);
+        --text-secondary: white;
         --text-special: LightCoral; 
+        --navbar-background: #010001;
       }
 `;
 

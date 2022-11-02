@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { useCarrito } from "../../context/carritoContext";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,
@@ -15,8 +15,7 @@ import {
   Ul,
   Logo,
   LogoContainer,
-  ContainerNavGroupsHomeAndHistory,
-  ContainerNavGroupsCartAndTheme,
+  SpecialLiContainer,
 } from "./styles";
 import {
   StyledBall,
@@ -84,7 +83,7 @@ const BaseNavbar = () => {
             showModal={showMenuModal}
           />
         ) : (
-          /* FIXED Cart NAV  */
+          /* FIXED CART NAV  */
           <Nav className={fixed ? "customFixed" : ""}>
             {fixed ? (
               <Ul className="customFixed">
@@ -96,7 +95,7 @@ const BaseNavbar = () => {
                 </Li>
               </Ul>
             ) : (
-              /* Normal NAV  */
+              /* NORMAL NAV  */
               <Ul>
                 <Li style={{ position: "absolute", left: 0 }}>
                   <LogoContainer>
@@ -107,32 +106,32 @@ const BaseNavbar = () => {
                     />
                   </LogoContainer>
                 </Li>
-                <ContainerNavGroupsHomeAndHistory>
+
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <Li>
                     <StyledLink to="/">Home</StyledLink>
                   </Li>
                   <Li>
-                    {user !== null ? (
-                      <>
-                        <StyledButton onClick={handleLogout}>
-                          Cerrar sesión
-                        </StyledButton>
-                        <StyledLink to="/orders">Historial</StyledLink>
-                      </>
-                    ) : (
-                      <StyledLoginLink to="/login">Login</StyledLoginLink>
+                    <StyledCartLink to="/cart">
+                      <p style={{ marginRight: 3 }}>Carrito</p>
+                      <div>{`(${tamañoCarrito()})`}</div>
+                    </StyledCartLink>
+                  </Li>
+                  <Li>
+                    {user !== null && (
+                      <StyledLink to="/orders">Historial</StyledLink>
                     )}
                   </Li>
-                </ContainerNavGroupsHomeAndHistory>
-                <ContainerNavGroupsCartAndTheme>
-                <Li>
-                  <StyledCartLink to="/cart">
-                    <p style={{ marginRight: 3 }}>Carrito</p>
-                    <div>{`(${tamañoCarrito()})`}</div>
-                  </StyledCartLink>
-                </Li>
+                </div>
 
-                <Li>
+                <SpecialLiContainer>
+                  {user !== null ? (
+                    <StyledButton onClick={handleLogout}>
+                      Cerrar sesión
+                    </StyledButton>
+                  ) : (
+                    <StyledLoginLink to="/login">Login</StyledLoginLink>
+                  )}
                   <StyledToggleMode>
                     <StyledInput
                       type="checkbox"
@@ -146,9 +145,7 @@ const BaseNavbar = () => {
                       <StyledBall />
                     </StyledLabel>
                   </StyledToggleMode>
-                </Li>
-                </ContainerNavGroupsCartAndTheme>
-                
+                </SpecialLiContainer>
               </Ul>
             )}
           </Nav>

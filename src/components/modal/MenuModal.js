@@ -1,5 +1,5 @@
 import React from "react";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 import { useCarrito } from "../../context/carritoContext";
 import { ModalCard } from "./styles";
 import { useAuth } from "../../context/authContext";
@@ -11,7 +11,7 @@ import {
   StyledMoon,
   StyledSun,
 } from "../theme-toggle/styles";
-import { Cart, StyledCartLink, StyledLink } from "../navbar/styles";
+import { StyledCartLink, StyledLink } from "../navbar/styles";
 
 const MenuModal = ({ handleModal }) => {
   const { logout, user } = useAuth();
@@ -38,19 +38,21 @@ const MenuModal = ({ handleModal }) => {
           <StyledBall />
         </StyledLabel>
       </ModalToggleModeContainer>
+
       <StyledCartLink to="/cart" onClick={() => handleModal(false)}>
-        <Cart /> <div>{`(${tamañoCarrito()})`}</div>
+        <div>🛒</div>
+        <div>Carrito {`(${tamañoCarrito()})`}</div>
       </StyledCartLink>
 
       {user !== null ? (
         <>
           <StyledLink to="/orders" onClick={handleModal}>
-            Historial
+            🛍️ Tus compras
           </StyledLink>
-          <StyledLink onClick={handleLogout}>Logout</StyledLink>
+          <StyledLink onClick={handleLogout}>👋​ Logout</StyledLink>
         </>
       ) : (
-        <StyledLink to="/login">LOGIN</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
       )}
     </ModalCard>
   );
