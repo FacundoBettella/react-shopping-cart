@@ -39,17 +39,17 @@ const MenuModal = ({ handleModal }) => {
         </StyledLabel>
       </ModalToggleModeContainer>
 
-      <StyledCartLink to="/cart" onClick={() => handleModal(false)}>
+      <StyledCartLink to="/cart" onClick={() => handleModal(false)} style={{width: "100%",fontSize: "2.8vh"}}>
         <div>🛒</div>
         <div>Carrito {`(${tamañoCarrito()})`}</div>
       </StyledCartLink>
 
       {user !== null ? (
         <>
-          <StyledLink to="/orders" onClick={handleModal}>
+          <StyledLink to="/orders" onClick={handleModal} style={{fontSize: "2.8vh"}}>
             🛍️ Tus compras
           </StyledLink>
-          <StyledLink onClick={handleLogout}>👋​ Logout</StyledLink>
+          <StyledLink onClick={handleLogout} style={{fontSize: "2.8vh"}}>👋​ Logout</StyledLink>
         </>
       ) : (
         <StyledLink to="/login">Login</StyledLink>

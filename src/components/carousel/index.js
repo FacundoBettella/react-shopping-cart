@@ -33,7 +33,7 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
               .map((currentProduct, index) => (
                 <SwiperSlide
                   key={currentProduct.id}
-                  style={{ margin: "0px 20px" }}
+                  style={{ margin: deviceSizeState ? "0px 0px" : "0px 20px" }}
                 >
                   <ImgContainer key={`${currentProduct.id}-${index}`}>
                     <Img
