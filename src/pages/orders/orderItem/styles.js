@@ -21,7 +21,7 @@ export const StyledDiv = styled.div`
 
   align-items: center;
 
-  gap: ${(props) => (props.sizeManagment ? "0vh" : "8vh")};
+  gap: ${(props) => (props.sizeManagment ? "0vh" : "5vh")};
   font-size: ${(props) => (props.sizeManagment ? "16px" : "18px")};
   padding: 0.5em 2.5em;
 
@@ -69,14 +69,20 @@ export const StyledDivCarrito = styled.div`
 
 export const ProductImage = styled.img`
   height: ${(props) => (props.sizeManagment ? "100%" : "15vh")};
+  width: ${(props) => (props.sizeManagment ? "40%" : "15%")};
+  margin-right: ${(props) => (props.sizeManagment ? "2em" : "40%")};
   object-fit: cover;
   object-position: center center;
   border-radius: 4px;
-  margin-right: 2em;
+
+  transition: transform .2s;
+  :hover{
+    transform: scale(1.1);
+  }
 `;
 
 export const OrderText = styled.div`
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 export const CarritoText = styled.div`
@@ -89,10 +95,10 @@ export const CarritoText = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  font-size: ${(props) => (props.sizeManagment ? "14px" : "16px")};
+  font-size: ${(props) => (props.sizeManagment ? "14px" : "15px")};
   font-weight: bold;
-  width: ${(props) => (props.sizeManagment ? "100%" : "10%")};
-  height: ${(props) => (props.sizeManagment ? "auto" : "10vh")};
+  width: ${(props) => (props.sizeManagment ? "100%" : "18%")};
+  height: ${(props) => (props.sizeManagment ? "8vh" : "10vh")};
   padding: 0.2em;
   color: var(--text-secondary);
   background-color: var(--accent);
@@ -108,7 +114,7 @@ export const StyledEye = styled(Eye)`
 
 export const StyledBag = styled(BagCheckFill)`
   color: var(--accent);
-  width: 2.2em;
+  width: 8vh;
   padding: 0.1em;
   margin-right: 0.5em;
 `;

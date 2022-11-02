@@ -27,16 +27,23 @@ import {
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
 import useResponsiveSize from "../../hooks/useResponsiveSize";
+import { useNavigate } from "react-router-dom";
 
 const BaseNavbar = () => {
   const { logout, user } = useAuth();
   const { tamañoCarrito } = useCarrito();
   const { toggleTheme, theme } = useThemeContext();
-  
+
   const [showFixed, setShowFixed] = useState(false);
   const [showMenuModal, setShowMenuModal] = useState(false);
+  const navigate = useNavigate();
 
   const [deviceSizeState] = useResponsiveSize();
+
+  const handleGoHome = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
   const handleMenuModal = () => {
     setShowMenuModal(!showMenuModal);
@@ -91,7 +98,11 @@ const BaseNavbar = () => {
               <Ul>
                 <Li style={{ position: "absolute", left: 0 }}>
                   <LogoContainer>
-                    <Logo src={theme === "light" ? logoAlt : logo} alt="logo" />
+                    <Logo
+                      src={theme === "light" ? logoAlt : logo}
+                      alt="logo"
+                      onClick={handleGoHome}
+                    />
                   </LogoContainer>
                 </Li>
                 <Li>
@@ -99,8 +110,8 @@ const BaseNavbar = () => {
                 </Li>
                 <Li>
                   <StyledCartLink to="/cart">
-                    {" "}
-                    <Cart /> <div>{`(${tamañoCarrito()})`}</div>
+                    <p style={{ marginRight: 3 }}>Carrito</p>
+                    <div>{`(${tamañoCarrito()})`}</div>
                   </StyledCartLink>
                 </Li>
 

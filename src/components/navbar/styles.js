@@ -138,6 +138,7 @@ export const LogoContainer = styled.div`
   position: absolute;
   top: 0;
   height: 10vh;
+  cursor: pointer;
 
   &.responsiveLogoContainer {
     position: fixed;

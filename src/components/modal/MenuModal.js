@@ -32,7 +32,7 @@ const MenuModal = ({ handleModal }) => {
           id="checkbox"
           onChange={toggleTheme}
         />
-        <StyledLabel for="checkbox" class="label">
+        <StyledLabel htmlFor="checkbox" className="label">
           <StyledSun />
           <StyledMoon />
           <StyledBall />
