@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
 import { Add } from "@styled-icons/fluentui-system-filled/Add";
 import { Minus } from "@styled-icons/boxicons-regular/Minus";
-import { CarritoContext } from "../../../context/carritoContext";
+import { useCarrito } from "../../../context/carritoContext";
 
 const CartText = styled.div`
   font-size: 2em;
@@ -61,7 +61,7 @@ const StyledButton = styled.button`
 `;
 
 export const CartItem = ({ article }) => {
-  const { agregarAlCarrito, eliminarProductoDelCarrito, decrementarProductoDelCarrito } = useContext(CarritoContext);
+  const { agregarAlCarrito, eliminarProductoDelCarrito, decrementarProductoDelCarrito } = useCarrito();
 
   return (
     <StyledDiv>

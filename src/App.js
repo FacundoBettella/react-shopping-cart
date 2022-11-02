@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
 import {
@@ -26,18 +26,25 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { ThemeContext } from "./context/ThemeContext";
-import { useMediaQuery } from "@mui/material";
-import { deviceSize } from "./utils/viewportSizes";
+import { useThemeContext } from "./context/themeContext";
+import useResponsiveSize from "./hooks/useResponsiveSize";
 
 const App = () => {
-  const { products, loading } = useProducts();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useThemeContext();
   const { user } = useAuth();
+
+  const { products, loading, getProducts } = useProducts();
+  const [deviceSizeState] = useResponsiveSize();
   const { sincronizeItemFunc } = useLocalStorage();
-  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(
-    deviceSize.tablet
-  ); /*TODO: Consumir useMediaQuery en un contexto global */
+
+  useEffect(() => {
+    getProducts("products");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products]);
 
   return (
     <Fragment>
@@ -45,12 +52,12 @@ const App = () => {
       <BrowserRouter>
         <Theme data-theme={theme}>
           <GlobalStyle />
-          <PageContainer sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}>
+          <PageContainer sizeManagment={deviceSizeState}>
             <Navbar />
             <Title
               text={"Shopping Chart"}
               user={user?.email}
-              sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}
+              sizeManagment={deviceSizeState}
             />
             <ChangeAlertWithStorageListener sincronize={sincronizeItemFunc} />
             <Routes>
@@ -66,14 +73,14 @@ const App = () => {
                     />
                     <Searcher param="" />
                     <Products
-                      sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN}
+                      sizeManagment={deviceSizeState}
                       listOfProducts={products}
                       onLoading={() => <Loading loading={loading} />}
                     />
                   </Home>
                 }
               />
-              <Route element={<ProtectedRoute userAuth={user} />} >
+              <Route element={<ProtectedRoute userAuth={user} />}>
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route
                   path="search/:filter"
@@ -83,18 +90,16 @@ const App = () => {
                 />
                 <Route
                   path="/productdetail"
-                  element={
-                    <Detail sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN} />
-                  }
+                  element={<Detail sizeManagment={deviceSizeState} />}
                 />
                 <Route
                   path="/cart"
-                  element={<Cart sizeManagment={DEVICE_TABLE_QUERY_BOOLEAN} />}
+                  element={<Cart sizeManagment={deviceSizeState} />}
                 />
               </Route>
             </Routes>
           </PageContainer>
-          {!DEVICE_TABLE_QUERY_BOOLEAN && <Footer />}
+          {!deviceSizeState && <Footer />}
         </Theme>
       </BrowserRouter>
     </Fragment>

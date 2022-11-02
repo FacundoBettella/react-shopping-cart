@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { CarritoContext } from "../../../context/carritoContext";
+import React from "react";
+import { useCarrito } from "../../../context/carritoContext";
 import { CartPrice, CartText, Quantity, StyledAdd, StyledButton, StyledDelete, StyledDiv, StyledMinus } from "./styles";
 
 const ResponsiveCartItem = ({ article }) => {
@@ -7,8 +7,7 @@ const ResponsiveCartItem = ({ article }) => {
     agregarAlCarrito,
     eliminarProductoDelCarrito,
     decrementarProductoDelCarrito,
-  } = useContext(CarritoContext);
-
+  } = useCarrito();
 
 
   return (

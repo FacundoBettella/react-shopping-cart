@@ -6,11 +6,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Img, ImgContainer, Banner, Ptext } from "./styles";
-import { useMediaQuery } from "@mui/material";
-import { deviceSize } from "../../utils/viewportSizes";
+import useResponsiveSize from "../../hooks/useResponsiveSize";
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
-  const DEVICE_TABLE_QUERY_BOOLEAN = useMediaQuery(deviceSize.tablet);
+  const [deviceSizeState] = useResponsiveSize();
 
   return (
     <Fragment>
@@ -18,9 +17,9 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
         onLoading()
       ) : (
         <Swiper
-          slidesPerView={DEVICE_TABLE_QUERY_BOOLEAN ? 1 : 4}
-          spaceBetween={DEVICE_TABLE_QUERY_BOOLEAN ? 0 : 2}
-          slidesPerGroup={DEVICE_TABLE_QUERY_BOOLEAN ? 1 : 2}
+          slidesPerView={deviceSizeState ? 1 : 4}
+          spaceBetween={deviceSizeState ? 0 : 2}
+          slidesPerGroup={deviceSizeState ? 1 : 2}
           loop={true}
           loopFillGroupWithBlank={true}
           pagination={{
@@ -33,8 +32,8 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
             listOfProducts
               .filter((product) => product.stock > 0)
               .map((currentProduct, index) => (
-                <SwiperSlide key={index.toString()}>
-                  <ImgContainer>
+                <SwiperSlide key={currentProduct.id}>
+                  <ImgContainer key={`${currentProduct.id}-${index}`}>
                     <Img
                       src={currentProduct.image}
                       alt={currentProduct.title}

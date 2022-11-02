@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useCustomLazyLoading } from "../../hooks/useCustomLazyLoading";
 import {
   Article,
@@ -12,7 +12,7 @@ import {
   ProductSubtitle,
   ProductTitle,
 } from "./styles";
-import { CarritoContext } from "../../context/carritoContext";
+import { useCarrito } from "../../context/carritoContext";
 
 export const Product = ({
   title,
@@ -23,6 +23,7 @@ export const Product = ({
   image,
   id
 }) => {
+  const { agregarAlCarrito } = useCarrito();
   const [show, element] = useCustomLazyLoading();
 
   const currentProduct = {
@@ -35,17 +36,8 @@ export const Product = ({
     id: `${id}`,
   };
 
-  const {
-    // vaciarCarrito,
-    // eliminarProductoDelCarrito,
-    // carrito,
-    agregarAlCarrito,
-  } = useContext(CarritoContext);
-
   const handleAddClick = () => {
     agregarAlCarrito(currentProduct);
-    //console.log(carrito);
-    //console.log(currentProduct);
   };
 
   return (

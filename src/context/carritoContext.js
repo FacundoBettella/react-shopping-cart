@@ -1,6 +1,12 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 export const CarritoContext = createContext();
+
+export const useCarrito = () => {
+  const carritoContext = useContext(CarritoContext);
+  if (!carritoContext) throw new Error("There is not carrito provider");
+  return carritoContext;
+};
 
 export const CarritoProvider = ({children}) => {
   const [carrito,setCarrito] = useState([]);

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { Logo, LogoContainer } from "../navbar/styles";
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
@@ -6,14 +6,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuModal from "../modal/MenuModal";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 
 export const NavbarResponsive = ({
   responsiveBoolean,
   handleModal,
   showModal,
 }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useThemeContext();
   const navigate = useNavigate();
 
   const handleMenuModal = () => {

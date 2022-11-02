@@ -44,8 +44,8 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductDescription = styled.div`
-  margin: 10px;
-  width: 200px;
+  margin: 5px;
+  width: 240px;
   height: 55px;
 `;
 
@@ -53,16 +53,18 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 25px auto;
-`
+  margin: 15px auto;
+`;
+
 export const Button = styled.button`
-  border: none;
+  width: 50%;
+  border: 1px solid var(--white);
   color: ${(props) => (props.disabled ? "var(--grey)" : "var(--accent)")};
-  padding: 15px 32px;
+  padding: ${(props) => (props.disabled ? "12px 20px" : "15px 32px")};
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: ${(props) => (props.disabled ? "14px" : "16px")};
   font-weight: 600;
   margin: 4px 2px;
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
@@ -80,18 +82,20 @@ export const Button = styled.button`
 `;
 
 export const ButtonsContainer = styled.div`
-  margin: 20px 0px;
+  display: flex;
+  margin: 0px 0px;
 `;
 
 export const Linkstyled = styled(Link)`
-  border: none;
+  width: 50%;
+  border: 1px solid var(--white);
   color: var(--mainColor);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px 5px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);

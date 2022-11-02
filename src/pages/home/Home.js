@@ -16,7 +16,7 @@ const Home = ({ children, loading }) => {
     */
 
   return (
-    <section>
+    <section style={{ minHeight: "90vh"}}>
         {
             Children
                 .toArray(children)

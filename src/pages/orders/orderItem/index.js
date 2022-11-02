@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
-import { CarritoContext } from "../../../context/carritoContext";
+import React, { useState } from "react";
+import { useCarrito } from "../../../context/carritoContext";
+import useResponsiveSize from "../../../hooks/useResponsiveSize";
 import {
   OrderText,
   StyledButton,
@@ -14,13 +15,16 @@ import {
 } from "./styles";
 
 export const OrderItem = ({ order }) => {
+  const { cargarCarritoHistorico } = useCarrito();
+  const [deviceSizeState] = useResponsiveSize("(max-width: 800px)");
+
   const [expanded, setExpanded] = useState(false);
+
+  const currency = "ARS";
+
   const toggleExpanded = () => {
     expanded ? setExpanded(false) : setExpanded(true);
   };
-  const { cargarCarritoHistorico } = useContext(CarritoContext);
-
-  const currency = "ARS";
 
   const parseItemPrice = (product) => {
     return (
@@ -30,9 +34,9 @@ export const OrderItem = ({ order }) => {
 
   return (
     <StyledDivContainer>
-      <StyledDiv>
+      <StyledDiv sizeManagment={deviceSizeState}>
         <OrderText>
-          <StyledBag></StyledBag>
+          <StyledBag />
           {order.date}
         </OrderText>
         <OrderText>{`${order.carrito.length} Items`}</OrderText>
@@ -45,36 +49,31 @@ export const OrderItem = ({ order }) => {
           .toFixed(2)
           .replace(".", ",")
           .replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${currency}`}</OrderText>
-        <StyledButton onClick={toggleExpanded}>
+        <StyledButton onClick={toggleExpanded} sizeManagment={deviceSizeState}>
           <StyledEye />
         </StyledButton>
         <StyledButton
           onClick={() => cargarCarritoHistorico(order.carrito)}
-          style={{ marginLeft: "auto" }}
+          sizeManagment={deviceSizeState}
         >
           Volver a Comprar
         </StyledButton>
       </StyledDiv>
       {expanded ? (
-        <StyledDivDetails>
+        <StyledDivDetails sizeManagment={deviceSizeState}>
           {order.carrito.map((carritoItem, i) => (
-            <StyledDivCarrito key={`${i}-${i}-${carritoItem.shortDescription}`}>
-              <ProductImage src={carritoItem.image} alt={carritoItem.title} />
-              <CarritoText style={{ width: "50%" }}>
+            <StyledDivCarrito
+              key={`${i}-${i}-${carritoItem.shortDescription}`}
+              sizeManagment={deviceSizeState}
+            >
+              <ProductImage
+                src={carritoItem.image}
+                alt={carritoItem.title}
+                sizeManagment={deviceSizeState}
+              />
+              <CarritoText style={{ width: "100%" }} sizeManagment={deviceSizeState}>
                 {carritoItem.shortDescription}
               </CarritoText>
-              <CarritoText style={{ width: "20%" }}>{`${parseItemPrice(
-                carritoItem
-              )
-                .toFixed(2)
-                .replace(".", ",")
-                .replace(
-                  /\B(?=(\d{3})+(?!\d))/g,
-                  "."
-                )} ${currency}`}</CarritoText>
-              <OrderText style={{ marginLeft: "auto" }}>
-                {carritoItem.quantity}
-              </OrderText>
             </StyledDivCarrito>
           ))}
         </StyledDivDetails>

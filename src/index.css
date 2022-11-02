@@ -40,8 +40,7 @@
 .swal-button {
   font-size: 18px !important;
   background-color: var(--secondary);
-  border-left-color: var(--grey);
-  border-right-color:  var(--grey);
+  color: var(--white);
 }
 
 .swal-button:hover {

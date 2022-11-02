@@ -3,8 +3,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { AuthProvider } from "./context/authContext";
 import { CarritoProvider } from "./context/carritoContext";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "./context/themeContext";
 import "./index.css";
+
+
+/* TODO Mejorar => 
+  historial: logo bolsa y botones demasiado grandes en modo laptop. 
+*/
 
 /* After React v18.0.0 */
 var container = document.getElementById("root");

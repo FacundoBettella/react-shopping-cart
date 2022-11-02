@@ -26,15 +26,13 @@ const useLocalStorage = (itemName, initialValue = "") => {
   const saveNewItem = (itemName, itemValue) => {
     try {
       const localStorageItem = localStorage.getItem(itemName);
-      let parsedItem = JSON.stringify(itemValue)
-
+      let parsedItem = JSON.stringify(itemValue);
 
       if (!localStorageItem) {
         localStorage.setItem(itemName, parsedItem);
-      } 
-      else {
-        localStorage.setItem(itemName, parsedItem)
-        parsedItem = itemValue; 
+      } else {
+        localStorage.setItem(itemName, parsedItem);
+        parsedItem = itemValue;
       }
 
       onSuccess(parsedItem);
@@ -46,7 +44,7 @@ const useLocalStorage = (itemName, initialValue = "") => {
 
   const sincronizeItemFunc = () => onSincronize(false);
 
-  useEffect(()=>{}, [ sicronizedItem])
+  useEffect(() => {}, [sicronizedItem]);
 
   return {
     item,

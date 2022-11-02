@@ -1,7 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const ThemeContext = createContext();
+
+export const useThemeContext = () => {
+  const themeContext = useContext(ThemeContext);
+  if (!themeContext) throw new Error("There is not theme provider");
+  return themeContext;
+};
 
 export const ThemeProvider = ({ children }) => {
   let initialTheme;
