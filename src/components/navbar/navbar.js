@@ -15,6 +15,8 @@ import {
   Ul,
   Logo,
   LogoContainer,
+  ContainerNavGroupsHomeAndHistory,
+  ContainerNavGroupsCartAndTheme,
 } from "./styles";
 import {
   StyledBall,
@@ -99,9 +101,24 @@ const BaseNavbar = () => {
                     <Logo src={theme === "light" ? logoAlt : logo} alt="logo" />
                   </LogoContainer>
                 </Li>
-                <Li>
-                  <StyledLink to="/">Home</StyledLink>
-                </Li>
+                <ContainerNavGroupsHomeAndHistory>
+                  <Li>
+                    <StyledLink to="/">Home</StyledLink>
+                  </Li>
+                  <Li>
+                    {user !== null ? (
+                      <>
+                        <StyledButton onClick={handleLogout}>
+                          Cerrar sesión
+                        </StyledButton>
+                        <StyledLink to="/orders">Historial</StyledLink>
+                      </>
+                    ) : (
+                      <StyledLoginLink to="/login">Login</StyledLoginLink>
+                    )}
+                  </Li>
+                </ContainerNavGroupsHomeAndHistory>
+                <ContainerNavGroupsCartAndTheme>
                 <Li>
                   <StyledCartLink to="/cart">
                     {" "}
@@ -109,18 +126,6 @@ const BaseNavbar = () => {
                   </StyledCartLink>
                 </Li>
 
-                <Li>
-                  {user !== null ? (
-                    <>
-                      <StyledButton onClick={handleLogout}>
-                        Cerrar sesión
-                      </StyledButton>
-                      <StyledLink to="/orders">Historial</StyledLink>
-                    </>
-                  ) : (
-                    <StyledLoginLink to="/login">Login</StyledLoginLink>
-                  )}
-                </Li>
                 <Li>
                   <StyledToggleMode>
                     <StyledInput
@@ -136,6 +141,8 @@ const BaseNavbar = () => {
                     </StyledLabel>
                   </StyledToggleMode>
                 </Li>
+                </ContainerNavGroupsCartAndTheme>
+                
               </Ul>
             )}
           </Nav>
