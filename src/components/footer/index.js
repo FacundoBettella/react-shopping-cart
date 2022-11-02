@@ -9,7 +9,7 @@ import {
 import { SiInstagram, SiFacebook, SiLinkedin, SiGmail } from "react-icons/si";
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
-import { useThemeContext } from "../../context/themeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export const Footer = () => {
   const { theme } = useThemeContext();

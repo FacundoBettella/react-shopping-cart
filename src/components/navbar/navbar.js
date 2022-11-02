@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { useCarrito } from "../../context/carritoContext";
-import { useThemeContext } from "../../context/themeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,
@@ -15,6 +15,8 @@ import {
   Ul,
   Logo,
   LogoContainer,
+  ContainerNavGroupsHomeAndHistory,
+  ContainerNavGroupsCartAndTheme,
 } from "./styles";
 import {
   StyledBall,
@@ -105,9 +107,24 @@ const BaseNavbar = () => {
                     />
                   </LogoContainer>
                 </Li>
-                <Li>
-                  <StyledLink to="/">Home</StyledLink>
-                </Li>
+                <ContainerNavGroupsHomeAndHistory>
+                  <Li>
+                    <StyledLink to="/">Home</StyledLink>
+                  </Li>
+                  <Li>
+                    {user !== null ? (
+                      <>
+                        <StyledButton onClick={handleLogout}>
+                          Cerrar sesión
+                        </StyledButton>
+                        <StyledLink to="/orders">Historial</StyledLink>
+                      </>
+                    ) : (
+                      <StyledLoginLink to="/login">Login</StyledLoginLink>
+                    )}
+                  </Li>
+                </ContainerNavGroupsHomeAndHistory>
+                <ContainerNavGroupsCartAndTheme>
                 <Li>
                   <StyledCartLink to="/cart">
                     <p style={{ marginRight: 3 }}>Carrito</p>
@@ -115,18 +132,6 @@ const BaseNavbar = () => {
                   </StyledCartLink>
                 </Li>
 
-                <Li>
-                  {user !== null ? (
-                    <>
-                      <StyledButton onClick={handleLogout}>
-                        Cerrar sesión
-                      </StyledButton>
-                      <StyledLink to="/orders">Historial</StyledLink>
-                    </>
-                  ) : (
-                    <StyledLoginLink to="/login">Login</StyledLoginLink>
-                  )}
-                </Li>
                 <Li>
                   <StyledToggleMode>
                     <StyledInput
@@ -142,6 +147,8 @@ const BaseNavbar = () => {
                     </StyledLabel>
                   </StyledToggleMode>
                 </Li>
+                </ContainerNavGroupsCartAndTheme>
+                
               </Ul>
             )}
           </Nav>

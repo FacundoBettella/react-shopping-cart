@@ -39,7 +39,7 @@ export const Ul = styled.ul`
   height: 10vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   background: var(--accent);
 
   &.customFixed {
@@ -55,6 +55,20 @@ export const Li = styled.li`
   padding: .7em;
   color: var(--text-secondary);
 `;
+
+export const ContainerNavGroupsHomeAndHistory = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 40em;
+`
+
+export const ContainerNavGroupsCartAndTheme = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+`
 
 export const Cart = styled(ShoppingCart)`
   color: var(--text-secondary);

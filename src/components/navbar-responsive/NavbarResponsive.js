@@ -6,7 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuModal from "../modal/MenuModal";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
-import { useThemeContext } from "../../context/themeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export const NavbarResponsive = ({
   responsiveBoolean,

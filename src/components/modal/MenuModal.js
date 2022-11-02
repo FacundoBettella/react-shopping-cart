@@ -1,5 +1,5 @@
 import React from "react";
-import { useThemeContext } from "../../context/themeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 import { useCarrito } from "../../context/carritoContext";
 import { ModalCard } from "./styles";
 import { useAuth } from "../../context/authContext";
