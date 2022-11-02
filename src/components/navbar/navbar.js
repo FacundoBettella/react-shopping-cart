@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { useCarrito } from "../../context/carritoContext";
-import { useThemeContext } from "../../context/themeContext";
+import { useThemeContext } from "../../context/ThemeContext";
 import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,

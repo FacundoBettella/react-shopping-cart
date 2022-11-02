@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { AuthProvider } from "./context/authContext";
 import { CarritoProvider } from "./context/carritoContext";
-import { ThemeProvider } from "./context/themeContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import "./index.css";
 
 

@@ -26,7 +26,7 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useThemeContext } from "./context/themeContext";
+import { useThemeContext } from "./context/ThemeContext";
 import useResponsiveSize from "./hooks/useResponsiveSize";
 
 const App = () => {
