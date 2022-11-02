@@ -14,11 +14,11 @@ const ChangeStorageAlert = ({ show, toggleShow }) => {
         <button
           style={{
             margin: "7px",
-            padding: "7px",
+            padding: "5px",
             cursor: "pointer",
             borderRadius: "4px",
-            color: "var(--mainColor)",
-            border: "1px solid var(--mainColor)"
+            color: "var(--accent)",
+            border: "1px solid var(--accent)",
           }}
           onClick={() => toggleShow(false)}
         >

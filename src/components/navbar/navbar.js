@@ -108,20 +108,20 @@ const BaseNavbar = () => {
                 </Li>
 
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <Li>
+                  <Li hoverBorder={true}>
                     <StyledLink to="/">Home</StyledLink>
                   </Li>
-                  <Li>
+                  <Li hoverBorder={true}>
                     <StyledCartLink to="/cart">
                       <p style={{ marginRight: 3 }}>Carrito</p>
                       <div>{`(${tamañoCarrito()})`}</div>
                     </StyledCartLink>
                   </Li>
-                  <Li>
-                    {user !== null && (
+                  {user !== null && (
+                    <Li hoverBorder={true}>
                       <StyledLink to="/orders">Historial</StyledLink>
-                    )}
-                  </Li>
+                    </Li>
+                  )}
                 </div>
 
                 <SpecialLiContainer>

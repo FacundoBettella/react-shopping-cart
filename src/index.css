@@ -11,12 +11,12 @@
 
 .swiper {
     width: 98%;
-    height: 35vh;
-  }
+    height: 48vh;
+}
   
 .swiper-slide {
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   color: var(--lightBlack);
 }
   
@@ -34,11 +34,11 @@
 }
   
 .swiper-pagination {
-  top: 30vh;
+  top: 40vh;
 }
 
 .swal-button {
-  font-size: 18px !important;
+  font-size: 20px !important;
   background-color: var(--secondary);
   color: var(--white);
 }

@@ -13,6 +13,10 @@ const withStorageListener = (WrappedComponent) => {
           console.log("Hubo cambios en ", change.key);
           setStorageChange(true);
         }
+        else if (change.key === "theme") {
+          console.log("Hubo cambios en ", change.key);
+          setStorageChange(true);
+        }
       };
 
       window.addEventListener("storage", onChange);

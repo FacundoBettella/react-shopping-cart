@@ -20,11 +20,13 @@ export const ProductContainer = styled.div`
   padding: 10px;
   border: 1px solid white;
 `;
+
 export const ProductTitle = styled.h1`
   height: 60px;
 `;
 
 export const ProductSubtitle = styled.h2``;
+
 export const ImageContainer = styled.div`
   height: 200px;
   width: 225px;
@@ -41,6 +43,7 @@ export const ProductImage = styled.img`
   min-height: 80px;
   max-width: 100%;
   max-height: 90%;
+  opacity: ${(props) => props.stock === 0 && "0.1"};
 `;
 
 export const ProductDescription = styled.div`

@@ -56,12 +56,11 @@ export const Ul = styled.ul`
 export const Li = styled.li`
   padding: 0.8em;
   color: var(--text-secondary);
-  border-bottom: 1px solid transparent;
+  border-bottom: ${(props) => props.hoverBorder && "1px solid transparent"};
 
-
-:hover {
-  border-bottom: 1px solid var(--accent);
-}
+  :hover {
+    border-bottom: ${(props) => props.hoverBorder && "1px solid var(--accent)"};
+  }
 `;
 
 export const SpecialLiContainer = styled.li`

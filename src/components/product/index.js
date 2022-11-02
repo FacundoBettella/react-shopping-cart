@@ -43,12 +43,13 @@ export const Product = ({
   return (
     <Article ref={element}>
       {show && (
-        <ProductContainer>
+        <ProductContainer stock={stock}>
           <ProductTitle>{title}</ProductTitle>
           <ImageContainer>
             <ProductImage
               src={image}
               alt={title}
+              stock={stock}
             />
           </ImageContainer>
           <ProductDescription>{shortDescription}</ProductDescription>

@@ -18,10 +18,9 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
       ) : (
         <Swiper
           slidesPerView={deviceSizeState ? 1 : 4}
-          spaceBetween={deviceSizeState ? 0 : 2}
-          slidesPerGroup={deviceSizeState ? 1 : 2}
+          slidesPerGroup={deviceSizeState ? 1 : 4}
+          spaceBetween={deviceSizeState ? 0 : 30}
           loop={true}
-          loopFillGroupWithBlank={true}
           pagination={{
             clickable: true,
           }}
@@ -32,7 +31,10 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
             listOfProducts
               .filter((product) => product.stock > 0)
               .map((currentProduct, index) => (
-                <SwiperSlide key={currentProduct.id}>
+                <SwiperSlide
+                  key={currentProduct.id}
+                  style={{ margin: "0px 20px" }}
+                >
                   <ImgContainer key={`${currentProduct.id}-${index}`}>
                     <Img
                       src={currentProduct.image}
