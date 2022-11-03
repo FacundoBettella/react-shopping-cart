@@ -24,8 +24,8 @@ export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
   const [cartId, setCartId] = useState("");
   const [, setLoading] = useState(true);
+
   const { user } = useAuth();
-  
   const { saveNewItem } = useLocalStorage();
  
 
@@ -65,7 +65,7 @@ export const CarritoProvider = ({ children }) => {
         newCarrito[existingProductIndex].quantity += 1;
       }
       updateCart(newCarrito); //Seteo la copia como el nuevo carrito
-      saveNewItem("carrito", newCarrito) // Seteo en el local el carrito actual.
+      saveNewItem("carrito", newCarrito) // Seteo en el localStorage el carrito actual.
     } else {
       console.log("No se puede agregar al carrito por falta de stock!!! ");
     }
