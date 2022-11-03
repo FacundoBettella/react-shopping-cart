@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
+import { useAuth } from "./authContext";
+import { collection, getDocs, updateDoc,addDoc,doc,query,where } from "firebase/firestore";
+import { FIRESTONE } from "./../firebase/firebase.config";
 
 export const CarritoContext = createContext();
 
@@ -10,12 +13,33 @@ export const useCarrito = () => {
 
 export const CarritoProvider = ({children}) => {
   const [carrito,setCarrito] = useState([]);
+  const [cartId, setCartId] = useState("");
+  const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
+
+  const readCart = async () => {
+    const cartRef = collection(FIRESTONE, "carts");
+    const result = await getDocs(query(cartRef, where('userEmail', '==', user.email)));
+    console.log(user.email);
+    if(result.docs.length === 0){
+      createEmptyCart();
+    }else{
+      const cartData = result.docs[0].data().cart; 
+      console.log(cartData);
+      if(cartData.length !==0)
+        setCarrito(cartData);
+      console.log(result.docs[0].id);
+      setCartId(result.docs[0].id);
+    }
+    setLoading(false);
+  };
 
   const tamañoCarrito = () => {
     return carrito.reduce((acc,product)=>acc + product.quantity,0); //Devuelvo el tamaño del carrito para mostrar por pantalla si es necesario
   }
 
   const agregarAlCarrito = (producto)=>{
+    setLoading(true);
     if(parseInt(producto.stock)>=0){
         const newCarrito = [...carrito]; //Hago una copia del carrito actual
         let existingProductIndex = newCarrito.findIndex(p => p.id === producto.id);
@@ -26,7 +50,7 @@ export const CarritoProvider = ({children}) => {
         }else if(producto.stock>newCarrito[existingProductIndex].quantity){
           newCarrito[existingProductIndex].quantity +=1 ;
         }
-        setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
+        updateCart(newCarrito); //Seteo la copia como el nuevo carrito
     }
     else {
         console.log("No se puede agregar al carrito por falta de stock!!! ");
@@ -44,7 +68,7 @@ export const CarritoProvider = ({children}) => {
 
   const eliminarProductoDelCarrito = (producto)=>{
     const newCarrito = carrito.filter(item => item.id !== producto.id)
-    setCarrito(newCarrito);
+    updateCart(newCarrito);
   }
 
   const decrementarProductoDelCarrito = (producto)=>{
@@ -53,12 +77,40 @@ export const CarritoProvider = ({children}) => {
     if(existingProductIndex>-1 && newCarrito[existingProductIndex].quantity>1){
       newCarrito[existingProductIndex].quantity -=1 ;
     }
-    setCarrito(newCarrito); //Seteo la copia como el nuevo carrito
+    updateCart(newCarrito); //Seteo la copia como el nuevo carrito
   }
 
   const vaciarCarrito = ()=>{
-    setCarrito([]); //Seteo el carrito con un arreglo vacio para volverlo a su estado inicial.
+    updateCart([]);
+    //setCarrito([]); //Seteo el carrito con un arreglo vacio para volverlo a su estado inicial.
   }
+
+  const createEmptyCart = async () => {
+    const userEmail = user.email;
+    const cart = [];
+    const cartRef = collection(FIRESTONE, "carts");
+    try {
+      const res = await addDoc(cartRef, {userEmail, cart});
+      console.log(res.id);
+      setCartId(res.id);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const updateCart = async (updatedCart) => {
+    const cart = updatedCart;
+    const cartsRef = collection(FIRESTONE, "carts");
+    try {
+      await updateDoc(doc(cartsRef,cartId), {cart});
+      setLoading(false);
+      setCarrito(updatedCart);
+      console.log(updatedCart);
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+    }
+  };
 
   return (
     <CarritoContext.Provider value={{
@@ -68,7 +120,8 @@ export const CarritoProvider = ({children}) => {
         decrementarProductoDelCarrito,
         cargarCarritoHistorico,
         tamañoCarrito, 
-        carrito
+        carrito,
+        readCart
     }}>
       {children}
     </CarritoContext.Provider>

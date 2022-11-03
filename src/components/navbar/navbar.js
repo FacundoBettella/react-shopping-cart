@@ -32,7 +32,7 @@ import useResponsiveSize from "../../hooks/useResponsiveSize";
 
 const BaseNavbar = () => {
   const { logout, user } = useAuth();
-  const { tamañoCarrito } = useCarrito();
+  const { tamañoCarrito ,readCart} = useCarrito();
   const { toggleTheme, theme } = useThemeContext();
   
   const [showFixed, setShowFixed] = useState(false);
@@ -65,6 +65,11 @@ const BaseNavbar = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [document.addEventListener("scroll", onScroll)]);
+
+  useEffect(() => {
+    if(user) readCart();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   const renderNav = (fixed) => {
     return (

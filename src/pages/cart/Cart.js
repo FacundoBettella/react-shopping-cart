@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useEffect} from "react";
 import { FIRESTONE } from "../../firebase/firebase.config";
 import { Layout } from "../../components";
 import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = ({ sizeManagment }) => {
   const { user } = useAuth();
-  const { tamañoCarrito, carrito, vaciarCarrito } = useCarrito();
+  const { tamañoCarrito, carrito, vaciarCarrito ,readCart} = useCarrito();
   const navigate = useNavigate();
 
   const createNewOrder = async () => {
@@ -73,6 +73,11 @@ const Cart = ({ sizeManagment }) => {
     vaciarCarrito();
     swal("¡Tu compra ha sido un éxito!", "", "success");
   };
+
+  useEffect(() => {
+    readCart();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Fragment>
