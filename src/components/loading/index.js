@@ -6,7 +6,7 @@ const Loading = ({ loading = true, LoadingSize = 80}) => {
 
   return (
     <LoaderContainer>
-        <ClipLoader color={"var(--mainColor)"} loading={loading} size={LoadingSize} />
+        <ClipLoader color={"var(--accent)"} loading={loading} size={LoadingSize} />
     </LoaderContainer>
   )
 }

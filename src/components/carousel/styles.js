@@ -10,7 +10,6 @@ export const ImgContainer = styled.div`
   height: 30vh;
   padding: 20px 16px;
   margin: 0px auto;
-
 `;
 
 export const Banner = styled.div`
@@ -20,8 +19,8 @@ export const Banner = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 330px;
-  height: 2em;
+  width: 75%;
+  height: 3.5em;
   background-color: var(--accent);
   border-radius: 5px;
   color: var(--text-secondary);
@@ -29,9 +28,8 @@ export const Banner = styled.div`
 
 export const Img = styled.img`
   border-radius: 4px;
-  box-shadow: 2px 2px 5px var(--grey);
   min-width: 350px;
-  min-height: 225px;
+  min-height: 30vh;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

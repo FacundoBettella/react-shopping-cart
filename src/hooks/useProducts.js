@@ -19,7 +19,7 @@ const useProducts = () => {
     getProducts("products");
   }, []);
 
-  return { products, loading, getProducts };
+  return { products, setProducts, loading, getProducts };
 };
 
 export default useProducts;

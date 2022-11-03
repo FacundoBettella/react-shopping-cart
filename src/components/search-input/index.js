@@ -33,6 +33,7 @@ export const Searcher = (props) => {
         onChange={handleChange}
         value={inputValue}
         onKeyDown={handleKeyDown}
+        placeholder="Buscar producto..."
       />
       <SearchButton
         onClick={() => {

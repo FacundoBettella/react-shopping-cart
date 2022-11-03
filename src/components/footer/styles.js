@@ -10,12 +10,13 @@ export const ContenedorFooter = styled.footer`
   justify-content: space-evenly;
 
   color: var(--text-secondary);
-  background: var(--accent);
+  background: var(--navbar-background);
 `;
 
 export const Columna = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center
 `;
 
 export const InfoContainer = styled.div`
@@ -36,6 +37,4 @@ export const Logo = styled.img`
   width: 125px;
   height: 110px;
   border-radius: 4px;
-  filter: contrast(80%);
-  filter: brightness(2.0);
 `;

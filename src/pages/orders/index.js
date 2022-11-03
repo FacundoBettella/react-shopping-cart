@@ -3,7 +3,7 @@ import { useGetUserPurchaseOrders } from "../../hooks/useGetUserPurchaseOrders";
 import { OrderItem } from "./orderItem";
 import { OrdersItemsContainer, Title } from "./styles";
 import { useAuth } from "../../context/authContext";
-import { Loading } from "../../components";
+import { Layout, Loading } from "../../components";
 
 export const OrderHistory = () => {
   const { user } = useAuth();
@@ -19,8 +19,9 @@ export const OrderHistory = () => {
 
   return (
     <div style={styles}>
+      <Layout title="Mi Historial"/>
       <OrdersItemsContainer>
-        <Title>Mi historial de compras</Title>
+        <Title>MIS COMPRAS</Title>
         {loading ? (
           <Loading loading={loading} />
         ) : (

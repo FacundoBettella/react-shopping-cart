@@ -1,5 +1,5 @@
 import React from "react";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 import { useCarrito } from "../../context/carritoContext";
 import { ModalCard } from "./styles";
 import { useAuth } from "../../context/authContext";
@@ -11,7 +11,7 @@ import {
   StyledMoon,
   StyledSun,
 } from "../theme-toggle/styles";
-import { Cart, StyledCartLink, StyledLink } from "../navbar/styles";
+import { StyledCartLink, StyledLink } from "../navbar/styles";
 
 const MenuModal = ({ handleModal }) => {
   const { logout, user } = useAuth();
@@ -32,25 +32,27 @@ const MenuModal = ({ handleModal }) => {
           id="checkbox"
           onChange={toggleTheme}
         />
-        <StyledLabel for="checkbox" class="label">
+        <StyledLabel htmlFor="checkbox" className="label">
           <StyledSun />
           <StyledMoon />
           <StyledBall />
         </StyledLabel>
       </ModalToggleModeContainer>
-      <StyledCartLink to="/cart" onClick={() => handleModal(false)}>
-        <Cart /> <div>{`(${tamañoCarrito()})`}</div>
+
+      <StyledCartLink to="/cart" onClick={() => handleModal(false)} style={{width: "100%",fontSize: "2.8vh"}}>
+        <div>🛒</div>
+        <div>Carrito {`(${tamañoCarrito()})`}</div>
       </StyledCartLink>
 
       {user !== null ? (
         <>
-          <StyledLink to="/orders" onClick={handleModal}>
-            Historial
+          <StyledLink to="/orders" onClick={handleModal} style={{fontSize: "2.8vh"}}>
+            🛍️ Tus compras
           </StyledLink>
-          <StyledLink onClick={handleLogout}>Logout</StyledLink>
+          <StyledLink onClick={handleLogout} style={{fontSize: "2.8vh"}}>👋​ Logout</StyledLink>
         </>
       ) : (
-        <StyledLink to="/login">LOGIN</StyledLink>
+        <StyledLink to="/login">Login</StyledLink>
       )}
     </ModalCard>
   );

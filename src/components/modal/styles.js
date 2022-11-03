@@ -10,13 +10,14 @@ export const ModalCard = styled.div`
 
   display: flex;
   flex-direction: column;
-  font-size: 2vh;
-  width: 30%;
+  width: 40%;
   height: 30vh;
   justify-content: space-evenly;
   align-items: center;
+  font-size: 1vh;
 
   background: var(--accent);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   border-radius: 4px;
+  
 `;

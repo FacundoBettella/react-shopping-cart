@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useAuth } from "../../context/authContext";
 import { useCarrito } from "../../context/carritoContext";
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../context/themeContext";
 import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
 import {
   Cart,
@@ -15,8 +15,7 @@ import {
   Ul,
   Logo,
   LogoContainer,
-  ContainerNavGroupsHomeAndHistory,
-  ContainerNavGroupsCartAndTheme,
+  SpecialLiContainer,
 } from "./styles";
 import {
   StyledBall,
@@ -29,16 +28,23 @@ import {
 import logo from "../../assets/logo/shopping.png";
 import logoAlt from "../../assets/logo/shopping_alt.png";
 import useResponsiveSize from "../../hooks/useResponsiveSize";
+import { useNavigate } from "react-router-dom";
 
 const BaseNavbar = () => {
   const { logout, user } = useAuth();
   const { tamañoCarrito ,readCart} = useCarrito();
   const { toggleTheme, theme } = useThemeContext();
-  
+
   const [showFixed, setShowFixed] = useState(false);
   const [showMenuModal, setShowMenuModal] = useState(false);
+  const navigate = useNavigate();
 
   const [deviceSizeState] = useResponsiveSize();
+
+  const handleGoHome = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
 
   const handleMenuModal = () => {
     setShowMenuModal(!showMenuModal);
@@ -82,7 +88,7 @@ const BaseNavbar = () => {
             showModal={showMenuModal}
           />
         ) : (
-          /* FIXED Cart NAV  */
+          /* FIXED CART NAV  */
           <Nav className={fixed ? "customFixed" : ""}>
             {fixed ? (
               <Ul className="customFixed">
@@ -94,39 +100,43 @@ const BaseNavbar = () => {
                 </Li>
               </Ul>
             ) : (
-              /* Normal NAV  */
+              /* NORMAL NAV  */
               <Ul>
                 <Li style={{ position: "absolute", left: 0 }}>
                   <LogoContainer>
-                    <Logo src={theme === "light" ? logoAlt : logo} alt="logo" />
+                    <Logo
+                      src={theme === "light" ? logoAlt : logo}
+                      alt="logo"
+                      onClick={handleGoHome}
+                    />
                   </LogoContainer>
                 </Li>
-                <ContainerNavGroupsHomeAndHistory>
-                  <Li>
+
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Li hoverBorder={true}>
                     <StyledLink to="/">Home</StyledLink>
                   </Li>
-                  <Li>
-                    {user !== null ? (
-                      <>
-                        <StyledButton onClick={handleLogout}>
-                          Cerrar sesión
-                        </StyledButton>
-                        <StyledLink to="/orders">Historial</StyledLink>
-                      </>
-                    ) : (
-                      <StyledLoginLink to="/login">Login</StyledLoginLink>
-                    )}
+                  <Li hoverBorder={true}>
+                    <StyledCartLink to="/cart">
+                      <p style={{ marginRight: 3 }}>Carrito</p>
+                      <div>{`(${tamañoCarrito()})`}</div>
+                    </StyledCartLink>
                   </Li>
-                </ContainerNavGroupsHomeAndHistory>
-                <ContainerNavGroupsCartAndTheme>
-                <Li>
-                  <StyledCartLink to="/cart">
-                    {" "}
-                    <Cart /> <div>{`(${tamañoCarrito()})`}</div>
-                  </StyledCartLink>
-                </Li>
+                  {user !== null && (
+                    <Li hoverBorder={true}>
+                      <StyledLink to="/orders">Historial</StyledLink>
+                    </Li>
+                  )}
+                </div>
 
-                <Li>
+                <SpecialLiContainer>
+                  {user !== null ? (
+                    <StyledButton onClick={handleLogout}>
+                      Cerrar sesión
+                    </StyledButton>
+                  ) : (
+                    <StyledLoginLink to="/login">Login</StyledLoginLink>
+                  )}
                   <StyledToggleMode>
                     <StyledInput
                       type="checkbox"
@@ -140,9 +150,7 @@ const BaseNavbar = () => {
                       <StyledBall />
                     </StyledLabel>
                   </StyledToggleMode>
-                </Li>
-                </ContainerNavGroupsCartAndTheme>
-                
+                </SpecialLiContainer>
               </Ul>
             )}
           </Nav>

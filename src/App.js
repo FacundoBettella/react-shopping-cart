@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
 import {
@@ -26,25 +26,16 @@ import {
 import useProducts from "./hooks/useProducts";
 import { useAuth } from "./context/authContext";
 import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useThemeContext } from "./context/ThemeContext";
+import { useThemeContext } from "./context/themeContext";
 import useResponsiveSize from "./hooks/useResponsiveSize";
 
 const App = () => {
   const { theme } = useThemeContext();
   const { user } = useAuth();
 
-  const { products, loading, getProducts } = useProducts();
+  const { products, loading } = useProducts();
   const [deviceSizeState] = useResponsiveSize();
   const { sincronizeItemFunc } = useLocalStorage();
-
-  useEffect(() => {
-    getProducts("products");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
 
   return (
     <Fragment>
@@ -72,11 +63,7 @@ const App = () => {
                       onLoading={() => <Loading loading={loading} />}
                     />
                     <Searcher param="" />
-                    <Products
-                      sizeManagment={deviceSizeState}
-                      listOfProducts={products}
-                      onLoading={() => <Loading loading={loading} />}
-                    />
+                    <Products sizeManagment={deviceSizeState} />
                   </Home>
                 }
               />

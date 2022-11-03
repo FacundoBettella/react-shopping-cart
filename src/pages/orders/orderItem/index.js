@@ -21,6 +21,7 @@ export const OrderItem = ({ order }) => {
   const [expanded, setExpanded] = useState(false);
 
   const currency = "ARS";
+  const { shortDescription } = order.carrito[0];
 
   const toggleExpanded = () => {
     expanded ? setExpanded(false) : setExpanded(true);
@@ -35,20 +36,12 @@ export const OrderItem = ({ order }) => {
   return (
     <StyledDivContainer>
       <StyledDiv sizeManagment={deviceSizeState}>
-        <OrderText>
-          <StyledBag />
-          {order.date}
-        </OrderText>
+        <StyledBag />
+        <OrderText>{order.date}</OrderText>
+        <CarritoText style={{ width: "100%" }} sizeManagment={deviceSizeState}>
+          {shortDescription}
+        </CarritoText>
         <OrderText>{`${order.carrito.length} Items`}</OrderText>
-        <OrderText style={{ width: "120px", fontSize: "1.3em" }}>{`${parseFloat(
-          order.carrito.reduce(
-            (partialSum, a) => parseItemPrice(a),
-            parseFloat(0)
-          )
-        )
-          .toFixed(2)
-          .replace(".", ",")
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${currency}`}</OrderText>
         <StyledButton onClick={toggleExpanded} sizeManagment={deviceSizeState}>
           <StyledEye />
         </StyledButton>
@@ -71,9 +64,22 @@ export const OrderItem = ({ order }) => {
                 alt={carritoItem.title}
                 sizeManagment={deviceSizeState}
               />
-              <CarritoText style={{ width: "100%" }} sizeManagment={deviceSizeState}>
-                {carritoItem.shortDescription}
-              </CarritoText>
+              <OrderText
+                style={{
+                  width: "140px",
+                  fontSize: deviceSizeState ? "1em" : "1.3em",
+                }}
+              >
+                {`$${parseFloat(
+                  order.carrito.reduce(
+                    (partialSum, a) => parseItemPrice(a),
+                    parseFloat(0)
+                  )
+                )
+                  .toFixed(2)
+                  .replace(".", ",")
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")} ${currency}`}
+              </OrderText>
             </StyledDivCarrito>
           ))}
         </StyledDivDetails>

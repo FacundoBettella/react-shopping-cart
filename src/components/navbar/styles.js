@@ -31,16 +31,17 @@ export const Nav = styled.nav`
     padding: 5px;
     position: fixed;
     transform: scale(0.8);
-    z-index: 3;
+    z-index: 4;
   }
 `;
 
 export const Ul = styled.ul`
   height: 10vh;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  background: var(--accent);
+  justify-content: center;
+  background: var(--navbar-background);
 
   &.customFixed {
     display: flex;
@@ -48,27 +49,29 @@ export const Ul = styled.ul`
     align-items: center;
     height: 10vh;
     border-radius: 60px;
+    background: var(--accent);
   }
 `;
 
 export const Li = styled.li`
-  padding: .7em;
+  padding: 0.8em;
   color: var(--text-secondary);
+  border-bottom: ${(props) => props.hoverBorder && "1px solid transparent"};
+
+  :hover {
+    border-bottom: ${(props) => props.hoverBorder && "1px solid var(--accent)"};
+  }
 `;
 
-export const ContainerNavGroupsHomeAndHistory = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-left: 40em;
-`
-
-export const ContainerNavGroupsCartAndTheme = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    
-`
+export const SpecialLiContainer = styled.li`
+  width: 25%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: flex-end;
+  right: 0;
+`;
 
 export const Cart = styled(ShoppingCart)`
   color: var(--text-secondary);
@@ -103,6 +106,8 @@ export const StyledLink = styled(Link)`
 
 export const StyledLoginLink = styled(Link)`
   height: auto;
+  width: 45%;
+  text-align: center;
   color: var(--accent);
   background-color: var(--background);
   font-size: 2.7vh;
@@ -110,8 +115,6 @@ export const StyledLoginLink = styled(Link)`
   text-decoration: none;
   border: 1px solid var(--white);
   border-radius: 4px;
-  position: absolute;
-  right: 0;
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.5s;
@@ -119,13 +122,14 @@ export const StyledLoginLink = styled(Link)`
   animation: ${jump} 0.5s ease-out forwards;
 
   :hover {
-    border: 1px solid black;
+    border: 1px solid var(--text-special);
     color: var(--accent-hover);
   }
 `;
 
 export const StyledButton = styled.button`
   height: auto;
+  width: 45%;
   color: var(--accent);
   background-color: var(--background);
   font-size: 2.5vh;
@@ -134,8 +138,6 @@ export const StyledButton = styled.button`
   border: 1px solid var(--white);
   border-radius: 4px;
   padding: 5px;
-  position: absolute;
-  right: 0;
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.5s;
@@ -143,7 +145,7 @@ export const StyledButton = styled.button`
   padding: 0.5em;
 
   :hover {
-    border: 1px solid black;
+    border: 1px solid var(--text-special);
     color: var(--accent-hover);
   }
 `;
@@ -152,6 +154,7 @@ export const LogoContainer = styled.div`
   position: absolute;
   top: 0;
   height: 10vh;
+  cursor: pointer;
 
   &.responsiveLogoContainer {
     position: fixed;
