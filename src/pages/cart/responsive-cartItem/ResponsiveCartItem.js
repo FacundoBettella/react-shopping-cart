@@ -1,6 +1,6 @@
 import React from "react";
 import { useCarrito } from "../../../context/carritoContext";
-import { CartPrice, CartText, Quantity, StyledAdd, StyledButton, StyledDelete, StyledDiv, StyledMinus } from "./styles";
+import { CartPrice, CartText, Quantity, StyledAdd, StyledButton, StyledDelete, StyledDiv, StyledMinus ,ProductImg} from "./styles";
 
 const ResponsiveCartItem = ({ article }) => {
   const {

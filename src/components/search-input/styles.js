@@ -55,7 +55,7 @@ export const SearchButton = styled.button`
   z-index: 3;
   border: none;
   background-color: transparent;
-  top: 5px;
+  top: 1px;
   padding-right: 3px;
   cursor: pointer;
 `;
