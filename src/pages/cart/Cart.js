@@ -129,7 +129,7 @@ const Cart = ({ sizeManagment }) => {
             ) : (
               <>
                 <TotalText>Total</TotalText>
-                <TotalPrice>
+                <TotalPrice>$
                   {parseFloat(
                     carrito.reduce(
                       (partialSum, a) =>

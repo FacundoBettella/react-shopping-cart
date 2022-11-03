@@ -26,6 +26,7 @@ export const CartTotal = styled.div`
   border-radius: 4px;
   border: 3px solid white;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  justify-content:center;
 `;
 
 export const TotalText = styled.div`

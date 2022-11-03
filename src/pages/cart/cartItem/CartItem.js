@@ -7,7 +7,7 @@ import { useCarrito } from "../../../context/carritoContext";
 
 const CartText = styled.div`
   font-size: 2em;
-  width: 40%;
+  width: 200px;
 `;
 
 const Quantity = styled.div`
@@ -20,6 +20,7 @@ const CartPrice = styled.div`
   display: flex;
   align-items: flex-start;
   margin-left: auto;
+  width:200px;
 `;
 
 const StyledDiv = styled.div`
@@ -60,11 +61,15 @@ const StyledButton = styled.button`
   }
 `;
 
+const ProductImg = styled.img`
+  width:9%;
+`;
 export const CartItem = ({ article }) => {
   const { agregarAlCarrito, eliminarProductoDelCarrito, decrementarProductoDelCarrito } = useCarrito();
 
   return (
     <StyledDiv>
+      <ProductImg src={article.image}/>
       <CartText>{article.title}</CartText>
       <StyledButton onClick={() => agregarAlCarrito(article)}>
         <StyledAdd />
