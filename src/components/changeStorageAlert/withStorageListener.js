@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 const withStorageListener = (WrappedComponent) => {
-
   return function WrappedComponentWithStorageListener(props) {
-    
     const [storageChange, setStorageChange] = useState(false);
 
     useEffect(() => {
@@ -12,8 +10,10 @@ const withStorageListener = (WrappedComponent) => {
         if (change.key === "auth_token") {
           console.log("Hubo cambios en ", change.key);
           setStorageChange(true);
-        }
-        else if (change.key === "theme") {
+        } else if (change.key === "theme") {
+          console.log("Hubo cambios en ", change.key);
+          setStorageChange(true);
+        } else if (change.key === "carrito") {
           console.log("Hubo cambios en ", change.key);
           setStorageChange(true);
         }

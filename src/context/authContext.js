@@ -22,7 +22,6 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [messageError, setMessageError] = useState("");
-
   const { saveNewItem } = useLocalStorage();
 
   const signUp = (email, password) => {
@@ -60,7 +59,10 @@ export const AuthProvider = ({ children }) => {
 
   const resetPassword = (email) => sendPasswordResetEmail(AUTH, email);
 
-  const logout = () => signOut(AUTH);
+  const logout = () => {
+    saveNewItem("carrito", "")
+    signOut(AUTH)
+  };
 
   useEffect(() => {
     onAuthStateChanged(AUTH, (currentUser) => {
