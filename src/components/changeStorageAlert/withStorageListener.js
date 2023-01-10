@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 const withStorageListener = (WrappedComponent) => {
+
   return function WrappedComponentWithStorageListener(props) {
+    
     const [storageChange, setStorageChange] = useState(false);
 
     useEffect(() => {

@@ -9,6 +9,7 @@ import { Img, ImgContainer, Banner, Ptext } from "./styles";
 import useResponsiveSize from "../../hooks/useResponsiveSize";
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
+
   const [deviceSizeState] = useResponsiveSize();
 
   return (

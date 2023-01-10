@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
 import {
@@ -33,9 +33,14 @@ const App = () => {
   const { theme } = useThemeContext();
   const { user } = useAuth();
 
-  const { products, loading } = useProducts();
+  const { products, loading, getProducts } = useProducts();
   const [deviceSizeState] = useResponsiveSize();
   const { sincronizeItemFunc } = useLocalStorage();
+
+  useEffect(() => {
+    getProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Fragment>
@@ -63,7 +68,11 @@ const App = () => {
                       onLoading={() => <Loading loading={loading} />}
                     />
                     <Searcher param="" />
-                    <Products sizeManagment={deviceSizeState} />
+                    <Products 
+                      listOfProducts={products}
+                      onLoading={() => <Loading loading={loading} />}  
+                      sizeManagment={deviceSizeState} 
+                    />
                   </Home>
                 }
               />

@@ -1,29 +1,17 @@
-import React, { Fragment, useEffect } from "react";
-import useProducts from "../../hooks/useProducts";
+import React, { Fragment, memo,  } from "react";
 import { Product } from "../product";
 import { ProductsList } from "./styles";
-import { Loading } from "../../components";
 
-const Products = ({ sizeManagment }) => {
-  const { products, getProducts, loading } = useProducts();
-
-  useEffect(() => {
-    getProducts("products");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products]);
+const Products = ({ listOfProducts = [], sizeManagment, loading, onLoading }) => {
 
   return (
     <Fragment>
       {loading ? (
-        <Loading loading={loading} />
+       onLoading()
       ) : (
         <ProductsList sizeManagment={sizeManagment}>
-          {products.length > 0 &&
-            products.map((product, index) => (
+          {listOfProducts.length > 0 &&
+            listOfProducts.map((product, index) => (
               <Product
                 key={index}
                 title={`${product?.title}`}
@@ -40,4 +28,4 @@ const Products = ({ sizeManagment }) => {
     </Fragment>
   );
 };
-export default Products;
+export default memo(Products);

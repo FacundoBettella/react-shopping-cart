@@ -3,7 +3,7 @@ import React, { Children, cloneElement } from "react";
 const Home = ({ children, loading }) => {
 
     /*  Para poder pasar propiedades especiales a los componentes hijos de nuestros componentes contenedores cuando hacemos 
-        composición usamos cloneElement 
+        composición (Compund component Patters) usamos cloneElement 
         En este caso: cloneElement(children, { loading }) => A cada children de Home le agregamos la prop loading para que
         sea reutilizable y no tengamos que pasarla a cada hijo.
     */ 
