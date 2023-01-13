@@ -14,8 +14,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### This app was build with:
     `React, styledComponents and Firebase`
 
+<img src="./img/login.png" alt="Alt text1">
 
-![alt text]("./img/login.png")
 
 ![alt text]("./img/pc1.png")
 
