@@ -1,9 +1,9 @@
-import React, { Fragment ,useEffect} from "react";
-import { FIRESTONE } from "../../firebase/firebase.config";
-import { Layout } from "../../components";
-import { doc, updateDoc, setDoc, collection } from "firebase/firestore";
-import swal from "sweetalert";
-import { useCarrito } from "../../context/carritoContext";
+import React, { Fragment, useEffect, useMemo } from 'react';
+import { FIRESTONE } from '../../firebase/firebase.config';
+import { Layout } from '../../components';
+import { doc, updateDoc, setDoc, collection } from 'firebase/firestore';
+import swal from 'sweetalert';
+import { useCarrito } from '../../context/carritoContext';
 import {
   CartItemsContainer,
   CartTotal,
@@ -12,22 +12,22 @@ import {
   VacioText,
   ResponsiveCartItemsContainer,
   Button,
-} from "./styles";
-import { CartItem } from "./cartItem/CartItem";
-import { ButtonWrapper } from "../../components/product/styles";
-import ResponsiveCartItem from "./responsive-cartItem/ResponsiveCartItem";
-import { useAuth } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
+} from './styles';
+import { CartItem } from './cartItem/CartItem';
+import { ButtonWrapper } from '../../components/product/styles';
+import ResponsiveCartItem from './responsive-cartItem/ResponsiveCartItem';
+import { useAuth } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ sizeManagment }) => {
   const { user } = useAuth();
-  const { tamañoCarrito, carrito, vaciarCarrito ,readCart} = useCarrito();
+  const { tamañoCarrito, carrito, vaciarCarrito, readCart } = useCarrito();
   const navigate = useNavigate();
 
   const createNewOrder = async () => {
-    const date = new Date().toLocaleString() + "";
+    const date = new Date().toLocaleString() + '';
     const userEmail = user.email;
-    const newOrder = doc(collection(FIRESTONE, "orders"));
+    const newOrder = doc(collection(FIRESTONE, 'orders'));
     try {
       await setDoc(newOrder, { userEmail, date, carrito });
     } catch (e) {
@@ -37,17 +37,17 @@ const Cart = ({ sizeManagment }) => {
 
   const confirmOrder = async () => {
     swal({
-      title: "¿Desea confirmar su compra?",
-      text: "",
-      buttons: { cancel: "Cancelar", ok: "Ok" },
+      title: '¿Desea confirmar su compra?',
+      text: '',
+      buttons: { cancel: 'Cancelar', ok: 'Ok' },
     })
       .then((value) => {
-        if (value === "ok") {
+        if (value === 'ok') {
           handleBuyArticle();
         }
       })
       .then(() => {
-        navigate("/");
+        navigate('/');
       });
   };
 
@@ -56,27 +56,47 @@ const Cart = ({ sizeManagment }) => {
     let newArticleStock;
 
     carrito.forEach(async (article) => {
-      articleData = doc(FIRESTONE, "products", article.id);
+      articleData = doc(FIRESTONE, 'products', article.id);
       newArticleStock = { stock: article.stock - article.quantity };
       try {
         await updateDoc(articleData, newArticleStock);
       } catch (err) {
         console.error(err);
         return swal(
-          "Tuvimos dificultades para procesar tu compra.",
-          "Intentalo después",
-          "error"
+          'Tuvimos dificultades para procesar tu compra.',
+          'Intentalo después',
+          'error'
         );
       }
     });
     createNewOrder();
     vaciarCarrito();
-    swal("¡Tu compra ha sido un éxito!", "", "success");
+    swal('¡Tu compra ha sido un éxito!', '', 'success');
   };
+
+  const handleCartPrice = () => {
+    return parseFloat(
+      carrito.reduce(
+        (partialSum, a) =>
+          parseFloat(partialSum) +
+          parseFloat(a.price.replace('.', '')) * parseInt(a.quantity),
+        parseFloat(0)
+      )
+    )
+      .toFixed(2)
+      .replace('.', ',')
+      .replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const totalPriceMemo = useMemo(() => {
+    handleCartPrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [carrito]);
 
   useEffect(() => {
     readCart();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -95,18 +115,7 @@ const Cart = ({ sizeManagment }) => {
               <>
                 <TotalText sizeManagment={sizeManagment}>Total</TotalText>
                 <TotalPrice sizeManagment={sizeManagment}>
-                  {parseFloat(
-                    carrito.reduce(
-                      (partialSum, a) =>
-                        parseFloat(partialSum) +
-                        parseFloat(a.price.replace(".", "")) *
-                          parseInt(a.quantity),
-                      parseFloat(0)
-                    )
-                  )
-                    .toFixed(2)
-                    .replace(".", ",")
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                  $ {handleCartPrice()}
                 </TotalPrice>
               </>
             )}
@@ -129,20 +138,7 @@ const Cart = ({ sizeManagment }) => {
             ) : (
               <>
                 <TotalText>Total</TotalText>
-                <TotalPrice>$
-                  {parseFloat(
-                    carrito.reduce(
-                      (partialSum, a) =>
-                        parseFloat(partialSum) +
-                        parseFloat(a.price.replace(".", "")) *
-                          parseInt(a.quantity),
-                      parseFloat(0)
-                    )
-                  )
-                    .toFixed(2)
-                    .replace(".", ",")
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-                </TotalPrice>
+                <TotalPrice>$ {handleCartPrice()}</TotalPrice>
               </>
             )}
           </CartTotal>

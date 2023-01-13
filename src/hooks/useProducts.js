@@ -7,15 +7,12 @@ const useProducts = () => {
   const [loading, setLoading] = useState(true);
 
   const getProducts = useCallback(async () => {
-
     const dataResponse = await getDocs(collection(FIRESTONE, "products"));
     setProducts(
       dataResponse.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
     );
     setLoading(false);
-
   }, []);
-
 
   return { products, setProducts, loading, getProducts };
 };

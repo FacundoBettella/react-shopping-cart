@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
-import styled from "styled-components";
-import { useAuth } from "../../context/authContext";
-import { useCarrito } from "../../context/carritoContext";
-import { useThemeContext } from "../../context/themeContext";
-import { NavbarResponsive } from "../navbar-responsive/NavbarResponsive";
+import React, { Fragment, useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useAuth } from '../../context/authContext';
+import { useCarrito } from '../../context/carritoContext';
+import { useThemeContext } from '../../context/themeContext';
+import { NavbarResponsive } from '../navbar-responsive/NavbarResponsive';
 import {
   Cart,
   Li,
@@ -16,7 +16,7 @@ import {
   Logo,
   LogoContainer,
   SpecialLiContainer,
-} from "./styles";
+} from './styles';
 import {
   StyledBall,
   StyledInput,
@@ -24,15 +24,15 @@ import {
   StyledMoon,
   StyledSun,
   StyledToggleMode,
-} from "../theme-toggle/styles";
-import logo from "../../assets/logo/shopping.png";
-import logoAlt from "../../assets/logo/shopping_alt.png";
-import useResponsiveSize from "../../hooks/useResponsiveSize";
-import { useNavigate } from "react-router-dom";
+} from '../theme-toggle/styles';
+import logo from '../../assets/logo/shopping.png';
+import logoAlt from '../../assets/logo/shopping_alt.png';
+import useResponsiveSize from '../../hooks/useResponsiveSize';
+import { useNavigate } from 'react-router-dom';
 
 const BaseNavbar = () => {
   const { logout, user } = useAuth();
-  const { tamañoCarrito ,readCart} = useCarrito();
+  const { tamañoCarrito, readCart } = useCarrito();
   const { toggleTheme, theme } = useThemeContext();
 
   const [showFixed, setShowFixed] = useState(false);
@@ -43,7 +43,7 @@ const BaseNavbar = () => {
 
   const handleGoHome = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate('/');
   };
 
   const handleMenuModal = () => {
@@ -52,7 +52,7 @@ const BaseNavbar = () => {
 
   const handleLogout = async () => {
     await logout();
-    localStorage.removeItem("auth_token");
+    localStorage.removeItem('auth_token');
   };
 
   const handletoggleTheme = async () => {
@@ -67,14 +67,14 @@ const BaseNavbar = () => {
     onScroll();
 
     // Para evitar seguir escuchando el evento cuando el componente no está montado:
-    return () => document.removeEventListener("scroll", onScroll);
+    return () => document.removeEventListener('scroll', onScroll);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [document.addEventListener("scroll", onScroll)]);
+  }, [document.addEventListener('scroll', onScroll)]);
 
   useEffect(() => {
-    if(user) readCart();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (user) readCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const renderNav = (fixed) => {
@@ -89,7 +89,7 @@ const BaseNavbar = () => {
           />
         ) : (
           /* FIXED CART NAV  */
-          <Nav className={fixed ? "customFixed" : ""}>
+          <Nav className={fixed ? 'customFixed' : ''}>
             {fixed ? (
               <Ul className="customFixed">
                 <Li>
@@ -102,17 +102,17 @@ const BaseNavbar = () => {
             ) : (
               /* NORMAL NAV  */
               <Ul>
-                <Li style={{ position: "absolute", left: 0 }}>
+                <Li style={{ position: 'absolute', left: 0 }}>
                   <LogoContainer>
                     <Logo
-                      src={theme === "light" ? logoAlt : logo}
+                      src={theme === 'light' ? logoAlt : logo}
                       alt="logo"
                       onClick={handleGoHome}
                     />
                   </LogoContainer>
                 </Li>
 
-                <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
                   <Li hoverBorder={true}>
                     <StyledLink to="/">Home</StyledLink>
                   </Li>

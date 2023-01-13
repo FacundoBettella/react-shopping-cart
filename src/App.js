@@ -1,6 +1,6 @@
-import { Fragment, useEffect } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { GlobalStyle, PageContainer, Theme } from "./styles/GlobalStyles";
+import { Fragment, useEffect } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { GlobalStyle, PageContainer, Theme } from './styles/GlobalStyles';
 import {
   Login,
   Register,
@@ -9,7 +9,7 @@ import {
   Cart,
   OrderHistory,
   ProtectedRoute,
-} from "./pages/index";
+} from './pages/index';
 
 import {
   Loading,
@@ -22,12 +22,12 @@ import {
   ChangeAlertWithStorageListener,
   Footer,
   Layout,
-} from "./components";
-import useProducts from "./hooks/useProducts";
-import { useAuth } from "./context/authContext";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useThemeContext } from "./context/themeContext";
-import useResponsiveSize from "./hooks/useResponsiveSize";
+} from './components';
+import useProducts from './hooks/useProducts';
+import { useAuth } from './context/authContext';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { useThemeContext } from './context/themeContext';
+import useResponsiveSize from './hooks/useResponsiveSize';
 
 const App = () => {
   const { theme } = useThemeContext();
@@ -39,7 +39,7 @@ const App = () => {
 
   useEffect(() => {
     getProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -51,7 +51,7 @@ const App = () => {
           <PageContainer sizeManagment={deviceSizeState}>
             <Navbar />
             <Title
-              text={"Shopping Chart"}
+              text={'Shopping Chart'}
               user={user?.email}
               sizeManagment={deviceSizeState}
             />
@@ -68,10 +68,10 @@ const App = () => {
                       onLoading={() => <Loading loading={loading} />}
                     />
                     <Searcher param="" />
-                    <Products 
+                    <Products
                       listOfProducts={products}
-                      onLoading={() => <Loading loading={loading} />}  
-                      sizeManagment={deviceSizeState} 
+                      onLoading={() => <Loading loading={loading} />}
+                      sizeManagment={deviceSizeState}
                     />
                   </Home>
                 }

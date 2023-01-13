@@ -23,7 +23,6 @@ export const useCarrito = () => {
 export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
   const [cartId, setCartId] = useState("");
-  const [, setLoading] = useState(true);
 
   const { user } = useAuth();
   const { saveNewItem } = useLocalStorage();
@@ -43,7 +42,6 @@ export const CarritoProvider = ({ children }) => {
 
       setCartId(result.docs[0].id);
     }
-    setLoading(false);
   };
 
   const tamañoCarrito = () => {
@@ -51,7 +49,6 @@ export const CarritoProvider = ({ children }) => {
   };
 
   const agregarAlCarrito = (producto) => {
-    setLoading(true);
     if (parseInt(producto.stock) >= 0) {
       const newCarrito = [...carrito]; //Hago una copia del carrito actual
       let existingProductIndex = newCarrito.findIndex(
@@ -121,11 +118,9 @@ export const CarritoProvider = ({ children }) => {
     const cartsRef = collection(FIRESTONE, "carts");
     try {
       await updateDoc(doc(cartsRef, cartId), { cart });
-      setLoading(false);
       setCarrito(updatedCart);
     } catch (e) {
       console.error(e);
-      setLoading(false);
     }
   };
 
