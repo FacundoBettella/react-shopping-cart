@@ -37,4 +37,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Responsive
 
-<img src="./img/responsive1.png" alt="responsive1">
+<img src="./img/responsive1.png" width="400px" alt="responsive1">
