@@ -35,6 +35,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 <img src="./img/pc3.png" alt="Alt text3">
 
+### Details
+<img src="./img/pc5.png" alt="Alt text5">
+
 ### Responsive
 
 <img src="./img/responsive1.png" alt="responsive1">
+
+<img src="./img/responsive2.png" alt="responsive2">

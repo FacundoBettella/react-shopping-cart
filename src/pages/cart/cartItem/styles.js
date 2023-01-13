@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Delete } from "@styled-icons/fluentui-system-filled/Delete";
-import { Add } from "@styled-icons/fluentui-system-filled/Add";
-import { Minus } from "@styled-icons/boxicons-regular/Minus";
+import { Delete } from '@styled-icons/fluentui-system-filled/Delete';
+import { Add } from '@styled-icons/fluentui-system-filled/Add';
+import { Minus } from '@styled-icons/boxicons-regular/Minus';
 
 export const CartText = styled.div`
   font-size: 2em;
