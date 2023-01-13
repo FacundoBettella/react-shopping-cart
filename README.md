@@ -11,19 +11,30 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### This app was build with:
+## This app was build with:
+
     `React, styledComponents and Firebase`
+
+### Login
 
 <img src="./img/login.png" alt="Alt text1">
 
+### Home
 
-![alt text]("./img/pc1.png")
+<img src="./img/pc4.png" alt="Alt text4">
 
-![alt text]("./img/pc2.png")
+### Orders
 
-![alt text]("./img/pc3.png")
+<img src="./img/pc1.png" alt="Alt text1">
 
-![alt text]("./img/pc4.png")
+### Cart
 
-![alt text]("./img/responsive1.png")
+<img src="./img/pc2.png" alt="Alt text2">
 
+### Products
+
+<img src="./img/pc3.png" alt="Alt text3">
+
+### Responsive
+
+<img src="./img/responsive1.png" alt="responsive1">
