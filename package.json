@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.9.3",
     "intersection-observer": "^0.12.2",
+    "product-card-fjb": "^1.0.0-rc",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
