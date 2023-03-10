@@ -18,6 +18,11 @@ import { useAuth } from '../../context/authContext';
 // };
 /* ===================================== NPM PRODUCT-CARD IMPLEMENTATION  ================================*/
 
+
+/* ===================================== NPM NES-COMPONENTS IMPLEMENTATION  ===============================*/
+import { MyButton } from "nes-ui-storybook-fjb";
+/* ===================================== NPM NES-COMPONENTS IMPLEMENTATION  ===============================*/
+
 const Register = () => {
   const { signUp, user, messageError, setMessageError } = useAuth();
   const navigate = useNavigate();
@@ -54,7 +59,6 @@ const Register = () => {
   return (
     <div>
       <Layout title="Registrarse" />
-
       {/* <div
         style={{
           display: 'flex',
@@ -93,6 +97,8 @@ const Register = () => {
         </ProductCard>
       </div> */}
 
+      
+
       <FormWrapper>
         <FormInput
           name="user"
@@ -109,6 +115,7 @@ const Register = () => {
           onChange={handleInputs}
         />
         <SubmitButton onClick={handleRegister} text="Registrate" />
+        <MyButton label="MyButton Clasic" type="zelda" />
         <br />
         {messageError !== '' && (
           <p
