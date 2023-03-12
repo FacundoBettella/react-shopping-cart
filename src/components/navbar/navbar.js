@@ -112,13 +112,13 @@ const BaseNavbar = () => {
                   </LogoContainer>
                 </Li>
 
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: "35px" }}>
                   <Li hoverBorder={true}>
                     <StyledLink to="/">Home</StyledLink>
                   </Li>
                   <Li hoverBorder={true}>
                     <StyledCartLink to="/cart">
-                      <p style={{ marginRight: 3 }}>Carrito</p>
+                      <p style={{ marginRight: 3 }}>Mi carrito</p>
                       <div>{`(${tamañoCarrito()})`}</div>
                     </StyledCartLink>
                   </Li>

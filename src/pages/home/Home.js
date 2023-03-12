@@ -14,7 +14,7 @@ const Home = ({ children, loading }) => {
     */
 
   return (
-    <section style={{ minHeight: '90vh' }}>
+    <section style={{ maxWidth: "100%", minHeight: '90vh' }}>
       {Children.toArray(children).map((child) =>
         cloneElement(child, { loading })
       )}

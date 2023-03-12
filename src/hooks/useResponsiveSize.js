@@ -1,6 +1,6 @@
-import { useMediaQuery } from "@mui/material";
+import { useMediaQuery } from '@mui/material';
 
-const useResponsiveSize = (deviceSize = "(max-width: 768px)") => {
+const useResponsiveSize = (deviceSize = '(max-width: 780px)') => {
   const deviceSizeState = useMediaQuery(deviceSize);
 
   return [deviceSizeState];

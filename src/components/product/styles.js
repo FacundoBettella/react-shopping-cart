@@ -23,9 +23,11 @@ export const ProductContainer = styled.div`
 
 export const ProductTitle = styled.h1`
   height: 60px;
+  color: var(--text-primary);
 `;
 
-export const ProductSubtitle = styled.h2``;
+export const ProductSubtitle = styled.h2`
+color: var(--text-primary);`;
 
 export const ImageContainer = styled.div`
   height: 200px;
@@ -50,6 +52,7 @@ export const ProductDescription = styled.div`
   margin: 5px;
   width: 240px;
   height: 55px;
+  color: var(--text-primary);
 `;
 
 export const ButtonWrapper = styled.div`

@@ -1,15 +1,14 @@
-import React, { Fragment, memo } from "react";
-import { Pagination, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import { Img, ImgContainer, Banner, Ptext } from "./styles";
-import useResponsiveSize from "../../hooks/useResponsiveSize";
+import React, { Fragment, memo } from 'react';
+import { Pagination, Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Img, ImgContainer, Banner, Ptext } from './styles';
+import useResponsiveSize from '../../hooks/useResponsiveSize';
 
 const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
-
   const [deviceSizeState] = useResponsiveSize();
 
   return (
@@ -17,6 +16,7 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
       {loading ? (
         onLoading()
       ) : (
+        
         <Swiper
           slidesPerView={deviceSizeState ? 1 : 4}
           slidesPerGroup={deviceSizeState ? 1 : 4}
@@ -34,7 +34,7 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
               .map((currentProduct, index) => (
                 <SwiperSlide
                   key={currentProduct.id}
-                  style={{ margin: deviceSizeState ? "0px 0px" : "0px 20px" }}
+                  style={{ margin: deviceSizeState ? '0px 0px' : '0px 20px' }}
                 >
                   <ImgContainer key={`${currentProduct.id}-${index}`}>
                     <Img
@@ -44,8 +44,8 @@ const Carousel = ({ listOfProducts = [], loading, onLoading }) => {
                     <Banner>
                       <Ptext>
                         {currentProduct.stock <= 5
-                          ? "Poco Stock"
-                          : "Stock Disponible"}
+                          ? 'Poco Stock'
+                          : 'Stock Disponible'}
                       </Ptext>
                     </Banner>
                   </ImgContainer>

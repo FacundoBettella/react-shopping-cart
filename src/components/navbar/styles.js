@@ -19,9 +19,9 @@ export const Nav = styled.nav`
 
   &.customFixed {
     ${fadeIn({ time: "0.2s", type: "ease-in" })}
-    width: 13%;
+    width: 15%;
     height: 12vh;
-    border-radius: 60px;
+    border-radius: 4px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     left: 1;
     margin: 0 auto;
@@ -84,13 +84,13 @@ export const Cart = styled(ShoppingCart)`
 
 export const StyledCartLink = styled(Link)`
   color: var(--text-secondary);
-  width: 100px;
+  width: 100%;
   font-weight: bold;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3vh;
+  font-size: 2.5vh;
 
   &.customFixed {
     font-size: 2.9vh;
@@ -99,7 +99,7 @@ export const StyledCartLink = styled(Link)`
 
 export const StyledLink = styled(Link)`
   color: var(--text-secondary);
-  font-size: 3vh;
+  font-size: 2.5vh;
   font-weight: bold;
   text-decoration: none;
 `;
