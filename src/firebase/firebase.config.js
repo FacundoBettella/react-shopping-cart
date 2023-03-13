@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore"; /* database */
-import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from '@firebase/firestore'; /* database */
+import { getAuth } from 'firebase/auth';
 const {
   REACT_APP_API_KEY,
   REACT_APP_AUTH_DOMAIN,
