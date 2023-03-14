@@ -70,7 +70,7 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// =============== Any other custom service worker logic can go here =====================================================================================>
 self.addEventListener('install', async () => {
   const cache = await caches.open('cache-1');
 
@@ -82,40 +82,34 @@ self.addEventListener('install', async () => {
   console.log('instalando cache-1...');
 });
 
-const apiOfflineFallbacks = [
-  // Login
-  'signInWithPassword', 
-  // getUser info
-  'lookup',
-];
-
 /* Network first with cache fallback */
 self.addEventListener('fetch', (event) => {
+  let patron = /signInWithPassword/;
+  let url = event?.request?.url;
 
-  // TODO: Mejorar para que funcione!!!
-  console.log(apiOfflineFallbacks.indexOf( event.request.url ) < 0, event.request.url);
+  const resultado = url.match(patron)?.slice(0);
 
-  if ( apiOfflineFallbacks.indexOf( event.request.url ) < 0 ) return;
+  if (resultado !== undefined) {
+    console.log('EVENT REQUEST ==>>', event?.request);
+    /*  Almacenos la ultima respuesta fetch y es clonada para cuando la app este offline. */
+    const resp = fetch(event.request)
+      .then((res) => {
+        if (!res) {
+          return caches.match(event.request);
+        }
 
+        // Guardar en cache la respuesta.
+        caches.open('cache-dynamic').then((cache) => {
+          cache.put(event.request, res);
+        });
 
-  /*  Almacenos la ultima respuesta fetch y es clonada para cuando la app este offline. */
-  const resp = fetch(event.request)
-    .then((res) => {
-      if (!res) {
+        return res.clone();
+      })
+      .catch((err) => {
+        console.log('offline response', err);
         return caches.match(event.request);
-      }
-
-      // Guardar en cache la respuesta.
-      caches.open('cache-dynamic').then((cache) => {
-        cache.put(event.request, res);
       });
 
-      return res.clone();
-    })
-    .catch((err) => {
-      console.log('offline response', err);
-      return caches.match(event.request);
-    });
-
-  event.respondWith(resp);
+    event.respondWith(resp);
+  }
 });
