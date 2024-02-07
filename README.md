@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## This app was build with:
 
-    `React, styledComponents and Firebase`
+    React, styledComponents and Firebase
 
 ### Login
 
